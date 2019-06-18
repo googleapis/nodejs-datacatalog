@@ -1,38 +1,11 @@
 {
-  "updateTime": "2019-06-14T11:09:31.876641Z",
+  "updateTime": "2019-06-18T00:59:23.544571Z",
   "sources": [
     {
       "generator": {
         "name": "artman",
-        "version": "0.25.0",
-        "dockerImage": "googleapis/artman@sha256:ef1a98ab1e2b8f05f4d9a56f27d63347aefe14020e5f2d585172b14ca76f1d90"
-      }
-    },
-    {
-      "git": {
-        "name": "googleapis-private",
-        "remote": "https://github.com/googleapis/googleapis-private.git",
-        "sha": "783875904b827d96e34c87b22c4be8f99b422a30",
-        "internalRef": "252859065"
-      }
-    },
-    {
-      "template": {
-        "name": "node_library",
-        "origin": "synthtool.gcp",
-        "version": "2019.5.2"
-      }
-    }
-  ],
-  "destinations": [
-    {
-      "client": {
-        "source": "googleapis-private",
-        "apiName": "datacatalog",
-        "apiVersion": "v1beta1",
-        "language": "nodejs",
-        "generator": "gapic",
-        "config": "google/cloud/datacatalog/artman_datacatalog_v1beta1.yaml"
+        "version": "0.26.0",
+        "dockerImage": "googleapis/artman@sha256:6db0735b0d3beec5b887153a2a7c7411fc7bb53f73f6f389a822096bd14a3a15"
       }
     }
   ]
