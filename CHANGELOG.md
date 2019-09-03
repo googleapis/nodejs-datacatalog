@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/@google-cloud/datacatalog?activeTab=versions
 
+### [1.0.3](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.0.2...v1.0.3) (2019-09-03)
+
+
+### Bug Fixes
+
+* set proper version # for x-goog-api-client ([8d8b776](https://www.github.com/googleapis/nodejs-datacatalog/commit/8d8b776))
+
 ### [1.0.2](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.0.1...v1.0.2) (2019-08-05)
 
 
