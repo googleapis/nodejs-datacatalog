@@ -52,12 +52,22 @@ class DataCatalogClient {
    *     your project ID will be detected automatically.
    * @param {function} [options.promise] - Custom promise module to use instead
    *     of native Promises.
-   * @param {string} [options.servicePath] - The domain name of the
+   * @param {string} [options.apiEndpoint] - The domain name of the
    *     API remote host.
    */
   constructor(opts) {
     opts = opts || {};
     this._descriptors = {};
+
+    if (global.isBrowser) {
+      // If we're in browser, we use gRPC fallback.
+      opts.fallback = true;
+    }
+
+    // If we are in browser, we are already using fallback because of the
+    // "browser" field in package.json.
+    // But if we were explicitly requested to use fallback, let's do it now.
+    const gaxModule = !global.isBrowser && opts.fallback ? gax.fallback : gax;
 
     const servicePath =
       opts.servicePath || opts.apiEndpoint || this.constructor.servicePath;
@@ -75,45 +85,60 @@ class DataCatalogClient {
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
     opts.scopes = this.constructor.scopes;
-    const gaxGrpc = new gax.GrpcClient(opts);
+    const gaxGrpc = new gaxModule.GrpcClient(opts);
 
     // Save the auth object to the client, for use by other methods.
     this.auth = gaxGrpc.auth;
 
     // Determine the client header string.
-    const clientHeader = [
-      `gl-node/${process.version}`,
-      `grpc/${gaxGrpc.grpcVersion}`,
-      `gax/${gax.version}`,
-      `gapic/${VERSION}`,
-    ];
+    const clientHeader = [];
+
+    if (typeof process !== 'undefined' && 'versions' in process) {
+      clientHeader.push(`gl-node/${process.versions.node}`);
+    }
+    clientHeader.push(`gax/${gaxModule.version}`);
+    if (opts.fallback) {
+      clientHeader.push(`gl-web/${gaxModule.version}`);
+    } else {
+      clientHeader.push(`grpc/${gaxGrpc.grpcVersion}`);
+    }
+    clientHeader.push(`gapic/${VERSION}`);
     if (opts.libName && opts.libVersion) {
       clientHeader.push(`${opts.libName}/${opts.libVersion}`);
     }
 
     // Load the applicable protos.
+    // For Node.js, pass the path to JSON proto file.
+    // For browsers, pass the JSON content.
+
+    const nodejsProtoPath = path.join(
+      __dirname,
+      '..',
+      '..',
+      'protos',
+      'protos.json'
+    );
     const protos = gaxGrpc.loadProto(
-      path.join(__dirname, '..', '..', 'protos'),
-      ['google/cloud/datacatalog/v1beta1/datacatalog.proto']
+      opts.fallback ? require('../../protos/protos.json') : nodejsProtoPath
     );
 
     // This API contains "path templates"; forward-slash-separated
     // identifiers to uniquely identify resources within the API.
     // Create useful helper objects for these.
     this._pathTemplates = {
-      entryPathTemplate: new gax.PathTemplate(
+      entryPathTemplate: new gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}'
       ),
-      fieldPathTemplate: new gax.PathTemplate(
+      fieldPathTemplate: new gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/tagTemplates/{tag_template}/fields/{field}'
       ),
-      locationPathTemplate: new gax.PathTemplate(
+      locationPathTemplate: new gaxModule.PathTemplate(
         'projects/{project}/locations/{location}'
       ),
-      tagPathTemplate: new gax.PathTemplate(
+      tagPathTemplate: new gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}/tags/{tag}'
       ),
-      tagTemplatePathTemplate: new gax.PathTemplate(
+      tagTemplatePathTemplate: new gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/tagTemplates/{tag_template}'
       ),
     };
@@ -122,12 +147,16 @@ class DataCatalogClient {
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this._descriptors.page = {
-      searchCatalog: new gax.PageDescriptor(
+      searchCatalog: new gaxModule.PageDescriptor(
         'pageToken',
         'nextPageToken',
         'results'
       ),
-      listTags: new gax.PageDescriptor('pageToken', 'nextPageToken', 'tags'),
+      listTags: new gaxModule.PageDescriptor(
+        'pageToken',
+        'nextPageToken',
+        'tags'
+      ),
     };
 
     // Put together the default options sent with requests.
@@ -146,7 +175,9 @@ class DataCatalogClient {
     // Put together the "service stub" for
     // google.cloud.datacatalog.v1beta1.DataCatalog.
     const dataCatalogStub = gaxGrpc.createStub(
-      protos.google.cloud.datacatalog.v1beta1.DataCatalog,
+      opts.fallback
+        ? protos.lookupService('google.cloud.datacatalog.v1beta1.DataCatalog')
+        : protos.google.cloud.datacatalog.v1beta1.DataCatalog,
       opts
     );
 
@@ -174,18 +205,16 @@ class DataCatalogClient {
       'testIamPermissions',
     ];
     for (const methodName of dataCatalogStubMethods) {
-      this._innerApiCalls[methodName] = gax.createApiCall(
-        dataCatalogStub.then(
-          stub =>
-            function() {
-              const args = Array.prototype.slice.call(arguments, 0);
-              return stub[methodName].apply(stub, args);
-            },
-          err =>
-            function() {
-              throw err;
-            }
-        ),
+      const innerCallPromise = dataCatalogStub.then(
+        stub => (...args) => {
+          return stub[methodName].apply(stub, args);
+        },
+        err => () => {
+          throw err;
+        }
+      );
+      this._innerApiCalls[methodName] = gaxModule.createApiCall(
+        innerCallPromise,
         defaults[methodName],
         this._descriptors.page[methodName]
       );
@@ -373,6 +402,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
 
     return this._innerApiCalls.searchCatalog(request, options, callback);
@@ -521,6 +551,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -575,6 +606,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -649,6 +681,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
 
     return this._innerApiCalls.lookupEntry(request, options, callback);
@@ -711,6 +744,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -765,6 +799,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -832,6 +867,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -887,6 +923,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -960,6 +997,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1042,6 +1080,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1108,6 +1147,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1167,6 +1207,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1238,6 +1279,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1299,6 +1341,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1345,6 +1388,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1447,6 +1491,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1578,6 +1623,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1648,6 +1694,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
@@ -1723,6 +1770,7 @@ class DataCatalogClient {
       callback = options;
       options = {};
     }
+    request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
