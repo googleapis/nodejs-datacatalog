@@ -1,5 +1,5 @@
 {
-  "updateTime": "2019-11-09T12:12:09.084785Z",
+  "updateTime": "2019-11-14T20:40:55.489982Z",
   "sources": [
     {
       "generator": {
@@ -11,16 +11,16 @@
     {
       "git": {
         "name": "googleapis",
-        "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "34e661f58d58fa57da8ed113a3d8bb3de26b307d",
-        "internalRef": "279417429"
+        "remote": "git@github.com:googleapis/googleapis.git",
+        "sha": "1935fb8889686f5c9d107f11b3c6870fc3aa7cdc",
+        "internalRef": "280451656"
       }
     },
     {
       "template": {
         "name": "node_library",
         "origin": "synthtool.gcp",
-        "version": "2019.10.17"
+        "version": "2019.5.2"
       }
     }
   ],
@@ -32,7 +32,7 @@
         "apiVersion": "v1beta1",
         "language": "nodejs",
         "generator": "gapic",
-        "config": "google/cloud/datacatalog/artman_datacatalog_v1beta1.yaml"
+        "config": "google/cloud/datacatalog/v1beta1/artman_datacatalog_v1beta1.yaml"
       }
     }
   ]

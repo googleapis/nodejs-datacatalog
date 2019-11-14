@@ -1717,6 +1717,890 @@ describe('DataCatalogClient', () => {
     });
   });
 });
+describe('PolicyTagManagerClient', () => {
+  it('has servicePath', () => {
+    const servicePath =
+      datacatalogModule.v1beta1.PolicyTagManagerClient.servicePath;
+    assert(servicePath);
+  });
+
+  it('has apiEndpoint', () => {
+    const apiEndpoint =
+      datacatalogModule.v1beta1.PolicyTagManagerClient.apiEndpoint;
+    assert(apiEndpoint);
+  });
+
+  it('has port', () => {
+    const port = datacatalogModule.v1beta1.PolicyTagManagerClient.port;
+    assert(port);
+    assert(typeof port === 'number');
+  });
+
+  it('should create a client with no options', () => {
+    const client = new datacatalogModule.v1beta1.PolicyTagManagerClient();
+    assert(client);
+  });
+
+  it('should create a client with gRPC fallback', () => {
+    const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+      fallback: true,
+    });
+    assert(client);
+  });
+
+  describe('createTaxonomy', () => {
+    it('invokes createTaxonomy without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const name = 'name3373707';
+      const displayName = 'displayName1615086568';
+      const description = 'description-1724546052';
+      const expectedResponse = {
+        name: name,
+        displayName: displayName,
+        description: description,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.createTaxonomy = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.createTaxonomy(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes createTaxonomy with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.createTaxonomy = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.createTaxonomy(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('deleteTaxonomy', () => {
+    it('invokes deleteTaxonomy without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.deleteTaxonomy = mockSimpleGrpcMethod(request);
+
+      client.deleteTaxonomy(request, err => {
+        assert.ifError(err);
+        done();
+      });
+    });
+
+    it('invokes deleteTaxonomy with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.deleteTaxonomy = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.deleteTaxonomy(request, err => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        done();
+      });
+    });
+  });
+
+  describe('updateTaxonomy', () => {
+    it('invokes updateTaxonomy without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const name = 'name3373707';
+      const displayName = 'displayName1615086568';
+      const description = 'description-1724546052';
+      const expectedResponse = {
+        name: name,
+        displayName: displayName,
+        description: description,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.updateTaxonomy = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.updateTaxonomy(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes updateTaxonomy with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.updateTaxonomy = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.updateTaxonomy(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('listTaxonomies', () => {
+    it('invokes listTaxonomies without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const nextPageToken = 'nextPageToken-1530815211';
+      const expectedResponse = {
+        nextPageToken: nextPageToken,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.listTaxonomies = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.listTaxonomies(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes listTaxonomies with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.listTaxonomies = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.listTaxonomies(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('getTaxonomy', () => {
+    it('invokes getTaxonomy without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const name = 'name3373707';
+      const displayName = 'displayName1615086568';
+      const description = 'description-1724546052';
+      const expectedResponse = {
+        name: name,
+        displayName: displayName,
+        description: description,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.getTaxonomy = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.getTaxonomy(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes getTaxonomy with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.getTaxonomy = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.getTaxonomy(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('createPolicyTag', () => {
+    it('invokes createPolicyTag without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const name = 'name3373707';
+      const displayName = 'displayName1615086568';
+      const description = 'description-1724546052';
+      const parentPolicyTag = 'parentPolicyTag2071382466';
+      const expectedResponse = {
+        name: name,
+        displayName: displayName,
+        description: description,
+        parentPolicyTag: parentPolicyTag,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.createPolicyTag = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.createPolicyTag(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes createPolicyTag with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.createPolicyTag = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.createPolicyTag(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('deletePolicyTag', () => {
+    it('invokes deletePolicyTag without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.deletePolicyTag = mockSimpleGrpcMethod(request);
+
+      client.deletePolicyTag(request, err => {
+        assert.ifError(err);
+        done();
+      });
+    });
+
+    it('invokes deletePolicyTag with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.deletePolicyTag = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.deletePolicyTag(request, err => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        done();
+      });
+    });
+  });
+
+  describe('updatePolicyTag', () => {
+    it('invokes updatePolicyTag without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const name = 'name3373707';
+      const displayName = 'displayName1615086568';
+      const description = 'description-1724546052';
+      const parentPolicyTag = 'parentPolicyTag2071382466';
+      const expectedResponse = {
+        name: name,
+        displayName: displayName,
+        description: description,
+        parentPolicyTag: parentPolicyTag,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.updatePolicyTag = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.updatePolicyTag(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes updatePolicyTag with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.updatePolicyTag = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.updatePolicyTag(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('listPolicyTags', () => {
+    it('invokes listPolicyTags without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const nextPageToken = 'nextPageToken-1530815211';
+      const expectedResponse = {
+        nextPageToken: nextPageToken,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.listPolicyTags = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.listPolicyTags(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes listPolicyTags with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.listPolicyTags = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.listPolicyTags(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('getPolicyTag', () => {
+    it('invokes getPolicyTag without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const name = 'name3373707';
+      const displayName = 'displayName1615086568';
+      const description = 'description-1724546052';
+      const parentPolicyTag = 'parentPolicyTag2071382466';
+      const expectedResponse = {
+        name: name,
+        displayName: displayName,
+        description: description,
+        parentPolicyTag: parentPolicyTag,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.getPolicyTag = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.getPolicyTag(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes getPolicyTag with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.getPolicyTag = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.getPolicyTag(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('getIamPolicy', () => {
+    it('invokes getIamPolicy without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const version = 351608024;
+      const etag = '21';
+      const expectedResponse = {
+        version: version,
+        etag: etag,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.getIamPolicy = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.getIamPolicy(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes getIamPolicy with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.getIamPolicy = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.getIamPolicy(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('setIamPolicy', () => {
+    it('invokes setIamPolicy without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const version = 351608024;
+      const etag = '21';
+      const expectedResponse = {
+        version: version,
+        etag: etag,
+      };
+
+      // Mock Grpc layer
+      client._innerApiCalls.setIamPolicy = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.setIamPolicy(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes setIamPolicy with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.setIamPolicy = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.setIamPolicy(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('testIamPermissions', () => {
+    it('invokes testIamPermissions without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const expectedResponse = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.testIamPermissions = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.testIamPermissions(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes testIamPermissions with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.testIamPermissions = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.testIamPermissions(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+});
+describe('PolicyTagManagerSerializationClient', () => {
+  it('has servicePath', () => {
+    const servicePath =
+      datacatalogModule.v1beta1.PolicyTagManagerSerializationClient.servicePath;
+    assert(servicePath);
+  });
+
+  it('has apiEndpoint', () => {
+    const apiEndpoint =
+      datacatalogModule.v1beta1.PolicyTagManagerSerializationClient.apiEndpoint;
+    assert(apiEndpoint);
+  });
+
+  it('has port', () => {
+    const port =
+      datacatalogModule.v1beta1.PolicyTagManagerSerializationClient.port;
+    assert(port);
+    assert(typeof port === 'number');
+  });
+
+  it('should create a client with no options', () => {
+    const client = new datacatalogModule.v1beta1.PolicyTagManagerSerializationClient();
+    assert(client);
+  });
+
+  it('should create a client with gRPC fallback', () => {
+    const client = new datacatalogModule.v1beta1.PolicyTagManagerSerializationClient(
+      {fallback: true}
+    );
+    assert(client);
+  });
+
+  describe('importTaxonomies', () => {
+    it('invokes importTaxonomies without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const expectedResponse = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.importTaxonomies = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.importTaxonomies(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes importTaxonomies with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.importTaxonomies = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.importTaxonomies(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+
+  describe('exportTaxonomies', () => {
+    it('invokes exportTaxonomies without error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+
+      // Mock request
+      const request = {};
+
+      // Mock response
+      const expectedResponse = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.exportTaxonomies = mockSimpleGrpcMethod(
+        request,
+        expectedResponse
+      );
+
+      client.exportTaxonomies(request, (err, response) => {
+        assert.ifError(err);
+        assert.deepStrictEqual(response, expectedResponse);
+        done();
+      });
+    });
+
+    it('invokes exportTaxonomies with error', done => {
+      const client = new datacatalogModule.v1beta1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+
+      // Mock request
+      const request = {};
+
+      // Mock Grpc layer
+      client._innerApiCalls.exportTaxonomies = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
+
+      client.exportTaxonomies(request, (err, response) => {
+        assert(err instanceof Error);
+        assert.strictEqual(err.code, FAKE_STATUS_CODE);
+        assert(typeof response === 'undefined');
+        done();
+      });
+    });
+  });
+});
 
 function mockSimpleGrpcMethod(expectedRequest, response, error) {
   return function(actualRequest, options, callback) {

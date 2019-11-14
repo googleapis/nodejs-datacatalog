@@ -19,6 +19,9 @@
  * Tags are used to attach custom metadata to Data Catalog resources. Tags
  * conform to the specifications within their tag template.
  *
+ * See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on
+ * the permissions needed to create or view tags.
+ *
  * @property {string} name
  *   The resource name of the tag in URL format. Example:
  *

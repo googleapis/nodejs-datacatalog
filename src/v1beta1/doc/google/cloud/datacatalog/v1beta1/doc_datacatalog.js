@@ -135,6 +135,8 @@ const SearchCatalogResponse = {
  *
  * @property {string} entryGroupId
  *   Required. The id of the entry group to create.
+ *   The id must begin with a letter or underscore, contain only English
+ *   letters, numbers and underscores, and be at most 64 characters.
  *
  * @property {Object} entryGroup
  *   The entry group to create. Defaults to an empty entry group.
@@ -308,7 +310,8 @@ const GetEntryRequest = {
  *
  *     * `cloud_pubsub.project_id.topic_id`
  *     * ``pubsub.project_id.`topic.id.with.dots` ``
- *     * `bigquery.project_id.dataset_id.table_id`
+ *     * `bigquery.table.project_id.dataset_id.table_id`
+ *     * `bigquery.dataset.project_id.dataset_id`
  *     * `datacatalog.project_id.location_id.entry_group_id.entry_id`
  *
  *   `*_id`s shoud satisfy the standard SQL rules for identifiers.
