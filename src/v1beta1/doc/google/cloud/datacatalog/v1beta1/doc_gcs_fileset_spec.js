@@ -45,13 +45,13 @@ const GcsFilesetSpec = {
 };
 
 /**
- * Specifications of a single file in GCS.
+ * Specifications of a single file in Cloud Storage.
  *
  * @property {string} filePath
  *   Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
  *
  * @property {Object} gcsTimestamps
- *   Output only. Timestamps about the GCS file.
+ *   Output only. Timestamps about the Cloud Storage file.
  *
  *   This object should have the same structure as [SystemTimestamps]{@link google.cloud.datacatalog.v1beta1.SystemTimestamps}
  *

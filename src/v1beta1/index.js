@@ -15,5 +15,9 @@
 'use strict';
 
 const DataCatalogClient = require('./data_catalog_client');
+const PolicyTagManagerClient = require('./policy_tag_manager_client');
+const PolicyTagManagerSerializationClient = require('./policy_tag_manager_serialization_client');
 
 module.exports.DataCatalogClient = DataCatalogClient;
+module.exports.PolicyTagManagerClient = PolicyTagManagerClient;
+module.exports.PolicyTagManagerSerializationClient = PolicyTagManagerSerializationClient;

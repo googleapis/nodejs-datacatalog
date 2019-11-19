@@ -50,10 +50,18 @@ const gapic = Object.freeze({
  *
  * - `DataCatalogClient` - Reference to
  *   {@link v1beta1.DataCatalogClient}
+ * - `PolicyTagManagerClient` - Reference to
+ *   {@link v1beta1.PolicyTagManagerClient}
+ * - `PolicyTagManagerSerializationClient` - Reference to
+ *   {@link v1beta1.PolicyTagManagerSerializationClient}
  * - `v1beta1` - This is used for selecting or pinning a
  *   particular backend service version. It exports:
  *     - `DataCatalogClient` - Reference to
  *       {@link v1beta1.DataCatalogClient}
+ *     - `PolicyTagManagerClient` - Reference to
+ *       {@link v1beta1.PolicyTagManagerClient}
+ *     - `PolicyTagManagerSerializationClient` - Reference to
+ *       {@link v1beta1.PolicyTagManagerSerializationClient}
  *
  * @module {object} @google-cloud/datacatalog
  * @alias nodejs-datacatalog
@@ -78,6 +86,10 @@ const gapic = Object.freeze({
  * @type {object}
  * @property {constructor} DataCatalogClient
  *   Reference to {@link v1beta1.DataCatalogClient}
+ * @property {constructor} PolicyTagManagerClient
+ *   Reference to {@link v1beta1.PolicyTagManagerClient}
+ * @property {constructor} PolicyTagManagerSerializationClient
+ *   Reference to {@link v1beta1.PolicyTagManagerSerializationClient}
  */
 module.exports = gapic.v1beta1;
 
@@ -85,6 +97,10 @@ module.exports = gapic.v1beta1;
  * @type {object}
  * @property {constructor} DataCatalogClient
  *   Reference to {@link v1beta1.DataCatalogClient}
+ * @property {constructor} PolicyTagManagerClient
+ *   Reference to {@link v1beta1.PolicyTagManagerClient}
+ * @property {constructor} PolicyTagManagerSerializationClient
+ *   Reference to {@link v1beta1.PolicyTagManagerSerializationClient}
  */
 module.exports.v1beta1 = gapic.v1beta1;
 
