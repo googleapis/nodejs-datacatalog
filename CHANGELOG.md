@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/@google-cloud/datacatalog?activeTab=versions
 
+### [1.3.1](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.3.0...v1.3.1) (2019-11-19)
+
+
+### Bug Fixes
+
+* **docs:** snippets are now replaced in jsdoc comments ([#54](https://www.github.com/googleapis/nodejs-datacatalog/issues/54)) ([4a61922](https://www.github.com/googleapis/nodejs-datacatalog/commit/4a6192275313e64f4e28fb43f6a7144807a89512))
+
 ## [1.3.0](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.2.0...v1.3.0) (2019-10-22)
 
 
