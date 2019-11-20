@@ -20,11 +20,8 @@ import {DataCatalogClient, PolicyTagManagerClient, PolicyTagManagerSerialization
 
 function main() {
   const dataCatalogClient = new DataCatalogClient();
-  console.log("dataCatalogClient was created!");
   const policyTagManagerClient = new PolicyTagManagerClient();
-  console.log("policyTagManagerClient was created!");
   const policyTagManagerSerializationClient = new PolicyTagManagerSerializationClient();
-  console.log("policyTagManagerSerializationClient was created!");
 }
 
 main();
