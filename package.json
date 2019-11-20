@@ -44,7 +44,7 @@
     "mocha": "^6.1.4",
     "pack-n-play": "^1.0.0-2",
     "prettier": "^1.17.0",
-    "typescript": "~3.5.0"
+    "typescript": "~3.7.0"
   },
   "scripts": {
     "docs": "jsdoc -c .jsdoc.js",
@@ -55,12 +55,10 @@
     "docs-test": "linkinator docs",
     "samples-test": "c8 mocha samples/test/*.js",
     "system-test": "c8 mocha --timeout=5000 build/system-test/*.js",
-    "check": "gts check && eslint .",
-    "clean": "gts clean",
     "compile": "tsc -p . && cp -r protos build/",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run check"
+    "posttest": "npm run lint"
   },
   "license": "Apache-2.0",
   "engines": {
