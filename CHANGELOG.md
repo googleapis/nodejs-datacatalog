@@ -6,6 +6,8 @@
 
 ## [1.4.0](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.3.0...v1.4.0) (2019-11-20)
 
+In this release the library has been converted to TypeScript. There should be no breaking changes
+for existing users, but please feel free to submit an issue if you find anything wrong!
 
 ### Features
 
