@@ -33,7 +33,8 @@ for version in versions:
         generator_args={
             'grpc-service-config': f'google/cloud/{name}/{version}/{name}_grpc_service_config.json',
             'package-name': f'@google-cloud/{name}'
-        }
+        },
+        extra_proto_files=['google/cloud/common_resources.proto'],
     )
     s.copy(library, excludes=['README.md', 'package.json'])
 
@@ -49,7 +50,4 @@ s.replace('src/v1beta1/*.ts', '/data-catalog/docs/', 'https://cloud.google.com/d
 subprocess.run(['npm', 'install'])
 subprocess.run(['npm', 'run', 'fix'])
 subprocess.run(['npx', 'compileProtos', 'src'])
-
-# Fix broken links to cloud.google.com documentation
-s.replace('protos/protos.js', '/data-catalog/docs/', 'https://cloud.google.com/data-catalog/docs/')
 
