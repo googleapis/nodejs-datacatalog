@@ -32,7 +32,8 @@ for version in versions:
         proto_path=f'google/cloud/{name}/{version}',
         generator_args={
             'grpc-service-config': f'google/cloud/{name}/{version}/{name}_grpc_service_config.json',
-            'package-name': f'@google-cloud/{name}'
+            'package-name': f'@google-cloud/{name}',
+            'main-service': 'DataCatalog',  # just for webpack.config.js
         },
         extra_proto_files=['google/cloud/common_resources.proto'],
     )
