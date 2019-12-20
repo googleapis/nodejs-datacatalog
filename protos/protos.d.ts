@@ -2446,6 +2446,9 @@ export namespace google {
 
                     /** TagTemplateField type */
                     type?: (google.cloud.datacatalog.v1beta1.IFieldType|null);
+
+                    /** TagTemplateField isRequired */
+                    isRequired?: (boolean|null);
                 }
 
                 /** Represents a TagTemplateField. */
@@ -2465,6 +2468,9 @@ export namespace google {
 
                     /** TagTemplateField type. */
                     public type?: (google.cloud.datacatalog.v1beta1.IFieldType|null);
+
+                    /** TagTemplateField isRequired. */
+                    public isRequired: boolean;
 
                     /**
                      * Creates a new TagTemplateField instance using the specified properties.

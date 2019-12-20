@@ -605,6 +605,10 @@
                           "options": {
                             "(google.api.field_behavior)": "REQUIRED"
                           }
+                        },
+                        "isRequired": {
+                          "type": "bool",
+                          "id": 3
                         }
                       }
                     },
@@ -1652,7 +1656,10 @@
                         },
                         "updateMask": {
                           "type": "google.protobuf.FieldMask",
-                          "id": 3
+                          "id": 3,
+                          "options": {
+                            "(google.api.field_behavior)": "OPTIONAL"
+                          }
                         }
                       }
                     },

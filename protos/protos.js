@@ -5561,6 +5561,7 @@
                          * @property {string|null} [name] TagTemplateField name
                          * @property {string|null} [displayName] TagTemplateField displayName
                          * @property {google.cloud.datacatalog.v1beta1.IFieldType|null} [type] TagTemplateField type
+                         * @property {boolean|null} [isRequired] TagTemplateField isRequired
                          */
     
                         /**
@@ -5603,6 +5604,14 @@
                         TagTemplateField.prototype.type = null;
     
                         /**
+                         * TagTemplateField isRequired.
+                         * @member {boolean} isRequired
+                         * @memberof google.cloud.datacatalog.v1beta1.TagTemplateField
+                         * @instance
+                         */
+                        TagTemplateField.prototype.isRequired = false;
+    
+                        /**
                          * Creates a new TagTemplateField instance using the specified properties.
                          * @function create
                          * @memberof google.cloud.datacatalog.v1beta1.TagTemplateField
@@ -5630,6 +5639,8 @@
                                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.displayName);
                             if (message.type != null && message.hasOwnProperty("type"))
                                 $root.google.cloud.datacatalog.v1beta1.FieldType.encode(message.type, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                            if (message.isRequired != null && message.hasOwnProperty("isRequired"))
+                                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.isRequired);
                             if (message.name != null && message.hasOwnProperty("name"))
                                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.name);
                             return writer;
@@ -5674,6 +5685,9 @@
                                     break;
                                 case 2:
                                     message.type = $root.google.cloud.datacatalog.v1beta1.FieldType.decode(reader, reader.uint32());
+                                    break;
+                                case 3:
+                                    message.isRequired = reader.bool();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -5721,6 +5735,9 @@
                                 if (error)
                                     return "type." + error;
                             }
+                            if (message.isRequired != null && message.hasOwnProperty("isRequired"))
+                                if (typeof message.isRequired !== "boolean")
+                                    return "isRequired: boolean expected";
                             return null;
                         };
     
@@ -5745,6 +5762,8 @@
                                     throw TypeError(".google.cloud.datacatalog.v1beta1.TagTemplateField.type: object expected");
                                 message.type = $root.google.cloud.datacatalog.v1beta1.FieldType.fromObject(object.type);
                             }
+                            if (object.isRequired != null)
+                                message.isRequired = Boolean(object.isRequired);
                             return message;
                         };
     
@@ -5764,12 +5783,15 @@
                             if (options.defaults) {
                                 object.displayName = "";
                                 object.type = null;
+                                object.isRequired = false;
                                 object.name = "";
                             }
                             if (message.displayName != null && message.hasOwnProperty("displayName"))
                                 object.displayName = message.displayName;
                             if (message.type != null && message.hasOwnProperty("type"))
                                 object.type = $root.google.cloud.datacatalog.v1beta1.FieldType.toObject(message.type, options);
+                            if (message.isRequired != null && message.hasOwnProperty("isRequired"))
+                                object.isRequired = message.isRequired;
                             if (message.name != null && message.hasOwnProperty("name"))
                                 object.name = message.name;
                             return object;
