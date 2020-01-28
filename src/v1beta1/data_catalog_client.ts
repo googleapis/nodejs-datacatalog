@@ -2675,7 +2675,7 @@ export class DataCatalogClient {
   }
 
   /**
-   * Return a fully-qualified entrygroup resource name string.
+   * Return a fully-qualified entryGroup resource name string.
    *
    * @param {string} project
    * @param {string} location
@@ -2683,7 +2683,7 @@ export class DataCatalogClient {
    * @returns {string} Resource name string.
    */
   entryGroupPath(project: string, location: string, entryGroup: string) {
-    return this._pathTemplates.entrygroupPathTemplate.render({
+    return this._pathTemplates.entryGroupPathTemplate.render({
       project,
       location,
       entry_group: entryGroup,
@@ -2693,36 +2693,36 @@ export class DataCatalogClient {
   /**
    * Parse the project from EntryGroup resource.
    *
-   * @param {string} entrygroupName
+   * @param {string} entryGroupName
    *   A fully-qualified path representing EntryGroup resource.
    * @returns {string} A string representing the project.
    */
-  matchProjectFromEntryGroupName(entrygroupName: string) {
-    return this._pathTemplates.entrygroupPathTemplate.match(entrygroupName)
+  matchProjectFromEntryGroupName(entryGroupName: string) {
+    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName)
       .project;
   }
 
   /**
    * Parse the location from EntryGroup resource.
    *
-   * @param {string} entrygroupName
+   * @param {string} entryGroupName
    *   A fully-qualified path representing EntryGroup resource.
    * @returns {string} A string representing the location.
    */
-  matchLocationFromEntryGroupName(entrygroupName: string) {
-    return this._pathTemplates.entrygroupPathTemplate.match(entrygroupName)
+  matchLocationFromEntryGroupName(entryGroupName: string) {
+    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName)
       .location;
   }
 
   /**
    * Parse the entry_group from EntryGroup resource.
    *
-   * @param {string} entrygroupName
+   * @param {string} entryGroupName
    *   A fully-qualified path representing EntryGroup resource.
    * @returns {string} A string representing the entry_group.
    */
-  matchEntry_groupFromEntryGroupName(entrygroupName: string) {
-    return this._pathTemplates.entrygroupPathTemplate.match(entrygroupName)
+  matchEntryGroupFromEntryGroupName(entryGroupName: string) {
+    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName)
       .entry_group;
   }
 
@@ -2778,7 +2778,7 @@ export class DataCatalogClient {
    *   A fully-qualified path representing Entry resource.
    * @returns {string} A string representing the entry_group.
    */
-  matchEntry_groupFromEntryName(entryName: string) {
+  matchEntryGroupFromEntryName(entryName: string) {
     return this._pathTemplates.entryPathTemplate.match(entryName).entry_group;
   }
 
@@ -2794,7 +2794,7 @@ export class DataCatalogClient {
   }
 
   /**
-   * Return a fully-qualified tagtemplate resource name string.
+   * Return a fully-qualified tagTemplate resource name string.
    *
    * @param {string} project
    * @param {string} location
@@ -2802,7 +2802,7 @@ export class DataCatalogClient {
    * @returns {string} Resource name string.
    */
   tagTemplatePath(project: string, location: string, tagTemplate: string) {
-    return this._pathTemplates.tagtemplatePathTemplate.render({
+    return this._pathTemplates.tagTemplatePathTemplate.render({
       project,
       location,
       tag_template: tagTemplate,
@@ -2812,36 +2812,36 @@ export class DataCatalogClient {
   /**
    * Parse the project from TagTemplate resource.
    *
-   * @param {string} tagtemplateName
+   * @param {string} tagTemplateName
    *   A fully-qualified path representing TagTemplate resource.
    * @returns {string} A string representing the project.
    */
-  matchProjectFromTagTemplateName(tagtemplateName: string) {
-    return this._pathTemplates.tagtemplatePathTemplate.match(tagtemplateName)
+  matchProjectFromTagTemplateName(tagTemplateName: string) {
+    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
       .project;
   }
 
   /**
    * Parse the location from TagTemplate resource.
    *
-   * @param {string} tagtemplateName
+   * @param {string} tagTemplateName
    *   A fully-qualified path representing TagTemplate resource.
    * @returns {string} A string representing the location.
    */
-  matchLocationFromTagTemplateName(tagtemplateName: string) {
-    return this._pathTemplates.tagtemplatePathTemplate.match(tagtemplateName)
+  matchLocationFromTagTemplateName(tagTemplateName: string) {
+    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
       .location;
   }
 
   /**
    * Parse the tag_template from TagTemplate resource.
    *
-   * @param {string} tagtemplateName
+   * @param {string} tagTemplateName
    *   A fully-qualified path representing TagTemplate resource.
    * @returns {string} A string representing the tag_template.
    */
-  matchTag_templateFromTagTemplateName(tagtemplateName: string) {
-    return this._pathTemplates.tagtemplatePathTemplate.match(tagtemplateName)
+  matchTagTemplateFromTagTemplateName(tagTemplateName: string) {
+    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
       .tag_template;
   }
 
@@ -2900,7 +2900,7 @@ export class DataCatalogClient {
    *   A fully-qualified path representing Tag resource.
    * @returns {string} A string representing the entry_group.
    */
-  matchEntry_groupFromTagName(tagName: string) {
+  matchEntryGroupFromTagName(tagName: string) {
     return this._pathTemplates.tagPathTemplate.match(tagName).entry_group;
   }
 
@@ -2927,7 +2927,7 @@ export class DataCatalogClient {
   }
 
   /**
-   * Return a fully-qualified tagtemplatefield resource name string.
+   * Return a fully-qualified tagTemplateField resource name string.
    *
    * @param {string} project
    * @param {string} location
@@ -2941,7 +2941,7 @@ export class DataCatalogClient {
     tagTemplate: string,
     field: string
   ) {
-    return this._pathTemplates.tagtemplatefieldPathTemplate.render({
+    return this._pathTemplates.tagTemplateFieldPathTemplate.render({
       project,
       location,
       tag_template: tagTemplate,
@@ -2952,52 +2952,52 @@ export class DataCatalogClient {
   /**
    * Parse the project from TagTemplateField resource.
    *
-   * @param {string} tagtemplatefieldName
+   * @param {string} tagTemplateFieldName
    *   A fully-qualified path representing TagTemplateField resource.
    * @returns {string} A string representing the project.
    */
-  matchProjectFromTagTemplateFieldName(tagtemplatefieldName: string) {
-    return this._pathTemplates.tagtemplatefieldPathTemplate.match(
-      tagtemplatefieldName
+  matchProjectFromTagTemplateFieldName(tagTemplateFieldName: string) {
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
+      tagTemplateFieldName
     ).project;
   }
 
   /**
    * Parse the location from TagTemplateField resource.
    *
-   * @param {string} tagtemplatefieldName
+   * @param {string} tagTemplateFieldName
    *   A fully-qualified path representing TagTemplateField resource.
    * @returns {string} A string representing the location.
    */
-  matchLocationFromTagTemplateFieldName(tagtemplatefieldName: string) {
-    return this._pathTemplates.tagtemplatefieldPathTemplate.match(
-      tagtemplatefieldName
+  matchLocationFromTagTemplateFieldName(tagTemplateFieldName: string) {
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
+      tagTemplateFieldName
     ).location;
   }
 
   /**
    * Parse the tag_template from TagTemplateField resource.
    *
-   * @param {string} tagtemplatefieldName
+   * @param {string} tagTemplateFieldName
    *   A fully-qualified path representing TagTemplateField resource.
    * @returns {string} A string representing the tag_template.
    */
-  matchTag_templateFromTagTemplateFieldName(tagtemplatefieldName: string) {
-    return this._pathTemplates.tagtemplatefieldPathTemplate.match(
-      tagtemplatefieldName
+  matchTagTemplateFromTagTemplateFieldName(tagTemplateFieldName: string) {
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
+      tagTemplateFieldName
     ).tag_template;
   }
 
   /**
    * Parse the field from TagTemplateField resource.
    *
-   * @param {string} tagtemplatefieldName
+   * @param {string} tagTemplateFieldName
    *   A fully-qualified path representing TagTemplateField resource.
    * @returns {string} A string representing the field.
    */
-  matchFieldFromTagTemplateFieldName(tagtemplatefieldName: string) {
-    return this._pathTemplates.tagtemplatefieldPathTemplate.match(
-      tagtemplatefieldName
+  matchFieldFromTagTemplateFieldName(tagTemplateFieldName: string) {
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
+      tagTemplateFieldName
     ).field;
   }
 

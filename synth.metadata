@@ -1,12 +1,12 @@
 {
-  "updateTime": "2020-01-28T12:16:03.983629Z",
+  "updateTime": "2020-01-28T20:28:30.538111Z",
   "sources": [
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "8e981acfd9b97ea2f312f11bbaa7b6c16e412dea",
-        "internalRef": "291821782"
+        "sha": "eba3897fff7c49ed85d3c47fc96fe96e47f6f684",
+        "internalRef": "291988651"
       }
     },
     {
@@ -48,19 +48,10 @@
       "path": ".github/PULL_REQUEST_TEMPLATE.md"
     },
     {
-      "path": ".github/publish.yml"
-    },
-    {
       "path": ".github/release-please.yml"
     },
     {
-      "path": ".gitignore"
-    },
-    {
       "path": ".jsdoc.js"
-    },
-    {
-      "path": ".kokoro/.gitattributes"
     },
     {
       "path": ".kokoro/common.cfg"
@@ -78,9 +69,6 @@
       "path": ".kokoro/continuous/node10/samples-test.cfg"
     },
     {
-      "path": ".kokoro/continuous/node10/system-test-grpcjs.cfg"
-    },
-    {
       "path": ".kokoro/continuous/node10/system-test.cfg"
     },
     {
@@ -91,12 +79,6 @@
     },
     {
       "path": ".kokoro/continuous/node12/test.cfg"
-    },
-    {
-      "path": ".kokoro/continuous/node6/common.cfg"
-    },
-    {
-      "path": ".kokoro/continuous/node6/test.cfg"
     },
     {
       "path": ".kokoro/continuous/node8/common.cfg"
@@ -123,9 +105,6 @@
       "path": ".kokoro/presubmit/node10/samples-test.cfg"
     },
     {
-      "path": ".kokoro/presubmit/node10/system-test-grpcjs.cfg"
-    },
-    {
       "path": ".kokoro/presubmit/node10/system-test.cfg"
     },
     {
@@ -136,12 +115,6 @@
     },
     {
       "path": ".kokoro/presubmit/node12/test.cfg"
-    },
-    {
-      "path": ".kokoro/presubmit/node6/common.cfg"
-    },
-    {
-      "path": ".kokoro/presubmit/node6/test.cfg"
     },
     {
       "path": ".kokoro/presubmit/node8/common.cfg"
@@ -192,12 +165,6 @@
       "path": ".prettierrc"
     },
     {
-      "path": ".repo-metadata.json"
-    },
-    {
-      "path": "CHANGELOG.md"
-    },
-    {
       "path": "CODE_OF_CONDUCT.md"
     },
     {
@@ -214,12 +181,6 @@
     },
     {
       "path": "linkinator.config.json"
-    },
-    {
-      "path": "package.json"
-    },
-    {
-      "path": "prettier.config.js"
     },
     {
       "path": "protos/google/cloud/common_resources.proto"
@@ -264,18 +225,6 @@
       "path": "renovate.json"
     },
     {
-      "path": "samples/.eslintrc.yml"
-    },
-    {
-      "path": "samples/package.json"
-    },
-    {
-      "path": "samples/test/.eslintrc.yml"
-    },
-    {
-      "path": "samples/test/no-tests.js"
-    },
-    {
       "path": "src/index.ts"
     },
     {
@@ -307,9 +256,6 @@
     },
     {
       "path": "src/v1beta1/policy_tag_manager_serialization_proto_list.json"
-    },
-    {
-      "path": "synth.py"
     },
     {
       "path": "system-test/fixtures/sample/src/index.js"
