@@ -2547,7 +2547,7 @@ export namespace google {
                 interface IFieldType {
 
                     /** FieldType primitiveType */
-                    primitiveType?: (google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|null);
+                    primitiveType?: (google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|keyof typeof google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|null);
 
                     /** FieldType enumType */
                     enumType?: (google.cloud.datacatalog.v1beta1.FieldType.IEnumType|null);
@@ -2563,7 +2563,7 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1beta1.IFieldType);
 
                     /** FieldType primitiveType. */
-                    public primitiveType: google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType;
+                    public primitiveType: (google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|keyof typeof google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType);
 
                     /** FieldType enumType. */
                     public enumType?: (google.cloud.datacatalog.v1beta1.FieldType.IEnumType|null);
@@ -2841,7 +2841,7 @@ export namespace google {
                 interface IBigQueryTableSpec {
 
                     /** BigQueryTableSpec tableSourceType */
-                    tableSourceType?: (google.cloud.datacatalog.v1beta1.TableSourceType|null);
+                    tableSourceType?: (google.cloud.datacatalog.v1beta1.TableSourceType|keyof typeof google.cloud.datacatalog.v1beta1.TableSourceType|null);
 
                     /** BigQueryTableSpec viewSpec */
                     viewSpec?: (google.cloud.datacatalog.v1beta1.IViewSpec|null);
@@ -2860,7 +2860,7 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1beta1.IBigQueryTableSpec);
 
                     /** BigQueryTableSpec tableSourceType. */
-                    public tableSourceType: google.cloud.datacatalog.v1beta1.TableSourceType;
+                    public tableSourceType: (google.cloud.datacatalog.v1beta1.TableSourceType|keyof typeof google.cloud.datacatalog.v1beta1.TableSourceType);
 
                     /** BigQueryTableSpec viewSpec. */
                     public viewSpec?: (google.cloud.datacatalog.v1beta1.IViewSpec|null);
@@ -3139,7 +3139,7 @@ export namespace google {
                     tablePrefix?: (string|null);
 
                     /** BigQueryDateShardedSpec shardCount */
-                    shardCount?: (number|Long|null);
+                    shardCount?: (number|Long|string|null);
                 }
 
                 /** Represents a BigQueryDateShardedSpec. */
@@ -3158,7 +3158,7 @@ export namespace google {
                     public tablePrefix: string;
 
                     /** BigQueryDateShardedSpec shardCount. */
-                    public shardCount: (number|Long);
+                    public shardCount: (number|Long|string);
 
                     /**
                      * Creates a new BigQueryDateShardedSpec instance using the specified properties.
@@ -3235,7 +3235,7 @@ export namespace google {
                 interface ISearchCatalogResult {
 
                     /** SearchCatalogResult searchResultType */
-                    searchResultType?: (google.cloud.datacatalog.v1beta1.SearchResultType|null);
+                    searchResultType?: (google.cloud.datacatalog.v1beta1.SearchResultType|keyof typeof google.cloud.datacatalog.v1beta1.SearchResultType|null);
 
                     /** SearchCatalogResult searchResultSubtype */
                     searchResultSubtype?: (string|null);
@@ -3257,7 +3257,7 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1beta1.ISearchCatalogResult);
 
                     /** SearchCatalogResult searchResultType. */
-                    public searchResultType: google.cloud.datacatalog.v1beta1.SearchResultType;
+                    public searchResultType: (google.cloud.datacatalog.v1beta1.SearchResultType|keyof typeof google.cloud.datacatalog.v1beta1.SearchResultType);
 
                     /** SearchCatalogResult searchResultSubtype. */
                     public searchResultSubtype: string;
@@ -3453,7 +3453,7 @@ export namespace google {
                     gcsTimestamps?: (google.cloud.datacatalog.v1beta1.ISystemTimestamps|null);
 
                     /** GcsFileSpec sizeBytes */
-                    sizeBytes?: (number|Long|null);
+                    sizeBytes?: (number|Long|string|null);
                 }
 
                 /** Represents a GcsFileSpec. */
@@ -3472,7 +3472,7 @@ export namespace google {
                     public gcsTimestamps?: (google.cloud.datacatalog.v1beta1.ISystemTimestamps|null);
 
                     /** GcsFileSpec sizeBytes. */
-                    public sizeBytes: (number|Long);
+                    public sizeBytes: (number|Long|string);
 
                     /**
                      * Creates a new GcsFileSpec instance using the specified properties.
@@ -5907,7 +5907,7 @@ export namespace google {
                     linkedResource?: (string|null);
 
                     /** Entry type */
-                    type?: (google.cloud.datacatalog.v1beta1.EntryType|null);
+                    type?: (google.cloud.datacatalog.v1beta1.EntryType|keyof typeof google.cloud.datacatalog.v1beta1.EntryType|null);
 
                     /** Entry gcsFilesetSpec */
                     gcsFilesetSpec?: (google.cloud.datacatalog.v1beta1.IGcsFilesetSpec|null);
@@ -5947,7 +5947,7 @@ export namespace google {
                     public linkedResource: string;
 
                     /** Entry type. */
-                    public type: google.cloud.datacatalog.v1beta1.EntryType;
+                    public type: (google.cloud.datacatalog.v1beta1.EntryType|keyof typeof google.cloud.datacatalog.v1beta1.EntryType);
 
                     /** Entry gcsFilesetSpec. */
                     public gcsFilesetSpec?: (google.cloud.datacatalog.v1beta1.IGcsFilesetSpec|null);
@@ -7791,7 +7791,7 @@ export namespace google {
             nameField?: (string|null);
 
             /** ResourceDescriptor history */
-            history?: (google.api.ResourceDescriptor.History|null);
+            history?: (google.api.ResourceDescriptor.History|keyof typeof google.api.ResourceDescriptor.History|null);
 
             /** ResourceDescriptor plural */
             plural?: (string|null);
@@ -7819,7 +7819,7 @@ export namespace google {
             public nameField: string;
 
             /** ResourceDescriptor history. */
-            public history: google.api.ResourceDescriptor.History;
+            public history: (google.api.ResourceDescriptor.History|keyof typeof google.api.ResourceDescriptor.History);
 
             /** ResourceDescriptor plural. */
             public plural: string;
@@ -8699,10 +8699,10 @@ export namespace google {
             number?: (number|null);
 
             /** FieldDescriptorProto label */
-            label?: (google.protobuf.FieldDescriptorProto.Label|null);
+            label?: (google.protobuf.FieldDescriptorProto.Label|keyof typeof google.protobuf.FieldDescriptorProto.Label|null);
 
             /** FieldDescriptorProto type */
-            type?: (google.protobuf.FieldDescriptorProto.Type|null);
+            type?: (google.protobuf.FieldDescriptorProto.Type|keyof typeof google.protobuf.FieldDescriptorProto.Type|null);
 
             /** FieldDescriptorProto typeName */
             typeName?: (string|null);
@@ -8739,10 +8739,10 @@ export namespace google {
             public number: number;
 
             /** FieldDescriptorProto label. */
-            public label: google.protobuf.FieldDescriptorProto.Label;
+            public label: (google.protobuf.FieldDescriptorProto.Label|keyof typeof google.protobuf.FieldDescriptorProto.Label);
 
             /** FieldDescriptorProto type. */
-            public type: google.protobuf.FieldDescriptorProto.Type;
+            public type: (google.protobuf.FieldDescriptorProto.Type|keyof typeof google.protobuf.FieldDescriptorProto.Type);
 
             /** FieldDescriptorProto typeName. */
             public typeName: string;
@@ -9517,7 +9517,7 @@ export namespace google {
             javaStringCheckUtf8?: (boolean|null);
 
             /** FileOptions optimizeFor */
-            optimizeFor?: (google.protobuf.FileOptions.OptimizeMode|null);
+            optimizeFor?: (google.protobuf.FileOptions.OptimizeMode|keyof typeof google.protobuf.FileOptions.OptimizeMode|null);
 
             /** FileOptions goPackage */
             goPackage?: (string|null);
@@ -9593,7 +9593,7 @@ export namespace google {
             public javaStringCheckUtf8: boolean;
 
             /** FileOptions optimizeFor. */
-            public optimizeFor: google.protobuf.FileOptions.OptimizeMode;
+            public optimizeFor: (google.protobuf.FileOptions.OptimizeMode|keyof typeof google.protobuf.FileOptions.OptimizeMode);
 
             /** FileOptions goPackage. */
             public goPackage: string;
@@ -9842,13 +9842,13 @@ export namespace google {
         interface IFieldOptions {
 
             /** FieldOptions ctype */
-            ctype?: (google.protobuf.FieldOptions.CType|null);
+            ctype?: (google.protobuf.FieldOptions.CType|keyof typeof google.protobuf.FieldOptions.CType|null);
 
             /** FieldOptions packed */
             packed?: (boolean|null);
 
             /** FieldOptions jstype */
-            jstype?: (google.protobuf.FieldOptions.JSType|null);
+            jstype?: (google.protobuf.FieldOptions.JSType|keyof typeof google.protobuf.FieldOptions.JSType|null);
 
             /** FieldOptions lazy */
             lazy?: (boolean|null);
@@ -9879,13 +9879,13 @@ export namespace google {
             constructor(properties?: google.protobuf.IFieldOptions);
 
             /** FieldOptions ctype. */
-            public ctype: google.protobuf.FieldOptions.CType;
+            public ctype: (google.protobuf.FieldOptions.CType|keyof typeof google.protobuf.FieldOptions.CType);
 
             /** FieldOptions packed. */
             public packed: boolean;
 
             /** FieldOptions jstype. */
-            public jstype: google.protobuf.FieldOptions.JSType;
+            public jstype: (google.protobuf.FieldOptions.JSType|keyof typeof google.protobuf.FieldOptions.JSType);
 
             /** FieldOptions lazy. */
             public lazy: boolean;
@@ -10384,7 +10384,7 @@ export namespace google {
             deprecated?: (boolean|null);
 
             /** MethodOptions idempotencyLevel */
-            idempotencyLevel?: (google.protobuf.MethodOptions.IdempotencyLevel|null);
+            idempotencyLevel?: (google.protobuf.MethodOptions.IdempotencyLevel|keyof typeof google.protobuf.MethodOptions.IdempotencyLevel|null);
 
             /** MethodOptions uninterpretedOption */
             uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
@@ -10409,7 +10409,7 @@ export namespace google {
             public deprecated: boolean;
 
             /** MethodOptions idempotencyLevel. */
-            public idempotencyLevel: google.protobuf.MethodOptions.IdempotencyLevel;
+            public idempotencyLevel: (google.protobuf.MethodOptions.IdempotencyLevel|keyof typeof google.protobuf.MethodOptions.IdempotencyLevel);
 
             /** MethodOptions uninterpretedOption. */
             public uninterpretedOption: google.protobuf.IUninterpretedOption[];
@@ -10505,16 +10505,16 @@ export namespace google {
             identifierValue?: (string|null);
 
             /** UninterpretedOption positiveIntValue */
-            positiveIntValue?: (number|Long|null);
+            positiveIntValue?: (number|Long|string|null);
 
             /** UninterpretedOption negativeIntValue */
-            negativeIntValue?: (number|Long|null);
+            negativeIntValue?: (number|Long|string|null);
 
             /** UninterpretedOption doubleValue */
             doubleValue?: (number|null);
 
             /** UninterpretedOption stringValue */
-            stringValue?: (Uint8Array|null);
+            stringValue?: (Uint8Array|string|null);
 
             /** UninterpretedOption aggregateValue */
             aggregateValue?: (string|null);
@@ -10536,16 +10536,16 @@ export namespace google {
             public identifierValue: string;
 
             /** UninterpretedOption positiveIntValue. */
-            public positiveIntValue: (number|Long);
+            public positiveIntValue: (number|Long|string);
 
             /** UninterpretedOption negativeIntValue. */
-            public negativeIntValue: (number|Long);
+            public negativeIntValue: (number|Long|string);
 
             /** UninterpretedOption doubleValue. */
             public doubleValue: number;
 
             /** UninterpretedOption stringValue. */
-            public stringValue: Uint8Array;
+            public stringValue: (Uint8Array|string);
 
             /** UninterpretedOption aggregateValue. */
             public aggregateValue: string;
@@ -11132,7 +11132,7 @@ export namespace google {
         interface ITimestamp {
 
             /** Timestamp seconds */
-            seconds?: (number|Long|null);
+            seconds?: (number|Long|string|null);
 
             /** Timestamp nanos */
             nanos?: (number|null);
@@ -11148,7 +11148,7 @@ export namespace google {
             constructor(properties?: google.protobuf.ITimestamp);
 
             /** Timestamp seconds. */
-            public seconds: (number|Long);
+            public seconds: (number|Long|string);
 
             /** Timestamp nanos. */
             public nanos: number;
@@ -11970,7 +11970,7 @@ export namespace google {
                 bindings?: (google.iam.v1.IBinding[]|null);
 
                 /** Policy etag */
-                etag?: (Uint8Array|null);
+                etag?: (Uint8Array|string|null);
             }
 
             /** Represents a Policy. */
@@ -11989,7 +11989,7 @@ export namespace google {
                 public bindings: google.iam.v1.IBinding[];
 
                 /** Policy etag. */
-                public etag: Uint8Array;
+                public etag: (Uint8Array|string);
 
                 /**
                  * Creates a new Policy instance using the specified properties.
@@ -12264,7 +12264,7 @@ export namespace google {
             interface IBindingDelta {
 
                 /** BindingDelta action */
-                action?: (google.iam.v1.BindingDelta.Action|null);
+                action?: (google.iam.v1.BindingDelta.Action|keyof typeof google.iam.v1.BindingDelta.Action|null);
 
                 /** BindingDelta role */
                 role?: (string|null);
@@ -12286,7 +12286,7 @@ export namespace google {
                 constructor(properties?: google.iam.v1.IBindingDelta);
 
                 /** BindingDelta action. */
-                public action: google.iam.v1.BindingDelta.Action;
+                public action: (google.iam.v1.BindingDelta.Action|keyof typeof google.iam.v1.BindingDelta.Action);
 
                 /** BindingDelta role. */
                 public role: string;
@@ -12382,7 +12382,7 @@ export namespace google {
             interface IAuditConfigDelta {
 
                 /** AuditConfigDelta action */
-                action?: (google.iam.v1.AuditConfigDelta.Action|null);
+                action?: (google.iam.v1.AuditConfigDelta.Action|keyof typeof google.iam.v1.AuditConfigDelta.Action|null);
 
                 /** AuditConfigDelta service */
                 service?: (string|null);
@@ -12404,7 +12404,7 @@ export namespace google {
                 constructor(properties?: google.iam.v1.IAuditConfigDelta);
 
                 /** AuditConfigDelta action. */
-                public action: google.iam.v1.AuditConfigDelta.Action;
+                public action: (google.iam.v1.AuditConfigDelta.Action|keyof typeof google.iam.v1.AuditConfigDelta.Action);
 
                 /** AuditConfigDelta service. */
                 public service: string;

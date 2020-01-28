@@ -1548,13 +1548,20 @@ export class PolicyTagManagerClient {
    * @param {string} project
    * @param {string} location
    * @param {string} taxonomy
+   * @param {string} policy_tag
    * @returns {string} Resource name string.
    */
-  policyTagPath(project: string, location: string, taxonomy: string) {
+  policyTagPath(
+    project: string,
+    location: string,
+    taxonomy: string,
+    policyTag: string
+  ) {
     return this._pathTemplates.policytagPathTemplate.render({
       project,
       location,
       taxonomy,
+      policy_tag: policyTag,
     });
   }
 
@@ -1592,6 +1599,18 @@ export class PolicyTagManagerClient {
   matchTaxonomyFromPolicyTagName(policytagName: string) {
     return this._pathTemplates.policytagPathTemplate.match(policytagName)
       .taxonomy;
+  }
+
+  /**
+   * Parse the policy_tag from PolicyTag resource.
+   *
+   * @param {string} policytagName
+   *   A fully-qualified path representing PolicyTag resource.
+   * @returns {string} A string representing the policy_tag.
+   */
+  matchPolicy_tagFromPolicyTagName(policytagName: string) {
+    return this._pathTemplates.policytagPathTemplate.match(policytagName)
+      .policy_tag;
   }
 
   /**
