@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/@google-cloud/datacatalog?activeTab=versions
 
+### [1.6.4](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.6.3...v1.6.4) (2020-02-01)
+
+
+### Bug Fixes
+
+* resource name helpers fixed; enum, bytes, and Long types now accept strings ([#99](https://www.github.com/googleapis/nodejs-datacatalog/issues/99)) ([d20988f](https://www.github.com/googleapis/nodejs-datacatalog/commit/d20988ff58c38a7a79c0ab768a1af32cae6686df))
+
 ### [1.6.3](https://www.github.com/googleapis/nodejs-datacatalog/compare/v1.6.2...v1.6.3) (2020-01-09)
 
 
