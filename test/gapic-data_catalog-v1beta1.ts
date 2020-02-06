@@ -89,6 +89,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -111,6 +112,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -135,6 +137,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -157,6 +160,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -181,6 +185,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -203,6 +208,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -227,6 +233,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateEntryRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -249,6 +256,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateEntryRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -323,6 +331,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -345,6 +354,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -369,6 +379,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IGetEntryRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -391,6 +402,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IGetEntryRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -461,6 +473,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -483,6 +496,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -507,6 +521,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -529,6 +544,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -603,6 +619,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -625,6 +642,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -649,6 +667,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -671,6 +690,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -695,6 +715,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -717,6 +738,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -741,6 +763,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -763,6 +786,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -787,6 +811,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -809,6 +834,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -833,6 +859,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateTagRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -855,6 +882,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ICreateTagRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -929,6 +957,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteTagRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -951,6 +980,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IDeleteTagRequest = {};
+      request.name = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -975,6 +1005,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.iam.v1.ISetIamPolicyRequest = {};
+      request.resource = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -997,6 +1028,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.iam.v1.ISetIamPolicyRequest = {};
+      request.resource = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -1021,6 +1053,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.iam.v1.IGetIamPolicyRequest = {};
+      request.resource = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -1043,6 +1076,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.iam.v1.IGetIamPolicyRequest = {};
+      request.resource = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -1067,6 +1101,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.iam.v1.ITestIamPermissionsRequest = {};
+      request.resource = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -1089,6 +1124,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.iam.v1.ITestIamPermissionsRequest = {};
+      request.resource = '';
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
@@ -1140,7 +1176,7 @@ describe('v1beta1.DataCatalogClient', () => {
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest = {};
       // Mock response
-      const expectedResponse = {};
+      const expectedResponse = {response: 'data'};
       // Mock Grpc layer
       client._innerApiCalls.searchCatalog = (
         actualRequest: {},
@@ -1159,7 +1195,7 @@ describe('v1beta1.DataCatalogClient', () => {
         .on('error', (err: FakeError) => {
           done(err);
         });
-      stream.write(request);
+      stream.write(expectedResponse);
     });
   });
   describe('listTags', () => {
@@ -1170,6 +1206,7 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IListTagsRequest = {};
+      request.parent = '';
       // Mock response
       const expectedResponse = {};
       // Mock Grpc layer
@@ -1196,8 +1233,9 @@ describe('v1beta1.DataCatalogClient', () => {
       });
       // Mock request
       const request: protosTypes.google.cloud.datacatalog.v1beta1.IListTagsRequest = {};
+      request.parent = '';
       // Mock response
-      const expectedResponse = {};
+      const expectedResponse = {response: 'data'};
       // Mock Grpc layer
       client._innerApiCalls.listTags = (
         actualRequest: {},
@@ -1216,7 +1254,7 @@ describe('v1beta1.DataCatalogClient', () => {
         .on('error', (err: FakeError) => {
           done(err);
         });
-      stream.write(request);
+      stream.write(expectedResponse);
     });
   });
 });
