@@ -1187,7 +1187,7 @@ export class DataCatalogClient {
    *   The request object that will be sent.
    * @param {string} request.parent
    *   Required. The name of the project and the template location
-   *   [region](/compute/docs/regions-zones/#available).
+   *   [region](https://cloud.google.com/compute/docs/regions-zones/#available).
    *   NOTE: Currently, only the `us-central1 region` is supported.
    *
    *   Example:
@@ -1545,7 +1545,7 @@ export class DataCatalogClient {
    *   The request object that will be sent.
    * @param {string} request.parent
    *   Required. The name of the project and the template location
-   *   [region](/compute/docs/regions-zones/#available).
+   *   [region](https://cloud.google.com/compute/docs/regions-zones/#available).
    *   NOTE: Currently, only the `us-central1 region` is supported.
    *
    *   Example:
