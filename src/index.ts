@@ -35,5 +35,3 @@ export default {
   PolicyTagManagerClient,
   PolicyTagManagerSerializationClient,
 };
-import * as protos from '../protos/protos';
-export {protos};
