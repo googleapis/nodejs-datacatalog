@@ -19,21 +19,10 @@
 import * as v1beta1 from './v1beta1';
 const DataCatalogClient = v1beta1.DataCatalogClient;
 const PolicyTagManagerClient = v1beta1.PolicyTagManagerClient;
-const PolicyTagManagerSerializationClient =
-  v1beta1.PolicyTagManagerSerializationClient;
-export {
-  v1beta1,
-  DataCatalogClient,
-  PolicyTagManagerClient,
-  PolicyTagManagerSerializationClient,
-};
+const PolicyTagManagerSerializationClient = v1beta1.PolicyTagManagerSerializationClient;
+export {v1beta1, DataCatalogClient, PolicyTagManagerClient, PolicyTagManagerSerializationClient};
 // For compatibility with JavaScript libraries we need to provide this default export:
 // tslint:disable-next-line no-default-export
-export default {
-  v1beta1,
-  DataCatalogClient,
-  PolicyTagManagerClient,
-  PolicyTagManagerSerializationClient,
-};
+export default {v1beta1, DataCatalogClient, PolicyTagManagerClient, PolicyTagManagerSerializationClient};
 import * as protos from '../protos/protos';
-export {protos};
+export {protos}

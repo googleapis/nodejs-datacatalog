@@ -17,13 +17,7 @@
 // ** All changes to this file may be overwritten. **
 
 import * as gax from 'google-gax';
-import {
-  APICallback,
-  Callback,
-  CallOptions,
-  Descriptors,
-  ClientOptions,
-} from 'google-gax';
+import {APICallback, Callback, CallOptions, Descriptors, ClientOptions} from 'google-gax';
 import * as path from 'path';
 
 import * as protosTypes from '../../protos/protos';
@@ -38,12 +32,7 @@ const version = require('../../../package.json').version;
  * @memberof v1beta1
  */
 export class PolicyTagManagerSerializationClient {
-  private _descriptors: Descriptors = {
-    page: {},
-    stream: {},
-    longrunning: {},
-    batching: {},
-  };
+  private _descriptors: Descriptors = {page: {}, stream: {}, longrunning: {}, batching: {}};
   private _innerApiCalls: {[name: string]: Function};
   private _pathTemplates: {[name: string]: gax.PathTemplate};
   private _terminated = false;
@@ -83,14 +72,11 @@ export class PolicyTagManagerSerializationClient {
 
   constructor(opts?: ClientOptions) {
     // Ensure that options include the service address and port.
-    const staticMembers = this
-      .constructor as typeof PolicyTagManagerSerializationClient;
-    const servicePath =
-      opts && opts.servicePath
-        ? opts.servicePath
-        : opts && opts.apiEndpoint
-        ? opts.apiEndpoint
-        : staticMembers.servicePath;
+    const staticMembers = this.constructor as typeof PolicyTagManagerSerializationClient;
+    const servicePath = opts && opts.servicePath ?
+        opts.servicePath :
+        ((opts && opts.apiEndpoint) ? opts.apiEndpoint :
+                                      staticMembers.servicePath);
     const port = opts && opts.port ? opts.port : staticMembers.port;
 
     if (!opts) {
@@ -100,8 +86,8 @@ export class PolicyTagManagerSerializationClient {
     opts.port = opts.port || port;
     opts.clientConfig = opts.clientConfig || {};
 
-    const isBrowser = typeof window !== 'undefined';
-    if (isBrowser) {
+    const isBrowser = (typeof window !== 'undefined');
+    if (isBrowser){
       opts.fallback = true;
     }
     // If we are in browser, we are already using fallback because of the
@@ -111,18 +97,20 @@ export class PolicyTagManagerSerializationClient {
 
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
-    opts.scopes = (this
-      .constructor as typeof PolicyTagManagerSerializationClient).scopes;
+    opts.scopes = (this.constructor as typeof PolicyTagManagerSerializationClient).scopes;
     this._gaxGrpc = new this._gaxModule.GrpcClient(opts);
 
     // Save options to use in initialize() method.
     this._opts = opts;
 
     // Save the auth object to the client, for use by other methods.
-    this.auth = this._gaxGrpc.auth as gax.GoogleAuth;
+    this.auth = (this._gaxGrpc.auth as gax.GoogleAuth);
 
     // Determine the client header string.
-    const clientHeader = [`gax/${this._gaxModule.version}`, `gapic/${version}`];
+    const clientHeader = [
+      `gax/${this._gaxModule.version}`,
+      `gapic/${version}`,
+    ];
     if (typeof process !== 'undefined' && 'versions' in process) {
       clientHeader.push(`gl-node/${process.versions.node}`);
     } else {
@@ -138,15 +126,11 @@ export class PolicyTagManagerSerializationClient {
     // For Node.js, pass the path to JSON proto file.
     // For browsers, pass the JSON content.
 
-    const nodejsProtoPath = path.join(
-      __dirname,
-      '..',
-      '..',
-      'protos',
-      'protos.json'
-    );
+    const nodejsProtoPath = path.join(__dirname, '..', '..', 'protos', 'protos.json');
     this._protos = this._gaxGrpc.loadProto(
-      opts.fallback ? require('../../protos/protos.json') : nodejsProtoPath
+      opts.fallback ?
+        require("../../protos/protos.json") :
+        nodejsProtoPath
     );
 
     // This API contains "path templates"; forward-slash-separated
@@ -184,11 +168,8 @@ export class PolicyTagManagerSerializationClient {
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization',
-      gapicConfig as gax.ClientConfig,
-      opts.clientConfig || {},
-      {'x-goog-api-client': clientHeader.join(' ')}
-    );
+        'google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization', gapicConfig as gax.ClientConfig,
+        opts.clientConfig || {}, {'x-goog-api-client': clientHeader.join(' ')});
 
     // Set up a dictionary of "inner API calls"; the core implementation
     // of calling the API is handled in `google-gax`, with this code
@@ -216,22 +197,16 @@ export class PolicyTagManagerSerializationClient {
     // Put together the "service stub" for
     // google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization.
     this.policyTagManagerSerializationStub = this._gaxGrpc.createStub(
-      this._opts.fallback
-        ? (this._protos as protobuf.Root).lookupService(
-            'google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization'
-          )
-        : // tslint:disable-next-line no-any
-          (this._protos as any).google.cloud.datacatalog.v1beta1
-            .PolicyTagManagerSerialization,
-      this._opts
-    ) as Promise<{[method: string]: Function}>;
+        this._opts.fallback ?
+          (this._protos as protobuf.Root).lookupService('google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization') :
+          /* eslint-disable @typescript-eslint/no-explicit-any */
+          (this._protos as any).google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization,
+        this._opts) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const policyTagManagerSerializationStubMethods = [
-      'importTaxonomies',
-      'exportTaxonomies',
-    ];
+    const policyTagManagerSerializationStubMethods =
+        ['importTaxonomies', 'exportTaxonomies'];
 
     for (const methodName of policyTagManagerSerializationStubMethods) {
       const innerCallPromise = this.policyTagManagerSerializationStub.then(
@@ -242,17 +217,16 @@ export class PolicyTagManagerSerializationClient {
           const func = stub[methodName];
           return func.apply(stub, args);
         },
-        (err: Error | null | undefined) => () => {
+        (err: Error|null|undefined) => () => {
           throw err;
-        }
-      );
+        });
 
       const apiCall = this._gaxModule.createApiCall(
         innerCallPromise,
         this._defaults[methodName],
         this._descriptors.page[methodName] ||
-          this._descriptors.stream[methodName] ||
-          this._descriptors.longrunning[methodName]
+            this._descriptors.stream[methodName] ||
+            this._descriptors.longrunning[methodName]
       );
 
       this._innerApiCalls[methodName] = (
@@ -294,7 +268,9 @@ export class PolicyTagManagerSerializationClient {
    * in this service.
    */
   static get scopes() {
-    return ['https://www.googleapis.com/auth/cloud-platform'];
+    return [
+      'https://www.googleapis.com/auth/cloud-platform'
+    ];
   }
 
   getProjectId(): Promise<string>;
@@ -304,9 +280,8 @@ export class PolicyTagManagerSerializationClient {
    * @param {function(Error, string)} callback - the callback to
    *   be called with the current project Id.
    */
-  getProjectId(
-    callback?: Callback<string, undefined, undefined>
-  ): Promise<string> | void {
+  getProjectId(callback?: Callback<string, undefined, undefined>):
+      Promise<string>|void {
     if (callback) {
       this.auth.getProjectId(callback);
       return;
@@ -318,80 +293,59 @@ export class PolicyTagManagerSerializationClient {
   // -- Service calls --
   // -------------------
   importTaxonomies(
-    request: protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
-      (
-        | protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
+        protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest|undefined, {}|undefined
+      ]>;
   importTaxonomies(
-    request: protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
-      | protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest
-      | undefined,
-      {} | undefined
-    >
-  ): void;
-  /**
-   * Imports all taxonomies and their policy tags to a project as new
-   * taxonomies.
-   *
-   * This method provides a bulk taxonomy / policy tag creation using nested
-   * proto structure.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. Resource name of project that the newly created taxonomies will
-   *   belong to.
-   * @param {google.cloud.datacatalog.v1beta1.InlineSource} request.inlineSource
-   *   Inline source used for taxonomies import
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [ImportTaxonomiesResponse]{@link google.cloud.datacatalog.v1beta1.ImportTaxonomiesResponse}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  importTaxonomies(
-    request: protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
-          | protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest
-          | undefined,
-          {} | undefined
-        >,
-    callback?: Callback<
-      protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
-      | protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest
-      | undefined,
-      {} | undefined
-    >
-  ): Promise<
-    [
-      protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
-      (
-        | protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest|undefined,
+          {}|undefined>): void;
+/**
+ * Imports all taxonomies and their policy tags to a project as new
+ * taxonomies.
+ *
+ * This method provides a bulk taxonomy / policy tag creation using nested
+ * proto structure.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. Resource name of project that the newly created taxonomies will
+ *   belong to.
+ * @param {google.cloud.datacatalog.v1beta1.InlineSource} request.inlineSource
+ *   Inline source used for taxonomies import
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [ImportTaxonomiesResponse]{@link google.cloud.datacatalog.v1beta1.ImportTaxonomiesResponse}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  importTaxonomies(
+      request: protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
+          protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest|undefined, {}|undefined>,
+      callback?: Callback<
+          protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
+          protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest|undefined,
+          {}|undefined>):
+      Promise<[
+        protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesResponse,
+        protosTypes.google.cloud.datacatalog.v1beta1.IImportTaxonomiesRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -400,87 +354,66 @@ export class PolicyTagManagerSerializationClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this._innerApiCalls.importTaxonomies(request, options, callback);
   }
   exportTaxonomies(
-    request: protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
-      (
-        | protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
+        protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest|undefined, {}|undefined
+      ]>;
   exportTaxonomies(
-    request: protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
-      | protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest
-      | undefined,
-      {} | undefined
-    >
-  ): void;
-  /**
-   * Exports all taxonomies and their policy tags in a project.
-   *
-   * This method generates SerializedTaxonomy protos with nested policy tags
-   * that can be used as an input for future ImportTaxonomies calls.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. Resource name of the project that taxonomies to be exported
-   *   will share.
-   * @param {string[]} request.taxonomies
-   *   Required. Resource names of the taxonomies to be exported.
-   * @param {boolean} request.serializedTaxonomies
-   *   Export taxonomies as serialized taxonomies.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [ExportTaxonomiesResponse]{@link google.cloud.datacatalog.v1beta1.ExportTaxonomiesResponse}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  exportTaxonomies(
-    request: protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
-          | protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest
-          | undefined,
-          {} | undefined
-        >,
-    callback?: Callback<
-      protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
-      | protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest
-      | undefined,
-      {} | undefined
-    >
-  ): Promise<
-    [
-      protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
-      (
-        | protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest|undefined,
+          {}|undefined>): void;
+/**
+ * Exports all taxonomies and their policy tags in a project.
+ *
+ * This method generates SerializedTaxonomy protos with nested policy tags
+ * that can be used as an input for future ImportTaxonomies calls.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. Resource name of the project that taxonomies to be exported
+ *   will share.
+ * @param {string[]} request.taxonomies
+ *   Required. Resource names of the taxonomies to be exported.
+ * @param {boolean} request.serializedTaxonomies
+ *   Export taxonomies as serialized taxonomies.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [ExportTaxonomiesResponse]{@link google.cloud.datacatalog.v1beta1.ExportTaxonomiesResponse}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  exportTaxonomies(
+      request: protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
+          protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest|undefined, {}|undefined>,
+      callback?: Callback<
+          protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
+          protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest|undefined,
+          {}|undefined>):
+      Promise<[
+        protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesResponse,
+        protosTypes.google.cloud.datacatalog.v1beta1.IExportTaxonomiesRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -489,7 +422,7 @@ export class PolicyTagManagerSerializationClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this._innerApiCalls.exportTaxonomies(request, options, callback);
@@ -508,17 +441,12 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} entry
    * @returns {string} Resource name string.
    */
-  entryPath(
-    project: string,
-    location: string,
-    entryGroup: string,
-    entry: string
-  ) {
+  entryPath(project:string,location:string,entryGroup:string,entry:string) {
     return this._pathTemplates.entryPathTemplate.render({
-      project,
-      location,
+      project: project,
+      location: location,
       entry_group: entryGroup,
-      entry,
+      entry: entry,
     });
   }
 
@@ -574,10 +502,10 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} entry_group
    * @returns {string} Resource name string.
    */
-  entryGroupPath(project: string, location: string, entryGroup: string) {
+  entryGroupPath(project:string,location:string,entryGroup:string) {
     return this._pathTemplates.entryGroupPathTemplate.render({
-      project,
-      location,
+      project: project,
+      location: location,
       entry_group: entryGroup,
     });
   }
@@ -590,8 +518,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromEntryGroupName(entryGroupName: string) {
-    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName)
-      .project;
+    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName).project;
   }
 
   /**
@@ -602,8 +529,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromEntryGroupName(entryGroupName: string) {
-    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName)
-      .location;
+    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName).location;
   }
 
   /**
@@ -614,8 +540,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the entry_group.
    */
   matchEntryGroupFromEntryGroupName(entryGroupName: string) {
-    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName)
-      .entry_group;
+    return this._pathTemplates.entryGroupPathTemplate.match(entryGroupName).entry_group;
   }
 
   /**
@@ -625,10 +550,10 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} location
    * @returns {string} Resource name string.
    */
-  locationPath(project: string, location: string) {
+  locationPath(project:string,location:string) {
     return this._pathTemplates.locationPathTemplate.render({
-      project,
-      location,
+      project: project,
+      location: location,
     });
   }
 
@@ -651,8 +576,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromLocationName(locationName: string) {
-    return this._pathTemplates.locationPathTemplate.match(locationName)
-      .location;
+    return this._pathTemplates.locationPathTemplate.match(locationName).location;
   }
 
   /**
@@ -664,16 +588,11 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} policy_tag
    * @returns {string} Resource name string.
    */
-  policyTagPath(
-    project: string,
-    location: string,
-    taxonomy: string,
-    policyTag: string
-  ) {
+  policyTagPath(project:string,location:string,taxonomy:string,policyTag:string) {
     return this._pathTemplates.policyTagPathTemplate.render({
-      project,
-      location,
-      taxonomy,
+      project: project,
+      location: location,
+      taxonomy: taxonomy,
       policy_tag: policyTag,
     });
   }
@@ -686,8 +605,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromPolicyTagName(policyTagName: string) {
-    return this._pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .project;
+    return this._pathTemplates.policyTagPathTemplate.match(policyTagName).project;
   }
 
   /**
@@ -698,8 +616,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromPolicyTagName(policyTagName: string) {
-    return this._pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .location;
+    return this._pathTemplates.policyTagPathTemplate.match(policyTagName).location;
   }
 
   /**
@@ -710,8 +627,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the taxonomy.
    */
   matchTaxonomyFromPolicyTagName(policyTagName: string) {
-    return this._pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .taxonomy;
+    return this._pathTemplates.policyTagPathTemplate.match(policyTagName).taxonomy;
   }
 
   /**
@@ -722,8 +638,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the policy_tag.
    */
   matchPolicyTagFromPolicyTagName(policyTagName: string) {
-    return this._pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .policy_tag;
+    return this._pathTemplates.policyTagPathTemplate.match(policyTagName).policy_tag;
   }
 
   /**
@@ -732,9 +647,9 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} project
    * @returns {string} Resource name string.
    */
-  projectPath(project: string) {
+  projectPath(project:string) {
     return this._pathTemplates.projectPathTemplate.render({
-      project,
+      project: project,
     });
   }
 
@@ -759,19 +674,13 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} tag
    * @returns {string} Resource name string.
    */
-  tagPath(
-    project: string,
-    location: string,
-    entryGroup: string,
-    entry: string,
-    tag: string
-  ) {
+  tagPath(project:string,location:string,entryGroup:string,entry:string,tag:string) {
     return this._pathTemplates.tagPathTemplate.render({
-      project,
-      location,
+      project: project,
+      location: location,
       entry_group: entryGroup,
-      entry,
-      tag,
+      entry: entry,
+      tag: tag,
     });
   }
 
@@ -838,10 +747,10 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} tag_template
    * @returns {string} Resource name string.
    */
-  tagTemplatePath(project: string, location: string, tagTemplate: string) {
+  tagTemplatePath(project:string,location:string,tagTemplate:string) {
     return this._pathTemplates.tagTemplatePathTemplate.render({
-      project,
-      location,
+      project: project,
+      location: location,
       tag_template: tagTemplate,
     });
   }
@@ -854,8 +763,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromTagTemplateName(tagTemplateName: string) {
-    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
-      .project;
+    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName).project;
   }
 
   /**
@@ -866,8 +774,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromTagTemplateName(tagTemplateName: string) {
-    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
-      .location;
+    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName).location;
   }
 
   /**
@@ -878,8 +785,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the tag_template.
    */
   matchTagTemplateFromTagTemplateName(tagTemplateName: string) {
-    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
-      .tag_template;
+    return this._pathTemplates.tagTemplatePathTemplate.match(tagTemplateName).tag_template;
   }
 
   /**
@@ -891,17 +797,12 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} field
    * @returns {string} Resource name string.
    */
-  tagTemplateFieldPath(
-    project: string,
-    location: string,
-    tagTemplate: string,
-    field: string
-  ) {
+  tagTemplateFieldPath(project:string,location:string,tagTemplate:string,field:string) {
     return this._pathTemplates.tagTemplateFieldPathTemplate.render({
-      project,
-      location,
+      project: project,
+      location: location,
       tag_template: tagTemplate,
-      field,
+      field: field,
     });
   }
 
@@ -913,9 +814,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).project;
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).project;
   }
 
   /**
@@ -926,9 +825,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).location;
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).location;
   }
 
   /**
@@ -939,9 +836,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the tag_template.
    */
   matchTagTemplateFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).tag_template;
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).tag_template;
   }
 
   /**
@@ -952,9 +847,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the field.
    */
   matchFieldFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this._pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).field;
+    return this._pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).field;
   }
 
   /**
@@ -965,11 +858,11 @@ export class PolicyTagManagerSerializationClient {
    * @param {string} taxonomy
    * @returns {string} Resource name string.
    */
-  taxonomyPath(project: string, location: string, taxonomy: string) {
+  taxonomyPath(project:string,location:string,taxonomy:string) {
     return this._pathTemplates.taxonomyPathTemplate.render({
-      project,
-      location,
-      taxonomy,
+      project: project,
+      location: location,
+      taxonomy: taxonomy,
     });
   }
 
@@ -992,8 +885,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromTaxonomyName(taxonomyName: string) {
-    return this._pathTemplates.taxonomyPathTemplate.match(taxonomyName)
-      .location;
+    return this._pathTemplates.taxonomyPathTemplate.match(taxonomyName).location;
   }
 
   /**
@@ -1004,8 +896,7 @@ export class PolicyTagManagerSerializationClient {
    * @returns {string} A string representing the taxonomy.
    */
   matchTaxonomyFromTaxonomyName(taxonomyName: string) {
-    return this._pathTemplates.taxonomyPathTemplate.match(taxonomyName)
-      .taxonomy;
+    return this._pathTemplates.taxonomyPathTemplate.match(taxonomyName).taxonomy;
   }
 
   /**
