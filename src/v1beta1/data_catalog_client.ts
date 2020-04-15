@@ -1878,38 +1878,40 @@ export class DataCatalogClient {
           protos.google.iam.v1.ISetIamPolicyRequest|null|undefined,
           {}|null|undefined>): void;
   setIamPolicy(
-      request: protos.google.iam.v1.ISetIamPolicyRequest,
-      callback: Callback<
-          protos.google.iam.v1.IPolicy,
-          protos.google.iam.v1.ISetIamPolicyRequest|null|undefined,
-          {}|null|undefined>): void;
-/**
- * Sets the access control policy for a resource. Replaces any existing
- * policy.
- * Supported resources are:
- *   - Tag templates.
- *   - Entries.
- *   - Entry groups.
- * Note, this method cannot be used to manage policies for BigQuery, Cloud
- * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
- * Data Catalog.
- *
- * Callers must have following Google IAM permission
- *   - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
- *     templates.
- *   - `datacatalog.entries.setIamPolicy` to set policies on entries.
- *   - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
- *
- * @param {Object} request
- *   The request object that will be sent.
- * @param {} request.
- * @param {} request.
- * @param {object} [options]
- *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
- * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
- *   The promise has a method named "cancel" which cancels the ongoing API call.
- */
+    request: protos.google.iam.v1.ISetIamPolicyRequest,
+    callback: Callback<
+      protos.google.iam.v1.IPolicy,
+      protos.google.iam.v1.ISetIamPolicyRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Sets the access control policy for a resource. Replaces any existing
+   * policy.
+   * Supported resources are:
+   *   - Tag templates.
+   *   - Entries.
+   *   - Entry groups.
+   * Note, this method cannot be used to manage policies for BigQuery, Cloud
+   * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
+   * Data Catalog.
+   *
+   * Callers must have following Google IAM permission
+   *   - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
+   *     templates.
+   *   - `datacatalog.entries.setIamPolicy` to set policies on entries.
+   *   - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {} request.
+   * @param {} request.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
   setIamPolicy(
       request: protos.google.iam.v1.ISetIamPolicyRequest,
       optionsOrCallback?: gax.CallOptions|Callback<
@@ -1959,40 +1961,42 @@ export class DataCatalogClient {
           protos.google.iam.v1.IGetIamPolicyRequest|null|undefined,
           {}|null|undefined>): void;
   getIamPolicy(
-      request: protos.google.iam.v1.IGetIamPolicyRequest,
-      callback: Callback<
-          protos.google.iam.v1.IPolicy,
-          protos.google.iam.v1.IGetIamPolicyRequest|null|undefined,
-          {}|null|undefined>): void;
-/**
- * Gets the access control policy for a resource. A `NOT_FOUND` error
- * is returned if the resource does not exist. An empty policy is returned
- * if the resource exists but does not have a policy set on it.
- *
- * Supported resources are:
- *   - Tag templates.
- *   - Entries.
- *   - Entry groups.
- * Note, this method cannot be used to manage policies for BigQuery, Cloud
- * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
- * Data Catalog.
- *
- * Callers must have following Google IAM permission
- *   - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag
- *     templates.
- *   - `datacatalog.entries.getIamPolicy` to get policies on entries.
- *   - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
- *
- * @param {Object} request
- *   The request object that will be sent.
- * @param {} request.
- * @param {} request.
- * @param {object} [options]
- *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
- * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
- *   The promise has a method named "cancel" which cancels the ongoing API call.
- */
+    request: protos.google.iam.v1.IGetIamPolicyRequest,
+    callback: Callback<
+      protos.google.iam.v1.IPolicy,
+      protos.google.iam.v1.IGetIamPolicyRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Gets the access control policy for a resource. A `NOT_FOUND` error
+   * is returned if the resource does not exist. An empty policy is returned
+   * if the resource exists but does not have a policy set on it.
+   *
+   * Supported resources are:
+   *   - Tag templates.
+   *   - Entries.
+   *   - Entry groups.
+   * Note, this method cannot be used to manage policies for BigQuery, Cloud
+   * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
+   * Data Catalog.
+   *
+   * Callers must have following Google IAM permission
+   *   - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag
+   *     templates.
+   *   - `datacatalog.entries.getIamPolicy` to get policies on entries.
+   *   - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {} request.
+   * @param {} request.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
   getIamPolicy(
       request: protos.google.iam.v1.IGetIamPolicyRequest,
       optionsOrCallback?: gax.CallOptions|Callback<
@@ -2042,37 +2046,39 @@ export class DataCatalogClient {
           protos.google.iam.v1.ITestIamPermissionsRequest|null|undefined,
           {}|null|undefined>): void;
   testIamPermissions(
-      request: protos.google.iam.v1.ITestIamPermissionsRequest,
-      callback: Callback<
-          protos.google.iam.v1.ITestIamPermissionsResponse,
-          protos.google.iam.v1.ITestIamPermissionsRequest|null|undefined,
-          {}|null|undefined>): void;
-/**
- * Returns the caller's permissions on a resource.
- * If the resource does not exist, an empty set of permissions is returned
- * (We don't return a `NOT_FOUND` error).
- *
- * Supported resources are:
- *   - Tag templates.
- *   - Entries.
- *   - Entry groups.
- * Note, this method cannot be used to manage policies for BigQuery, Cloud
- * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
- * Data Catalog.
- *
- * A caller is not required to have Google IAM permission to make this
- * request.
- *
- * @param {Object} request
- *   The request object that will be sent.
- * @param {} request.
- * @param {} request.
- * @param {object} [options]
- *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
- * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is an object representing [TestIamPermissionsResponse]{@link google.iam.v1.TestIamPermissionsResponse}.
- *   The promise has a method named "cancel" which cancels the ongoing API call.
- */
+    request: protos.google.iam.v1.ITestIamPermissionsRequest,
+    callback: Callback<
+      protos.google.iam.v1.ITestIamPermissionsResponse,
+      protos.google.iam.v1.ITestIamPermissionsRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Returns the caller's permissions on a resource.
+   * If the resource does not exist, an empty set of permissions is returned
+   * (We don't return a `NOT_FOUND` error).
+   *
+   * Supported resources are:
+   *   - Tag templates.
+   *   - Entries.
+   *   - Entry groups.
+   * Note, this method cannot be used to manage policies for BigQuery, Cloud
+   * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
+   * Data Catalog.
+   *
+   * A caller is not required to have Google IAM permission to make this
+   * request.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {} request.
+   * @param {} request.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [TestIamPermissionsResponse]{@link google.iam.v1.TestIamPermissionsResponse}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
   testIamPermissions(
       request: protos.google.iam.v1.ITestIamPermissionsRequest,
       optionsOrCallback?: gax.CallOptions|Callback<
