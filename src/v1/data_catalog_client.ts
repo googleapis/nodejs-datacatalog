@@ -407,7 +407,8 @@ export class DataCatalogClient {
    *
    * Users should enable the Data Catalog API in the project identified by
    * the `parent` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -599,8 +600,9 @@ export class DataCatalogClient {
   /**
    * Updates an EntryGroup. The user should enable the Data Catalog API in the
    * project identified by the `entry_group.name` parameter (see [Data Catalog
-   * Resource Project] (/data-catalog/docs/concepts/resource-project) for more
-   * information).
+   * Resource Project]
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -694,7 +696,8 @@ export class DataCatalogClient {
    * Deletes an EntryGroup. Only entry groups that do not contain entries can be
    * deleted. Users should enable the Data Catalog API in the project
    * identified by the `name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -786,7 +789,8 @@ export class DataCatalogClient {
    *
    * Users should enable the Data Catalog API in the project identified by
    * the `parent` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * A maximum of 100,000 entries may be created per entry group.
    *
@@ -882,7 +886,8 @@ export class DataCatalogClient {
    * Updates an existing entry.
    * Users should enable the Data Catalog API in the project identified by
    * the `entry.name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -990,7 +995,8 @@ export class DataCatalogClient {
    * method can be deleted.
    * Users should enable the Data Catalog API in the project identified by
    * the `name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -1179,7 +1185,7 @@ export class DataCatalogClient {
    *
    *   Examples:
    *
-   *     * `cloud_pubsub.project_id.topic_id`
+   *     * `pubsub.project_id.topic_id`
    *     * ``pubsub.project_id.`topic.id.with.dots` ``
    *     * `bigquery.table.project_id.dataset_id.table_id`
    *     * `bigquery.dataset.project_id.dataset_id`
@@ -1262,15 +1268,15 @@ export class DataCatalogClient {
   /**
    * Creates a tag template. The user should enable the Data Catalog API in
    * the project identified by the `parent` parameter (see [Data Catalog
-   * Resource Project](/data-catalog/docs/concepts/resource-project) for more
-   * information).
+   * Resource
+   * Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+   * for more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
    *   Required. The name of the project and the template location
-   *   [region](/compute/docs/regions-zones/#available).
-   *   NOTE: Currently, only the `us-central1 region` is supported.
+   *   [region](https://cloud.google.com/data-catalog/docs/concepts/regions).
    *
    *   Example:
    *
@@ -1456,7 +1462,8 @@ export class DataCatalogClient {
    * and should be updated using their own create/update/delete methods.
    * Users should enable the Data Catalog API in the project identified by
    * the `tag_template.name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -1555,7 +1562,8 @@ export class DataCatalogClient {
    * Deletes a tag template and all tags using the template.
    * Users should enable the Data Catalog API in the project identified by
    * the `name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -1655,15 +1663,14 @@ export class DataCatalogClient {
    * Creates a field in a tag template. The user should enable the Data Catalog
    * API in the project identified by the `parent` parameter (see
    * [Data Catalog Resource
-   * Project](/data-catalog/docs/concepts/resource-project) for more
-   * information).
+   * Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+   * for more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
    *   Required. The name of the project and the template location
-   *   [region](/compute/docs/regions-zones/#available).
-   *   NOTE: Currently, only the `us-central1 region` is supported.
+   *   [region](https://cloud.google.com/data-catalog/docs/concepts/regions).
    *
    *   Example:
    *
@@ -1771,7 +1778,8 @@ export class DataCatalogClient {
    * Updates a field in a tag template. This method cannot be used to update the
    * field type. Users should enable the Data Catalog API in the project
    * identified by the `name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -1890,8 +1898,9 @@ export class DataCatalogClient {
   /**
    * Renames a field in a tag template. The user should enable the Data Catalog
    * API in the project identified by the `name` parameter (see [Data Catalog
-   * Resource Project](/data-catalog/docs/concepts/resource-project) for more
-   * information).
+   * Resource
+   * Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+   * for more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -1996,7 +2005,8 @@ export class DataCatalogClient {
    * Deletes a field in a tag template and all uses of that field.
    * Users should enable the Data Catalog API in the project identified by
    * the `name` parameter (see [Data Catalog Resource Project]
-   * (/data-catalog/docs/concepts/resource-project) for more information).
+   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+   * more information).
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -2095,10 +2105,10 @@ export class DataCatalogClient {
   /**
    * Creates a tag on an {@link google.cloud.datacatalog.v1.Entry|Entry}.
    * Note: The project identified by the `parent` parameter for the
-   * [tag](/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
+   * [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
    * and the
    * [tag
-   * template](/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#path-parameters)
+   * template](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#path-parameters)
    * used to create the tag must be from the same organization.
    *
    * @param {Object} request
@@ -2375,6 +2385,8 @@ export class DataCatalogClient {
    *
    * @param {Object} request
    *   The request object that will be sent.
+   * @param {} request.
+   * @param {} request.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -2468,6 +2480,8 @@ export class DataCatalogClient {
    *
    * @param {Object} request
    *   The request object that will be sent.
+   * @param {} request.
+   * @param {} request.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -2558,6 +2572,8 @@ export class DataCatalogClient {
    *
    * @param {Object} request
    *   The request object that will be sent.
+   * @param {} request.
+   * @param {} request.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -2651,7 +2667,8 @@ export class DataCatalogClient {
    * across repeated search queries.
    *
    * See [Data Catalog Search
-   * Syntax](/data-catalog/docs/how-to/search-reference) for more information.
+   * Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+   * for more information.
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -2671,7 +2688,8 @@ export class DataCatalogClient {
    *
    *   Note: Query tokens need to have a minimum of 3 characters for substring
    *   matching to work correctly. See [Data Catalog Search
-   *   Syntax](/data-catalog/docs/how-to/search-reference) for more information.
+   *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+   *   for more information.
    * @param {number} request.pageSize
    *   Number of results in the search page. If <=0 then defaults to 10. Max limit
    *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
@@ -2778,7 +2796,8 @@ export class DataCatalogClient {
    *
    *   Note: Query tokens need to have a minimum of 3 characters for substring
    *   matching to work correctly. See [Data Catalog Search
-   *   Syntax](/data-catalog/docs/how-to/search-reference) for more information.
+   *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+   *   for more information.
    * @param {number} request.pageSize
    *   Number of results in the search page. If <=0 then defaults to 10. Max limit
    *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
@@ -2841,7 +2860,8 @@ export class DataCatalogClient {
    *
    *   Note: Query tokens need to have a minimum of 3 characters for substring
    *   matching to work correctly. See [Data Catalog Search
-   *   Syntax](/data-catalog/docs/how-to/search-reference) for more information.
+   *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+   *   for more information.
    * @param {number} request.pageSize
    *   Number of results in the search page. If <=0 then defaults to 10. Max limit
    *   for page_size is 1000. Throws an invalid argument for page_size > 1000.

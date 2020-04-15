@@ -297,7 +297,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.createEntryGroup(request);
       }, expectedError);
       assert(
@@ -411,7 +411,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.getEntryGroup(request);
       }, expectedError);
       assert(
@@ -528,7 +528,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.updateEntryGroup(request);
       }, expectedError);
       assert(
@@ -642,7 +642,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.deleteEntryGroup(request);
       }, expectedError);
       assert(
@@ -756,7 +756,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.createEntry(request);
       }, expectedError);
       assert(
@@ -873,7 +873,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.updateEntry(request);
       }, expectedError);
       assert(
@@ -987,7 +987,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.deleteEntry(request);
       }, expectedError);
       assert(
@@ -1098,7 +1098,7 @@ describe('v1.DataCatalogClient', () => {
       };
       const expectedError = new Error('expected');
       client.innerApiCalls.getEntry = stubSimpleCall(undefined, expectedError);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.getEntry(request);
       }, expectedError);
       assert(
@@ -1188,7 +1188,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.lookupEntry(request);
       }, expectedError);
       assert(
@@ -1302,7 +1302,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.createTagTemplate(request);
       }, expectedError);
       assert(
@@ -1416,7 +1416,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.getTagTemplate(request);
       }, expectedError);
       assert(
@@ -1533,7 +1533,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.updateTagTemplate(request);
       }, expectedError);
       assert(
@@ -1647,7 +1647,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.deleteTagTemplate(request);
       }, expectedError);
       assert(
@@ -1763,7 +1763,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.createTagTemplateField(request);
       }, expectedError);
       assert(
@@ -1879,7 +1879,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.updateTagTemplateField(request);
       }, expectedError);
       assert(
@@ -1995,7 +1995,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.renameTagTemplateField(request);
       }, expectedError);
       assert(
@@ -2111,7 +2111,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.deleteTagTemplateField(request);
       }, expectedError);
       assert(
@@ -2222,7 +2222,7 @@ describe('v1.DataCatalogClient', () => {
       };
       const expectedError = new Error('expected');
       client.innerApiCalls.createTag = stubSimpleCall(undefined, expectedError);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.createTag(request);
       }, expectedError);
       assert(
@@ -2336,7 +2336,7 @@ describe('v1.DataCatalogClient', () => {
       };
       const expectedError = new Error('expected');
       client.innerApiCalls.updateTag = stubSimpleCall(undefined, expectedError);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.updateTag(request);
       }, expectedError);
       assert(
@@ -2447,7 +2447,7 @@ describe('v1.DataCatalogClient', () => {
       };
       const expectedError = new Error('expected');
       client.innerApiCalls.deleteTag = stubSimpleCall(undefined, expectedError);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.deleteTag(request);
       }, expectedError);
       assert(
@@ -2561,7 +2561,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.setIamPolicy(request);
       }, expectedError);
       assert(
@@ -2675,7 +2675,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.getIamPolicy(request);
       }, expectedError);
       assert(
@@ -2791,7 +2791,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.testIamPermissions(request);
       }, expectedError);
       assert(
@@ -2899,7 +2899,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.searchCatalog(request);
       }, expectedError);
       assert(
@@ -2991,7 +2991,7 @@ describe('v1.DataCatalogClient', () => {
           reject(err);
         });
       });
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await promise;
       }, expectedError);
       assert(
@@ -3052,7 +3052,7 @@ describe('v1.DataCatalogClient', () => {
         expectedError
       );
       const iterable = client.searchCatalogAsync(request);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         const responses: protos.google.cloud.datacatalog.v1.ISearchCatalogResult[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
@@ -3185,7 +3185,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.listEntryGroups(request);
       }, expectedError);
       assert(
@@ -3284,7 +3284,7 @@ describe('v1.DataCatalogClient', () => {
           reject(err);
         });
       });
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await promise;
       }, expectedError);
       assert(
@@ -3363,7 +3363,7 @@ describe('v1.DataCatalogClient', () => {
         expectedError
       );
       const iterable = client.listEntryGroupsAsync(request);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         const responses: protos.google.cloud.datacatalog.v1.IEntryGroup[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
@@ -3491,7 +3491,7 @@ describe('v1.DataCatalogClient', () => {
         undefined,
         expectedError
       );
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.listEntries(request);
       }, expectedError);
       assert(
@@ -3583,7 +3583,7 @@ describe('v1.DataCatalogClient', () => {
           reject(err);
         });
       });
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await promise;
       }, expectedError);
       assert(
@@ -3655,7 +3655,7 @@ describe('v1.DataCatalogClient', () => {
         expectedError
       );
       const iterable = client.listEntriesAsync(request);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         const responses: protos.google.cloud.datacatalog.v1.IEntry[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
@@ -3780,7 +3780,7 @@ describe('v1.DataCatalogClient', () => {
       };
       const expectedError = new Error('expected');
       client.innerApiCalls.listTags = stubSimpleCall(undefined, expectedError);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await client.listTags(request);
       }, expectedError);
       assert(
@@ -3871,7 +3871,7 @@ describe('v1.DataCatalogClient', () => {
           reject(err);
         });
       });
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         await promise;
       }, expectedError);
       assert(
@@ -3940,7 +3940,7 @@ describe('v1.DataCatalogClient', () => {
         expectedError
       );
       const iterable = client.listTagsAsync(request);
-      assert.rejects(async () => {
+      await assert.rejects(async () => {
         const responses: protos.google.cloud.datacatalog.v1.ITag[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);

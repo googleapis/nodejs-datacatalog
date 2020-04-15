@@ -319,6 +319,14 @@
                             "includeGcpPublicDatasets": {
                               "type": "bool",
                               "id": 7
+                            },
+                            "restrictedLocations": {
+                              "rule": "repeated",
+                              "type": "string",
+                              "id": 16,
+                              "options": {
+                                "(google.api.field_behavior)": "OPTIONAL"
+                              }
                             }
                           }
                         }
@@ -334,6 +342,11 @@
                         "nextPageToken": {
                           "type": "string",
                           "id": 3
+                        },
+                        "unreachable": {
+                          "rule": "repeated",
+                          "type": "string",
+                          "id": 6
                         }
                       }
                     },

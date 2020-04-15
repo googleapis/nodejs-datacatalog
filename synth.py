@@ -40,7 +40,7 @@ for version in versions:
         },
         extra_proto_files=['google/cloud/common_resources.proto'],
     )
-    s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
+    s.copy(library, excludes=['README.md', 'linkinator.config.json', '.mocharc.json', 'package.json', 'src/index.ts'])
 
 # Copy common templates
 common_templates = gcp.CommonTemplates()

@@ -1295,6 +1295,7 @@
                              * @property {Array.<string>|null} [includeOrgIds] Scope includeOrgIds
                              * @property {Array.<string>|null} [includeProjectIds] Scope includeProjectIds
                              * @property {boolean|null} [includeGcpPublicDatasets] Scope includeGcpPublicDatasets
+                             * @property {Array.<string>|null} [restrictedLocations] Scope restrictedLocations
                              */
     
                             /**
@@ -1308,6 +1309,7 @@
                             function Scope(properties) {
                                 this.includeOrgIds = [];
                                 this.includeProjectIds = [];
+                                this.restrictedLocations = [];
                                 if (properties)
                                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                         if (properties[keys[i]] != null)
@@ -1337,6 +1339,14 @@
                              * @instance
                              */
                             Scope.prototype.includeGcpPublicDatasets = false;
+    
+                            /**
+                             * Scope restrictedLocations.
+                             * @member {Array.<string>} restrictedLocations
+                             * @memberof google.cloud.datacatalog.v1.SearchCatalogRequest.Scope
+                             * @instance
+                             */
+                            Scope.prototype.restrictedLocations = $util.emptyArray;
     
                             /**
                              * Creates a new Scope instance using the specified properties.
@@ -1370,6 +1380,9 @@
                                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.includeProjectIds[i]);
                                 if (message.includeGcpPublicDatasets != null && message.hasOwnProperty("includeGcpPublicDatasets"))
                                     writer.uint32(/* id 7, wireType 0 =*/56).bool(message.includeGcpPublicDatasets);
+                                if (message.restrictedLocations != null && message.restrictedLocations.length)
+                                    for (var i = 0; i < message.restrictedLocations.length; ++i)
+                                        writer.uint32(/* id 16, wireType 2 =*/130).string(message.restrictedLocations[i]);
                                 return writer;
                             };
     
@@ -1416,6 +1429,11 @@
                                         break;
                                     case 7:
                                         message.includeGcpPublicDatasets = reader.bool();
+                                        break;
+                                    case 16:
+                                        if (!(message.restrictedLocations && message.restrictedLocations.length))
+                                            message.restrictedLocations = [];
+                                        message.restrictedLocations.push(reader.string());
                                         break;
                                     default:
                                         reader.skipType(tag & 7);
@@ -1469,6 +1487,13 @@
                                 if (message.includeGcpPublicDatasets != null && message.hasOwnProperty("includeGcpPublicDatasets"))
                                     if (typeof message.includeGcpPublicDatasets !== "boolean")
                                         return "includeGcpPublicDatasets: boolean expected";
+                                if (message.restrictedLocations != null && message.hasOwnProperty("restrictedLocations")) {
+                                    if (!Array.isArray(message.restrictedLocations))
+                                        return "restrictedLocations: array expected";
+                                    for (var i = 0; i < message.restrictedLocations.length; ++i)
+                                        if (!$util.isString(message.restrictedLocations[i]))
+                                            return "restrictedLocations: string[] expected";
+                                }
                                 return null;
                             };
     
@@ -1500,6 +1525,13 @@
                                 }
                                 if (object.includeGcpPublicDatasets != null)
                                     message.includeGcpPublicDatasets = Boolean(object.includeGcpPublicDatasets);
+                                if (object.restrictedLocations) {
+                                    if (!Array.isArray(object.restrictedLocations))
+                                        throw TypeError(".google.cloud.datacatalog.v1.SearchCatalogRequest.Scope.restrictedLocations: array expected");
+                                    message.restrictedLocations = [];
+                                    for (var i = 0; i < object.restrictedLocations.length; ++i)
+                                        message.restrictedLocations[i] = String(object.restrictedLocations[i]);
+                                }
                                 return message;
                             };
     
@@ -1519,6 +1551,7 @@
                                 if (options.arrays || options.defaults) {
                                     object.includeOrgIds = [];
                                     object.includeProjectIds = [];
+                                    object.restrictedLocations = [];
                                 }
                                 if (options.defaults)
                                     object.includeGcpPublicDatasets = false;
@@ -1534,6 +1567,11 @@
                                 }
                                 if (message.includeGcpPublicDatasets != null && message.hasOwnProperty("includeGcpPublicDatasets"))
                                     object.includeGcpPublicDatasets = message.includeGcpPublicDatasets;
+                                if (message.restrictedLocations && message.restrictedLocations.length) {
+                                    object.restrictedLocations = [];
+                                    for (var j = 0; j < message.restrictedLocations.length; ++j)
+                                        object.restrictedLocations[j] = message.restrictedLocations[j];
+                                }
                                 return object;
                             };
     
@@ -1562,6 +1600,7 @@
                          * @interface ISearchCatalogResponse
                          * @property {Array.<google.cloud.datacatalog.v1.ISearchCatalogResult>|null} [results] SearchCatalogResponse results
                          * @property {string|null} [nextPageToken] SearchCatalogResponse nextPageToken
+                         * @property {Array.<string>|null} [unreachable] SearchCatalogResponse unreachable
                          */
     
                         /**
@@ -1574,6 +1613,7 @@
                          */
                         function SearchCatalogResponse(properties) {
                             this.results = [];
+                            this.unreachable = [];
                             if (properties)
                                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
@@ -1595,6 +1635,14 @@
                          * @instance
                          */
                         SearchCatalogResponse.prototype.nextPageToken = "";
+    
+                        /**
+                         * SearchCatalogResponse unreachable.
+                         * @member {Array.<string>} unreachable
+                         * @memberof google.cloud.datacatalog.v1.SearchCatalogResponse
+                         * @instance
+                         */
+                        SearchCatalogResponse.prototype.unreachable = $util.emptyArray;
     
                         /**
                          * Creates a new SearchCatalogResponse instance using the specified properties.
@@ -1625,6 +1673,9 @@
                                     $root.google.cloud.datacatalog.v1.SearchCatalogResult.encode(message.results[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                             if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
                                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.nextPageToken);
+                            if (message.unreachable != null && message.unreachable.length)
+                                for (var i = 0; i < message.unreachable.length; ++i)
+                                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.unreachable[i]);
                             return writer;
                         };
     
@@ -1666,6 +1717,11 @@
                                     break;
                                 case 3:
                                     message.nextPageToken = reader.string();
+                                    break;
+                                case 6:
+                                    if (!(message.unreachable && message.unreachable.length))
+                                        message.unreachable = [];
+                                    message.unreachable.push(reader.string());
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -1714,6 +1770,13 @@
                             if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
                                 if (!$util.isString(message.nextPageToken))
                                     return "nextPageToken: string expected";
+                            if (message.unreachable != null && message.hasOwnProperty("unreachable")) {
+                                if (!Array.isArray(message.unreachable))
+                                    return "unreachable: array expected";
+                                for (var i = 0; i < message.unreachable.length; ++i)
+                                    if (!$util.isString(message.unreachable[i]))
+                                        return "unreachable: string[] expected";
+                            }
                             return null;
                         };
     
@@ -1741,6 +1804,13 @@
                             }
                             if (object.nextPageToken != null)
                                 message.nextPageToken = String(object.nextPageToken);
+                            if (object.unreachable) {
+                                if (!Array.isArray(object.unreachable))
+                                    throw TypeError(".google.cloud.datacatalog.v1.SearchCatalogResponse.unreachable: array expected");
+                                message.unreachable = [];
+                                for (var i = 0; i < object.unreachable.length; ++i)
+                                    message.unreachable[i] = String(object.unreachable[i]);
+                            }
                             return message;
                         };
     
@@ -1757,8 +1827,10 @@
                             if (!options)
                                 options = {};
                             var object = {};
-                            if (options.arrays || options.defaults)
+                            if (options.arrays || options.defaults) {
                                 object.results = [];
+                                object.unreachable = [];
+                            }
                             if (options.defaults)
                                 object.nextPageToken = "";
                             if (message.results && message.results.length) {
@@ -1768,6 +1840,11 @@
                             }
                             if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
                                 object.nextPageToken = message.nextPageToken;
+                            if (message.unreachable && message.unreachable.length) {
+                                object.unreachable = [];
+                                for (var j = 0; j < message.unreachable.length; ++j)
+                                    object.unreachable[j] = message.unreachable[j];
+                            }
                             return object;
                         };
     

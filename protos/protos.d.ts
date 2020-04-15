@@ -751,6 +751,9 @@ export namespace google {
 
                         /** Scope includeGcpPublicDatasets */
                         includeGcpPublicDatasets?: (boolean|null);
+
+                        /** Scope restrictedLocations */
+                        restrictedLocations?: (string[]|null);
                     }
 
                     /** Represents a Scope. */
@@ -770,6 +773,9 @@ export namespace google {
 
                         /** Scope includeGcpPublicDatasets. */
                         public includeGcpPublicDatasets: boolean;
+
+                        /** Scope restrictedLocations. */
+                        public restrictedLocations: string[];
 
                         /**
                          * Creates a new Scope instance using the specified properties.
@@ -851,6 +857,9 @@ export namespace google {
 
                     /** SearchCatalogResponse nextPageToken */
                     nextPageToken?: (string|null);
+
+                    /** SearchCatalogResponse unreachable */
+                    unreachable?: (string[]|null);
                 }
 
                 /** Represents a SearchCatalogResponse. */
@@ -867,6 +876,9 @@ export namespace google {
 
                     /** SearchCatalogResponse nextPageToken. */
                     public nextPageToken: string;
+
+                    /** SearchCatalogResponse unreachable. */
+                    public unreachable: string[];
 
                     /**
                      * Creates a new SearchCatalogResponse instance using the specified properties.
