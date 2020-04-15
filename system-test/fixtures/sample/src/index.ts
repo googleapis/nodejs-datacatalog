@@ -16,7 +16,11 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-import {DataCatalogClient, PolicyTagManagerClient, PolicyTagManagerSerializationClient} from '@google-cloud/datacatalog';
+import {
+  DataCatalogClient,
+  PolicyTagManagerClient,
+  PolicyTagManagerSerializationClient,
+} from '@google-cloud/datacatalog';
 
 function main() {
   new DataCatalogClient();
