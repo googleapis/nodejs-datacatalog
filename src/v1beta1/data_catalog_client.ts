@@ -17,18 +17,11 @@
 // ** All changes to this file may be overwritten. **
 
 import * as gax from 'google-gax';
-import {
-  Callback,
-  CallOptions,
-  Descriptors,
-  ClientOptions,
-  PaginationCallback,
-  GaxCall,
-} from 'google-gax';
+import {Callback, CallOptions, Descriptors, ClientOptions, PaginationCallback, GaxCall} from 'google-gax';
 import * as path from 'path';
 
-import {Transform} from 'stream';
-import {RequestType} from 'google-gax/build/src/apitypes';
+import { Transform } from 'stream';
+import { RequestType } from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
 import * as gapicConfig from './data_catalog_client_config.json';
 
@@ -48,12 +41,7 @@ export class DataCatalogClient {
   private _protos: {};
   private _defaults: {[method: string]: gax.CallSettings};
   auth: gax.GoogleAuth;
-  descriptors: Descriptors = {
-    page: {},
-    stream: {},
-    longrunning: {},
-    batching: {},
-  };
+  descriptors: Descriptors = {page: {}, stream: {}, longrunning: {}, batching: {}};
   innerApiCalls: {[name: string]: Function};
   pathTemplates: {[name: string]: gax.PathTemplate};
   dataCatalogStub?: Promise<{[name: string]: Function}>;
@@ -87,12 +75,10 @@ export class DataCatalogClient {
   constructor(opts?: ClientOptions) {
     // Ensure that options include the service address and port.
     const staticMembers = this.constructor as typeof DataCatalogClient;
-    const servicePath =
-      opts && opts.servicePath
-        ? opts.servicePath
-        : opts && opts.apiEndpoint
-        ? opts.apiEndpoint
-        : staticMembers.servicePath;
+    const servicePath = opts && opts.servicePath ?
+        opts.servicePath :
+        ((opts && opts.apiEndpoint) ? opts.apiEndpoint :
+                                      staticMembers.servicePath);
     const port = opts && opts.port ? opts.port : staticMembers.port;
 
     if (!opts) {
@@ -102,8 +88,8 @@ export class DataCatalogClient {
     opts.port = opts.port || port;
     opts.clientConfig = opts.clientConfig || {};
 
-    const isBrowser = typeof window !== 'undefined';
-    if (isBrowser) {
+    const isBrowser = (typeof window !== 'undefined');
+    if (isBrowser){
       opts.fallback = true;
     }
     // If we are in browser, we are already using fallback because of the
@@ -120,10 +106,13 @@ export class DataCatalogClient {
     this._opts = opts;
 
     // Save the auth object to the client, for use by other methods.
-    this.auth = this._gaxGrpc.auth as gax.GoogleAuth;
+    this.auth = (this._gaxGrpc.auth as gax.GoogleAuth);
 
     // Determine the client header string.
-    const clientHeader = [`gax/${this._gaxModule.version}`, `gapic/${version}`];
+    const clientHeader = [
+      `gax/${this._gaxModule.version}`,
+      `gapic/${version}`,
+    ];
     if (typeof process !== 'undefined' && 'versions' in process) {
       clientHeader.push(`gl-node/${process.versions.node}`);
     } else {
@@ -139,18 +128,12 @@ export class DataCatalogClient {
     // For Node.js, pass the path to JSON proto file.
     // For browsers, pass the JSON content.
 
-    const nodejsProtoPath = path.join(
-      __dirname,
-      '..',
-      '..',
-      'protos',
-      'protos.json'
-    );
+    const nodejsProtoPath = path.join(__dirname, '..', '..', 'protos', 'protos.json');
     this._protos = this._gaxGrpc.loadProto(
-      opts.fallback
-        ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require('../../protos/protos.json')
-        : nodejsProtoPath
+      opts.fallback ?
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        require("../../protos/protos.json") :
+        nodejsProtoPath
     );
 
     // This API contains "path templates"; forward-slash-separated
@@ -190,35 +173,20 @@ export class DataCatalogClient {
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this.descriptors.page = {
-      searchCatalog: new this._gaxModule.PageDescriptor(
-        'pageToken',
-        'nextPageToken',
-        'results'
-      ),
-      listEntryGroups: new this._gaxModule.PageDescriptor(
-        'pageToken',
-        'nextPageToken',
-        'entryGroups'
-      ),
-      listEntries: new this._gaxModule.PageDescriptor(
-        'pageToken',
-        'nextPageToken',
-        'entries'
-      ),
-      listTags: new this._gaxModule.PageDescriptor(
-        'pageToken',
-        'nextPageToken',
-        'tags'
-      ),
+      searchCatalog:
+          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'results'),
+      listEntryGroups:
+          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'entryGroups'),
+      listEntries:
+          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'entries'),
+      listTags:
+          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'tags')
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'google.cloud.datacatalog.v1beta1.DataCatalog',
-      gapicConfig as gax.ClientConfig,
-      opts.clientConfig || {},
-      {'x-goog-api-client': clientHeader.join(' ')}
-    );
+        'google.cloud.datacatalog.v1beta1.DataCatalog', gapicConfig as gax.ClientConfig,
+        opts.clientConfig || {}, {'x-goog-api-client': clientHeader.join(' ')});
 
     // Set up a dictionary of "inner API calls"; the core implementation
     // of calling the API is handled in `google-gax`, with this code
@@ -246,46 +214,16 @@ export class DataCatalogClient {
     // Put together the "service stub" for
     // google.cloud.datacatalog.v1beta1.DataCatalog.
     this.dataCatalogStub = this._gaxGrpc.createStub(
-      this._opts.fallback
-        ? (this._protos as protobuf.Root).lookupService(
-            'google.cloud.datacatalog.v1beta1.DataCatalog'
-          )
-        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this._opts.fallback ?
+          (this._protos as protobuf.Root).lookupService('google.cloud.datacatalog.v1beta1.DataCatalog') :
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._protos as any).google.cloud.datacatalog.v1beta1.DataCatalog,
-      this._opts
-    ) as Promise<{[method: string]: Function}>;
+        this._opts) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const dataCatalogStubMethods = [
-      'searchCatalog',
-      'createEntryGroup',
-      'updateEntryGroup',
-      'getEntryGroup',
-      'deleteEntryGroup',
-      'listEntryGroups',
-      'createEntry',
-      'updateEntry',
-      'deleteEntry',
-      'getEntry',
-      'lookupEntry',
-      'listEntries',
-      'createTagTemplate',
-      'getTagTemplate',
-      'updateTagTemplate',
-      'deleteTagTemplate',
-      'createTagTemplateField',
-      'updateTagTemplateField',
-      'renameTagTemplateField',
-      'deleteTagTemplateField',
-      'createTag',
-      'updateTag',
-      'deleteTag',
-      'listTags',
-      'setIamPolicy',
-      'getIamPolicy',
-      'testIamPermissions',
-    ];
+    const dataCatalogStubMethods =
+        ['searchCatalog', 'createEntryGroup', 'updateEntryGroup', 'getEntryGroup', 'deleteEntryGroup', 'listEntryGroups', 'createEntry', 'updateEntry', 'deleteEntry', 'getEntry', 'lookupEntry', 'listEntries', 'createTagTemplate', 'getTagTemplate', 'updateTagTemplate', 'deleteTagTemplate', 'createTagTemplateField', 'updateTagTemplateField', 'renameTagTemplateField', 'deleteTagTemplateField', 'createTag', 'updateTag', 'deleteTag', 'listTags', 'setIamPolicy', 'getIamPolicy', 'testIamPermissions'];
     for (const methodName of dataCatalogStubMethods) {
       const callPromise = this.dataCatalogStub.then(
         stub => (...args: Array<{}>) => {
@@ -295,17 +233,16 @@ export class DataCatalogClient {
           const func = stub[methodName];
           return func.apply(stub, args);
         },
-        (err: Error | null | undefined) => () => {
+        (err: Error|null|undefined) => () => {
           throw err;
-        }
-      );
+        });
 
       const apiCall = this._gaxModule.createApiCall(
         callPromise,
         this._defaults[methodName],
         this.descriptors.page[methodName] ||
-          this.descriptors.stream[methodName] ||
-          this.descriptors.longrunning[methodName]
+            this.descriptors.stream[methodName] ||
+            this.descriptors.longrunning[methodName]
       );
 
       this.innerApiCalls[methodName] = apiCall;
@@ -341,7 +278,9 @@ export class DataCatalogClient {
    * in this service.
    */
   static get scopes() {
-    return ['https://www.googleapis.com/auth/cloud-platform'];
+    return [
+      'https://www.googleapis.com/auth/cloud-platform'
+    ];
   }
 
   getProjectId(): Promise<string>;
@@ -351,9 +290,8 @@ export class DataCatalogClient {
    * @param {function(Error, string)} callback - the callback to
    *   be called with the current project Id.
    */
-  getProjectId(
-    callback?: Callback<string, undefined, undefined>
-  ): Promise<string> | void {
+  getProjectId(callback?: Callback<string, undefined, undefined>):
+      Promise<string>|void {
     if (callback) {
       this.auth.getProjectId(callback);
       return;
@@ -365,114 +303,87 @@ export class DataCatalogClient {
   // -- Service calls --
   // -------------------
   createEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+        protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest|undefined, {}|undefined
+      ]>;
   createEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  createEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Creates an EntryGroup.
-   *
-   * An entry group contains logically related entries together with Cloud
-   * Identity and Access Management policies that specify the users who can
-   * create, edit, and view entries within the entry group.
-   *
-   * Data Catalog automatically creates an entry group for BigQuery entries
-   * ("@bigquery") and Pub/Sub topics ("@pubsub"). Users create their own entry
-   * group to contain Cloud Storage fileset entries or custom type entries,
-   * and the IAM policies associated with those entries. Entry groups, like
-   * entries, can be searched.
-   *
-   * A maximum of 10,000 entry groups may be created per organization across all
-   * locations.
-   *
-   * Users should enable the Data Catalog API in the project identified by
-   * the `parent` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the project this entry group is in. Example:
-   *
-   *   * projects/{project_id}/locations/{location}
-   *
-   *   Note that this EntryGroup and its child resources may not actually be
-   *   stored in the location in this name.
-   * @param {string} request.entryGroupId
-   *   Required. The id of the entry group to create.
-   *   The id must begin with a letter or underscore, contain only English
-   *   letters, numbers and underscores, and be at most 64 characters.
-   * @param {google.cloud.datacatalog.v1beta1.EntryGroup} request.entryGroup
-   *   The entry group to create. Defaults to an empty entry group.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  createEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-          | protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+  createEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Creates an EntryGroup.
+ *
+ * An entry group contains logically related entries together with Cloud
+ * Identity and Access Management policies that specify the users who can
+ * create, edit, and view entries within the entry group.
+ *
+ * Data Catalog automatically creates an entry group for BigQuery entries
+ * ("@bigquery") and Pub/Sub topics ("@pubsub"). Users create their own entry
+ * group to contain Cloud Storage fileset entries or custom type entries,
+ * and the IAM policies associated with those entries. Entry groups, like
+ * entries, can be searched.
+ *
+ * A maximum of 10,000 entry groups may be created per organization across all
+ * locations.
+ *
+ * Users should enable the Data Catalog API in the project identified by
+ * the `parent` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the project this entry group is in. Example:
+ *
+ *   * projects/{project_id}/locations/{location}
+ *
+ *   Note that this EntryGroup and its child resources may not actually be
+ *   stored in the location in this name.
+ * @param {string} request.entryGroupId
+ *   Required. The id of the entry group to create.
+ *   The id must begin with a letter or underscore, contain only English
+ *   letters, numbers and underscores, and be at most 64 characters.
+ * @param {google.cloud.datacatalog.v1beta1.EntryGroup} request.entryGroup
+ *   The entry group to create. Defaults to an empty entry group.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  createEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+        protos.google.cloud.datacatalog.v1beta1.ICreateEntryGroupRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -481,98 +392,71 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.createEntryGroup(request, options, callback);
   }
   updateEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest|undefined, {}|undefined
+      ]>;
   updateEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  updateEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Updates an EntryGroup. The user should enable the Data Catalog API in the
-   * project identified by the `entry_group.name` parameter (see [Data Catalog
-   * Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
-   * information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.EntryGroup} request.entryGroup
-   *   Required. The updated entry group. "name" field must be set.
-   * @param {google.protobuf.FieldMask} request.updateMask
-   *   The fields to update on the entry group. If absent or empty, all modifiable
-   *   fields are updated.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  updateEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-          | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates an EntryGroup. The user should enable the Data Catalog API in the
+ * project identified by the `entry_group.name` parameter (see [Data Catalog
+ * Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
+ * information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.EntryGroup} request.entryGroup
+ *   Required. The updated entry group. "name" field must be set.
+ * @param {google.protobuf.FieldMask} request.updateMask
+ *   The fields to update on the entry group. If absent or empty, all modifiable
+ *   fields are updated.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  updateEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateEntryGroupRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -587,83 +471,62 @@ export class DataCatalogClient {
     return this.innerApiCalls.updateEntryGroup(request, options, callback);
   }
   getEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+        protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest|undefined, {}|undefined
+      ]>;
   getEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  getEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Gets an EntryGroup.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the entry group. For example,
-   *   `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
-   * @param {google.protobuf.FieldMask} request.readMask
-   *   The fields to return. If not set or empty, all fields are returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  getEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-          | protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      | protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
-      protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+  getEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Gets an EntryGroup.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the entry group. For example,
+ *   `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
+ * @param {google.protobuf.FieldMask} request.readMask
+ *   The fields to return. If not set or empty, all fields are returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  getEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup,
+        protos.google.cloud.datacatalog.v1beta1.IGetEntryGroupRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -672,98 +535,71 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.getEntryGroup(request, options, callback);
   }
   deleteEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest|undefined, {}|undefined
+      ]>;
   deleteEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes an EntryGroup. Only entry groups that do not contain entries can be
-   * deleted. Users should enable the Data Catalog API in the project
-   * identified by the `name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the entry group. For example,
-   *   `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
-   * @param {boolean} [request.force]
-   *   Optional. If true, deletes all entries in the entry group.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteEntryGroup(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.protobuf.IEmpty,
-          | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
+      callback: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes an EntryGroup. Only entry groups that do not contain entries can be
+ * deleted. Users should enable the Data Catalog API in the project
+ * identified by the `name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the entry group. For example,
+ *   `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
+ * @param {boolean} [request.force]
+ *   Optional. If true, deletes all entries in the entry group.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  deleteEntryGroup(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteEntryGroupRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -772,102 +608,81 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.deleteEntryGroup(request, options, callback);
   }
   createEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest|undefined, {}|undefined
+      ]>;
   createEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  createEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Creates an entry. Only entries of 'FILESET' type or user-specified type can
-   * be created.
-   *
-   * Users should enable the Data Catalog API in the project identified by
-   * the `parent` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * A maximum of 100,000 entries may be created per entry group.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the entry group this entry is in. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   *
-   *   Note that this Entry and its child resources may not actually be stored in
-   *   the location in this name.
-   * @param {string} request.entryId
-   *   Required. The id of the entry to create.
-   * @param {google.cloud.datacatalog.v1beta1.Entry} request.entry
-   *   Required. The entry to create.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  createEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntry,
-          | protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+  createEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Creates an entry. Only entries of 'FILESET' type or user-specified type can
+ * be created.
+ *
+ * Users should enable the Data Catalog API in the project identified by
+ * the `parent` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * A maximum of 100,000 entries may be created per entry group.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the entry group this entry is in. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ *
+ *   Note that this Entry and its child resources may not actually be stored in
+ *   the location in this name.
+ * @param {string} request.entryId
+ *   Required. The id of the entry to create.
+ * @param {google.cloud.datacatalog.v1beta1.Entry} request.entry
+ *   Required. The entry to create.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  createEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.ICreateEntryRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -876,110 +691,89 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.createEntry(request, options, callback);
   }
   updateEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest|undefined, {}|undefined
+      ]>;
   updateEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  updateEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Updates an existing entry.
-   * Users should enable the Data Catalog API in the project identified by
-   * the `entry.name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.Entry} request.entry
-   *   Required. The updated entry. The "name" field must be set.
-   * @param {google.protobuf.FieldMask} request.updateMask
-   *   The fields to update on the entry. If absent or empty, all modifiable
-   *   fields are updated.
-   *
-   *   The following fields are modifiable:
-   *   * For entries with type `DATA_STREAM`:
-   *      * `schema`
-   *   * For entries with type `FILESET`
-   *      * `schema`
-   *      * `display_name`
-   *      * `description`
-   *      * `gcs_fileset_spec`
-   *      * `gcs_fileset_spec.file_patterns`
-   *   * For entries with `user_specified_type`
-   *      * `schema`
-   *      * `display_name`
-   *      * `description`
-   *      * user_specified_type
-   *      * user_specified_system
-   *      * linked_resource
-   *      * source_system_timestamps
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  updateEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntry,
-          | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates an existing entry.
+ * Users should enable the Data Catalog API in the project identified by
+ * the `entry.name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.Entry} request.entry
+ *   Required. The updated entry. The "name" field must be set.
+ * @param {google.protobuf.FieldMask} request.updateMask
+ *   The fields to update on the entry. If absent or empty, all modifiable
+ *   fields are updated.
+ *
+ *   The following fields are modifiable:
+ *   * For entries with type `DATA_STREAM`:
+ *      * `schema`
+ *   * For entries with type `FILESET`
+ *      * `schema`
+ *      * `display_name`
+ *      * `description`
+ *      * `gcs_fileset_spec`
+ *      * `gcs_fileset_spec.file_patterns`
+ *   * For entries with `user_specified_type`
+ *      * `schema`
+ *      * `display_name`
+ *      * `description`
+ *      * user_specified_type
+ *      * user_specified_system
+ *      * linked_resource
+ *      * source_system_timestamps
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  updateEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateEntryRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -994,87 +788,66 @@ export class DataCatalogClient {
     return this.innerApiCalls.updateEntry(request, options, callback);
   }
   deleteEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest|undefined, {}|undefined
+      ]>;
   deleteEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes an existing entry. Only entries created through
-   * {@link google.cloud.datacatalog.v1beta1.DataCatalog.CreateEntry|CreateEntry}
-   * method can be deleted.
-   * Users should enable the Data Catalog API in the project identified by
-   * the `name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the entry. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.protobuf.IEmpty,
-          | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
+      callback: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes an existing entry. Only entries created through
+ * {@link google.cloud.datacatalog.v1beta1.DataCatalog.CreateEntry|CreateEntry}
+ * method can be deleted.
+ * Users should enable the Data Catalog API in the project identified by
+ * the `name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the entry. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  deleteEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteEntryRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1083,88 +856,67 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.deleteEntry(request, options, callback);
   }
   getEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest|undefined, {}|undefined
+      ]>;
   getEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  getEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Gets an entry.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the entry. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  getEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntry,
-          | protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+  getEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Gets an entry.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the entry. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  getEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.IGetEntryRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1173,109 +925,88 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.getEntry(request, options, callback);
   }
   lookupEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest|undefined, {}|undefined
+      ]>;
   lookupEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  lookupEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Get an entry by target resource name. This method allows clients to use
-   * the resource name from the source Google Cloud Platform service to get the
-   * Data Catalog Entry.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.linkedResource
-   *   The full name of the Google Cloud Platform resource the Data Catalog
-   *   entry represents. See:
-   *   https://cloud.google.com/apis/design/resource_names#full_resource_name.
-   *   Full names are case-sensitive.
-   *
-   *   Examples:
-   *
-   *    * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
-   *    * //pubsub.googleapis.com/projects/projectId/topics/topicId
-   * @param {string} request.sqlResource
-   *   The SQL name of the entry. SQL names are case-sensitive.
-   *
-   *   Examples:
-   *
-   *     * `cloud_pubsub.project_id.topic_id`
-   *     * ``pubsub.project_id.`topic.id.with.dots` ``
-   *     * `bigquery.table.project_id.dataset_id.table_id`
-   *     * `bigquery.dataset.project_id.dataset_id`
-   *     * `datacatalog.entry.project_id.location_id.entry_group_id.entry_id`
-   *
-   *   `*_id`s shoud satisfy the standard SQL rules for identifiers.
-   *   https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  lookupEntry(
-    request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.IEntry,
-          | protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      | protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry,
-      protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+  lookupEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Get an entry by target resource name. This method allows clients to use
+ * the resource name from the source Google Cloud Platform service to get the
+ * Data Catalog Entry.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.linkedResource
+ *   The full name of the Google Cloud Platform resource the Data Catalog
+ *   entry represents. See:
+ *   https://cloud.google.com/apis/design/resource_names#full_resource_name.
+ *   Full names are case-sensitive.
+ *
+ *   Examples:
+ *
+ *    * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+ *    * //pubsub.googleapis.com/projects/projectId/topics/topicId
+ * @param {string} request.sqlResource
+ *   The SQL name of the entry. SQL names are case-sensitive.
+ *
+ *   Examples:
+ *
+ *     * `cloud_pubsub.project_id.topic_id`
+ *     * ``pubsub.project_id.`topic.id.with.dots` ``
+ *     * `bigquery.table.project_id.dataset_id.table_id`
+ *     * `bigquery.dataset.project_id.dataset_id`
+ *     * `datacatalog.entry.project_id.location_id.entry_group_id.entry_id`
+ *
+ *   `*_id`s shoud satisfy the standard SQL rules for identifiers.
+ *   https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  lookupEntry(
+      request: protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.IEntry,
+          protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry,
+        protos.google.cloud.datacatalog.v1beta1.ILookupEntryRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1283,99 +1014,72 @@ export class DataCatalogClient {
     return this.innerApiCalls.lookupEntry(request, options, callback);
   }
   createTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+        protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest|undefined, {}|undefined
+      ]>;
   createTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  createTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Creates a tag template. The user should enable the Data Catalog API in
-   * the project identified by the `parent` parameter (see [Data Catalog
-   * Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
-   * information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the project and the template location
-   *   [region](https://cloud.google.com/compute/docs/regions-zones/#available).
-   *   NOTE: Currently, only the `us-central1 region` is supported.
-   *
-   *   Example:
-   *
-   *   * projects/{project_id}/locations/us-central1
-   * @param {string} request.tagTemplateId
-   *   Required. The id of the tag template to create.
-   * @param {google.cloud.datacatalog.v1beta1.TagTemplate} request.tagTemplate
-   *   Required. The tag template to create.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TagTemplate]{@link google.cloud.datacatalog.v1beta1.TagTemplate}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  createTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-          | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+  createTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Creates a tag template. The user should enable the Data Catalog API in
+ * the project identified by the `parent` parameter (see [Data Catalog
+ * Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
+ * information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the project and the template location
+ *   [region](https://cloud.google.com/compute/docs/regions-zones/#available).
+ *   NOTE: Currently, only the `us-central1 region` is supported.
+ *
+ *   Example:
+ *
+ *   * projects/{project_id}/locations/us-central1
+ * @param {string} request.tagTemplateId
+ *   Required. The id of the tag template to create.
+ * @param {google.cloud.datacatalog.v1beta1.TagTemplate} request.tagTemplate
+ *   Required. The tag template to create.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TagTemplate]{@link google.cloud.datacatalog.v1beta1.TagTemplate}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  createTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+        protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1384,94 +1088,67 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.createTagTemplate(request, options, callback);
   }
   getTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+        protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest|undefined, {}|undefined
+      ]>;
   getTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  getTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Gets a tag template.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the tag template. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TagTemplate]{@link google.cloud.datacatalog.v1beta1.TagTemplate}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  getTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-          | protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+  getTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Gets a tag template.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the tag template. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TagTemplate]{@link google.cloud.datacatalog.v1beta1.TagTemplate}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  getTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+        protos.google.cloud.datacatalog.v1beta1.IGetTagTemplateRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1480,105 +1157,78 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.getTagTemplate(request, options, callback);
   }
   updateTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest|undefined, {}|undefined
+      ]>;
   updateTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  updateTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Updates a tag template. This method cannot be used to update the fields of
-   * a template. The tag template fields are represented as separate resources
-   * and should be updated using their own create/update/delete methods.
-   * Users should enable the Data Catalog API in the project identified by
-   * the `tag_template.name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.TagTemplate} request.tagTemplate
-   *   Required. The template to update. The "name" field must be set.
-   * @param {google.protobuf.FieldMask} request.updateMask
-   *   The field mask specifies the parts of the template to overwrite.
-   *
-   *   Allowed fields:
-   *
-   *     * `display_name`
-   *
-   *   If absent or empty, all of the allowed fields above will be updated.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TagTemplate]{@link google.cloud.datacatalog.v1beta1.TagTemplate}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  updateTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-          | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates a tag template. This method cannot be used to update the fields of
+ * a template. The tag template fields are represented as separate resources
+ * and should be updated using their own create/update/delete methods.
+ * Users should enable the Data Catalog API in the project identified by
+ * the `tag_template.name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.TagTemplate} request.tagTemplate
+ *   Required. The template to update. The "name" field must be set.
+ * @param {google.protobuf.FieldMask} request.updateMask
+ *   The field mask specifies the parts of the template to overwrite.
+ *
+ *   Allowed fields:
+ *
+ *     * `display_name`
+ *
+ *   If absent or empty, all of the allowed fields above will be updated.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TagTemplate]{@link google.cloud.datacatalog.v1beta1.TagTemplate}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  updateTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplate,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1593,95 +1243,68 @@ export class DataCatalogClient {
     return this.innerApiCalls.updateTagTemplate(request, options, callback);
   }
   deleteTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest|undefined, {}|undefined
+      ]>;
   deleteTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes a tag template and all tags using the template.
-   * Users should enable the Data Catalog API in the project identified by
-   * the `name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the tag template to delete. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
-   * @param {boolean} request.force
-   *   Required. Currently, this field must always be set to `true`.
-   *   This confirms the deletion of any possible tags using this template.
-   *   `force = false` will be supported in the future.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteTagTemplate(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.protobuf.IEmpty,
-          | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
+      callback: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes a tag template and all tags using the template.
+ * Users should enable the Data Catalog API in the project identified by
+ * the `name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the tag template to delete. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
+ * @param {boolean} request.force
+ *   Required. Currently, this field must always be set to `true`.
+ *   This confirms the deletion of any possible tags using this template.
+ *   `force = false` will be supported in the future.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  deleteTagTemplate(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1690,110 +1313,83 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.deleteTagTemplate(request, options, callback);
   }
   createTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+        protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest|undefined, {}|undefined
+      ]>;
   createTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  createTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Creates a field in a tag template. The user should enable the Data Catalog
-   * API in the project identified by the `parent` parameter (see
-   * [Data Catalog Resource
-   * Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
-   * information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the project and the template location
-   *   [region](https://cloud.google.com/compute/docs/regions-zones/#available).
-   *   NOTE: Currently, only the `us-central1 region` is supported.
-   *
-   *   Example:
-   *
-   *   * projects/{project_id}/locations/us-central1/tagTemplates/{tag_template_id}
-   * @param {string} request.tagTemplateFieldId
-   *   Required. The ID of the tag template field to create.
-   *   Field ids can contain letters (both uppercase and lowercase), numbers
-   *   (0-9), underscores (_) and dashes (-). Field IDs must be at least 1
-   *   character long and at most 128 characters long. Field IDs must also be
-   *   unique within their template.
-   * @param {google.cloud.datacatalog.v1beta1.TagTemplateField} request.tagTemplateField
-   *   Required. The tag template field to create.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TagTemplateField]{@link google.cloud.datacatalog.v1beta1.TagTemplateField}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  createTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-          | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+  createTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Creates a field in a tag template. The user should enable the Data Catalog
+ * API in the project identified by the `parent` parameter (see
+ * [Data Catalog Resource
+ * Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
+ * information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the project and the template location
+ *   [region](https://cloud.google.com/compute/docs/regions-zones/#available).
+ *   NOTE: Currently, only the `us-central1 region` is supported.
+ *
+ *   Example:
+ *
+ *   * projects/{project_id}/locations/us-central1/tagTemplates/{tag_template_id}
+ * @param {string} request.tagTemplateFieldId
+ *   Required. The ID of the tag template field to create.
+ *   Field ids can contain letters (both uppercase and lowercase), numbers
+ *   (0-9), underscores (_) and dashes (-). Field IDs must be at least 1
+ *   character long and at most 128 characters long. Field IDs must also be
+ *   unique within their template.
+ * @param {google.cloud.datacatalog.v1beta1.TagTemplateField} request.tagTemplateField
+ *   Required. The tag template field to create.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TagTemplateField]{@link google.cloud.datacatalog.v1beta1.TagTemplateField}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  createTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+        protos.google.cloud.datacatalog.v1beta1.ICreateTagTemplateFieldRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1802,118 +1398,87 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
-    return this.innerApiCalls.createTagTemplateField(
-      request,
-      options,
-      callback
-    );
+    return this.innerApiCalls.createTagTemplateField(request, options, callback);
   }
   updateTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest|undefined, {}|undefined
+      ]>;
   updateTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  updateTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Updates a field in a tag template. This method cannot be used to update the
-   * field type. Users should enable the Data Catalog API in the project
-   * identified by the `name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the tag template field. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
-   * @param {google.cloud.datacatalog.v1beta1.TagTemplateField} request.tagTemplateField
-   *   Required. The template to update.
-   * @param {google.protobuf.FieldMask} [request.updateMask]
-   *   Optional. The field mask specifies the parts of the template to be updated.
-   *   Allowed fields:
-   *
-   *     * `display_name`
-   *     * `type.enum_type`
-   *     * `is_required`
-   *
-   *   If `update_mask` is not set or empty, all of the allowed fields above will
-   *   be updated.
-   *
-   *   When updating an enum type, the provided values will be merged with the
-   *   existing values. Therefore, enum values can only be added, existing enum
-   *   values cannot be deleted nor renamed. Updating a template field from
-   *   optional to required is NOT allowed.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TagTemplateField]{@link google.cloud.datacatalog.v1beta1.TagTemplateField}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  updateTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-          | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates a field in a tag template. This method cannot be used to update the
+ * field type. Users should enable the Data Catalog API in the project
+ * identified by the `name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the tag template field. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
+ * @param {google.cloud.datacatalog.v1beta1.TagTemplateField} request.tagTemplateField
+ *   Required. The template to update.
+ * @param {google.protobuf.FieldMask} [request.updateMask]
+ *   Optional. The field mask specifies the parts of the template to be updated.
+ *   Allowed fields:
+ *
+ *     * `display_name`
+ *     * `type.enum_type`
+ *     * `is_required`
+ *
+ *   If `update_mask` is not set or empty, all of the allowed fields above will
+ *   be updated.
+ *
+ *   When updating an enum type, the provided values will be merged with the
+ *   existing values. Therefore, enum values can only be added, existing enum
+ *   values cannot be deleted nor renamed. Updating a template field from
+ *   optional to required is NOT allowed.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TagTemplateField]{@link google.cloud.datacatalog.v1beta1.TagTemplateField}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  updateTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateTagTemplateFieldRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -1922,104 +1487,73 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
-    return this.innerApiCalls.updateTagTemplateField(
-      request,
-      options,
-      callback
-    );
+    return this.innerApiCalls.updateTagTemplateField(request, options, callback);
   }
   renameTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+        protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest|undefined, {}|undefined
+      ]>;
   renameTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  renameTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Renames a field in a tag template. The user should enable the Data Catalog
-   * API in the project identified by the `name` parameter (see [Data Catalog
-   * Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
-   * information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the tag template. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
-   * @param {string} request.newTagTemplateFieldId
-   *   Required. The new ID of this tag template field. For example,
-   *   `my_new_field`.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TagTemplateField]{@link google.cloud.datacatalog.v1beta1.TagTemplateField}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  renameTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-          | protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      | protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+  renameTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Renames a field in a tag template. The user should enable the Data Catalog
+ * API in the project identified by the `name` parameter (see [Data Catalog
+ * Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more
+ * information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the tag template. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
+ * @param {string} request.newTagTemplateFieldId
+ *   Required. The new ID of this tag template field. For example,
+ *   `my_new_field`.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TagTemplateField]{@link google.cloud.datacatalog.v1beta1.TagTemplateField}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  renameTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+          protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITagTemplateField,
+        protos.google.cloud.datacatalog.v1beta1.IRenameTagTemplateFieldRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2028,105 +1562,74 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
-    return this.innerApiCalls.renameTagTemplateField(
-      request,
-      options,
-      callback
-    );
+    return this.innerApiCalls.renameTagTemplateField(request, options, callback);
   }
   deleteTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest|undefined, {}|undefined
+      ]>;
   deleteTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes a field in a tag template and all uses of that field.
-   * Users should enable the Data Catalog API in the project identified by
-   * the `name` parameter (see [Data Catalog Resource Project]
-   * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the tag template field to delete. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
-   * @param {boolean} request.force
-   *   Required. Currently, this field must always be set to `true`.
-   *   This confirms the deletion of this field from any tags using this field.
-   *   `force = false` will be supported in the future.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteTagTemplateField(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.protobuf.IEmpty,
-          | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
+      callback: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes a field in a tag template and all uses of that field.
+ * Users should enable the Data Catalog API in the project identified by
+ * the `name` parameter (see [Data Catalog Resource Project]
+ * (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the tag template field to delete. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
+ * @param {boolean} request.force
+ *   Required. Currently, this field must always be set to `true`.
+ *   This confirms the deletion of this field from any tags using this field.
+ *   `force = false` will be supported in the future.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  deleteTagTemplateField(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteTagTemplateFieldRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2135,104 +1638,79 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
-    return this.innerApiCalls.deleteTagTemplateField(
-      request,
-      options,
-      callback
-    );
+    return this.innerApiCalls.deleteTagTemplateField(request, options, callback);
   }
   createTag(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITag,
+        protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest|undefined, {}|undefined
+      ]>;
   createTag(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  createTag(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Creates a tag on an {@link google.cloud.datacatalog.v1beta1.Entry|Entry}.
-   * Note: The project identified by the `parent` parameter for the
-   * [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)
-   * and the
-   * [tag
-   * template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
-   * used to create the tag must be from the same organization.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the resource to attach this tag to. Tags can be
-   *   attached to Entries. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
-   *
-   *   Note that this Tag and its child resources may not actually be stored in
-   *   the location in this name.
-   * @param {google.cloud.datacatalog.v1beta1.Tag} request.tag
-   *   Required. The tag to create.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Tag]{@link google.cloud.datacatalog.v1beta1.Tag}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  createTag(
-    request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITag,
-          | protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      | protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest|null|undefined,
+          {}|null|undefined>): void;
+  createTag(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITag,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Creates a tag on an {@link google.cloud.datacatalog.v1beta1.Entry|Entry}.
+ * Note: The project identified by the `parent` parameter for the
+ * [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)
+ * and the
+ * [tag
+ * template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
+ * used to create the tag must be from the same organization.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the resource to attach this tag to. Tags can be
+ *   attached to Entries. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+ *
+ *   Note that this Tag and its child resources may not actually be stored in
+ *   the location in this name.
+ * @param {google.cloud.datacatalog.v1beta1.Tag} request.tag
+ *   Required. The tag to create.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Tag]{@link google.cloud.datacatalog.v1beta1.Tag}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  createTag(
+      request: protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITag,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITag,
+          protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITag,
+        protos.google.cloud.datacatalog.v1beta1.ICreateTagRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2241,89 +1719,68 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.createTag(request, options, callback);
   }
   updateTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITag,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest|undefined, {}|undefined
+      ]>;
   updateTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  updateTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
-    callback: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Updates an existing tag.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.Tag} request.tag
-   *   Required. The updated tag. The "name" field must be set.
-   * @param {google.protobuf.FieldMask} request.updateMask
-   *   The fields to update on the Tag. If absent or empty, all modifiable fields
-   *   are updated. Currently the only modifiable field is the field `fields`.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Tag]{@link google.cloud.datacatalog.v1beta1.Tag}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  updateTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.cloud.datacatalog.v1beta1.ITag,
-          | protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      | protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITag,
-      protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateTag(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
+      callback: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITag,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates an existing tag.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.Tag} request.tag
+ *   Required. The updated tag. The "name" field must be set.
+ * @param {google.protobuf.FieldMask} request.updateMask
+ *   The fields to update on the Tag. If absent or empty, all modifiable fields
+ *   are updated. Currently the only modifiable field is the field `fields`.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Tag]{@link google.cloud.datacatalog.v1beta1.Tag}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  updateTag(
+      request: protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITag,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.datacatalog.v1beta1.ITag,
+          protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITag,
+        protos.google.cloud.datacatalog.v1beta1.IUpdateTagRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2338,82 +1795,61 @@ export class DataCatalogClient {
     return this.innerApiCalls.updateTag(request, options, callback);
   }
   deleteTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest|undefined, {}|undefined
+      ]>;
   deleteTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes a tag.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the tag to delete. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteTag(
-    request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.protobuf.IEmpty,
-          | protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteTag(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
+      callback: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes a tag.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the tag to delete. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  deleteTag(
+      request: protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.datacatalog.v1beta1.IDeleteTagRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2422,92 +1858,79 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.deleteTag(request, options, callback);
   }
   setIamPolicy(
-    request: protos.google.iam.v1.ISetIamPolicyRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.ISetIamPolicyRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.iam.v1.ISetIamPolicyRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.iam.v1.IPolicy,
+        protos.google.iam.v1.ISetIamPolicyRequest|undefined, {}|undefined
+      ]>;
   setIamPolicy(
-    request: protos.google.iam.v1.ISetIamPolicyRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.ISetIamPolicyRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  setIamPolicy(
-    request: protos.google.iam.v1.ISetIamPolicyRequest,
-    callback: Callback<
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.ISetIamPolicyRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Sets the access control policy for a resource. Replaces any existing
-   * policy.
-   * Supported resources are:
-   *   - Tag templates.
-   *   - Entries.
-   *   - Entry groups.
-   * Note, this method cannot be used to manage policies for BigQuery, Cloud
-   * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-   * Data Catalog.
-   *
-   * Callers must have following Google IAM permission
-   *   - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
-   *     templates.
-   *   - `datacatalog.entries.setIamPolicy` to set policies on entries.
-   *   - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {} request.
-   * @param {} request.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  setIamPolicy(
-    request: protos.google.iam.v1.ISetIamPolicyRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.iam.v1.ISetIamPolicyRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.iam.v1.IPolicy,
-          protos.google.iam.v1.ISetIamPolicyRequest | null | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.ISetIamPolicyRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.ISetIamPolicyRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.iam.v1.ISetIamPolicyRequest|null|undefined,
+          {}|null|undefined>): void;
+  setIamPolicy(
+      request: protos.google.iam.v1.ISetIamPolicyRequest,
+      callback: Callback<
+          protos.google.iam.v1.IPolicy,
+          protos.google.iam.v1.ISetIamPolicyRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Sets the access control policy for a resource. Replaces any existing
+ * policy.
+ * Supported resources are:
+ *   - Tag templates.
+ *   - Entries.
+ *   - Entry groups.
+ * Note, this method cannot be used to manage policies for BigQuery, Cloud
+ * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
+ * Data Catalog.
+ *
+ * Callers must have following Google IAM permission
+ *   - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
+ *     templates.
+ *   - `datacatalog.entries.setIamPolicy` to set policies on entries.
+ *   - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {} request.
+ * @param {} request.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  setIamPolicy(
+      request: protos.google.iam.v1.ISetIamPolicyRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.iam.v1.IPolicy,
+          protos.google.iam.v1.ISetIamPolicyRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.iam.v1.IPolicy,
+          protos.google.iam.v1.ISetIamPolicyRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.iam.v1.IPolicy,
+        protos.google.iam.v1.ISetIamPolicyRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2516,94 +1939,81 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      resource: request.resource || '',
+      'resource': request.resource || '',
     });
     this.initialize();
     return this.innerApiCalls.setIamPolicy(request, options, callback);
   }
   getIamPolicy(
-    request: protos.google.iam.v1.IGetIamPolicyRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.IGetIamPolicyRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.iam.v1.IGetIamPolicyRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.iam.v1.IPolicy,
+        protos.google.iam.v1.IGetIamPolicyRequest|undefined, {}|undefined
+      ]>;
   getIamPolicy(
-    request: protos.google.iam.v1.IGetIamPolicyRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.IGetIamPolicyRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  getIamPolicy(
-    request: protos.google.iam.v1.IGetIamPolicyRequest,
-    callback: Callback<
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.IGetIamPolicyRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Gets the access control policy for a resource. A `NOT_FOUND` error
-   * is returned if the resource does not exist. An empty policy is returned
-   * if the resource exists but does not have a policy set on it.
-   *
-   * Supported resources are:
-   *   - Tag templates.
-   *   - Entries.
-   *   - Entry groups.
-   * Note, this method cannot be used to manage policies for BigQuery, Cloud
-   * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-   * Data Catalog.
-   *
-   * Callers must have following Google IAM permission
-   *   - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag
-   *     templates.
-   *   - `datacatalog.entries.getIamPolicy` to get policies on entries.
-   *   - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {} request.
-   * @param {} request.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  getIamPolicy(
-    request: protos.google.iam.v1.IGetIamPolicyRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.iam.v1.IGetIamPolicyRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.iam.v1.IPolicy,
-          protos.google.iam.v1.IGetIamPolicyRequest | null | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.IGetIamPolicyRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.iam.v1.IPolicy,
-      protos.google.iam.v1.IGetIamPolicyRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.iam.v1.IGetIamPolicyRequest|null|undefined,
+          {}|null|undefined>): void;
+  getIamPolicy(
+      request: protos.google.iam.v1.IGetIamPolicyRequest,
+      callback: Callback<
+          protos.google.iam.v1.IPolicy,
+          protos.google.iam.v1.IGetIamPolicyRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Gets the access control policy for a resource. A `NOT_FOUND` error
+ * is returned if the resource does not exist. An empty policy is returned
+ * if the resource exists but does not have a policy set on it.
+ *
+ * Supported resources are:
+ *   - Tag templates.
+ *   - Entries.
+ *   - Entry groups.
+ * Note, this method cannot be used to manage policies for BigQuery, Cloud
+ * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
+ * Data Catalog.
+ *
+ * Callers must have following Google IAM permission
+ *   - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag
+ *     templates.
+ *   - `datacatalog.entries.getIamPolicy` to get policies on entries.
+ *   - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {} request.
+ * @param {} request.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Policy]{@link google.iam.v1.Policy}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  getIamPolicy(
+      request: protos.google.iam.v1.IGetIamPolicyRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.iam.v1.IPolicy,
+          protos.google.iam.v1.IGetIamPolicyRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.iam.v1.IPolicy,
+          protos.google.iam.v1.IGetIamPolicyRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.iam.v1.IPolicy,
+        protos.google.iam.v1.IGetIamPolicyRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2612,91 +2022,78 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      resource: request.resource || '',
+      'resource': request.resource || '',
     });
     this.initialize();
     return this.innerApiCalls.getIamPolicy(request, options, callback);
   }
   testIamPermissions(
-    request: protos.google.iam.v1.ITestIamPermissionsRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.iam.v1.ITestIamPermissionsResponse,
-      protos.google.iam.v1.ITestIamPermissionsRequest | undefined,
-      {} | undefined
-    ]
-  >;
+      request: protos.google.iam.v1.ITestIamPermissionsRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.iam.v1.ITestIamPermissionsResponse,
+        protos.google.iam.v1.ITestIamPermissionsRequest|undefined, {}|undefined
+      ]>;
   testIamPermissions(
-    request: protos.google.iam.v1.ITestIamPermissionsRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.google.iam.v1.ITestIamPermissionsResponse,
-      protos.google.iam.v1.ITestIamPermissionsRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  testIamPermissions(
-    request: protos.google.iam.v1.ITestIamPermissionsRequest,
-    callback: Callback<
-      protos.google.iam.v1.ITestIamPermissionsResponse,
-      protos.google.iam.v1.ITestIamPermissionsRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Returns the caller's permissions on a resource.
-   * If the resource does not exist, an empty set of permissions is returned
-   * (We don't return a `NOT_FOUND` error).
-   *
-   * Supported resources are:
-   *   - Tag templates.
-   *   - Entries.
-   *   - Entry groups.
-   * Note, this method cannot be used to manage policies for BigQuery, Cloud
-   * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-   * Data Catalog.
-   *
-   * A caller is not required to have Google IAM permission to make this
-   * request.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {} request.
-   * @param {} request.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [TestIamPermissionsResponse]{@link google.iam.v1.TestIamPermissionsResponse}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  testIamPermissions(
-    request: protos.google.iam.v1.ITestIamPermissionsRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
+      request: protos.google.iam.v1.ITestIamPermissionsRequest,
+      options: gax.CallOptions,
+      callback: Callback<
           protos.google.iam.v1.ITestIamPermissionsResponse,
-          protos.google.iam.v1.ITestIamPermissionsRequest | null | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.iam.v1.ITestIamPermissionsResponse,
-      protos.google.iam.v1.ITestIamPermissionsRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.iam.v1.ITestIamPermissionsResponse,
-      protos.google.iam.v1.ITestIamPermissionsRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
+          protos.google.iam.v1.ITestIamPermissionsRequest|null|undefined,
+          {}|null|undefined>): void;
+  testIamPermissions(
+      request: protos.google.iam.v1.ITestIamPermissionsRequest,
+      callback: Callback<
+          protos.google.iam.v1.ITestIamPermissionsResponse,
+          protos.google.iam.v1.ITestIamPermissionsRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Returns the caller's permissions on a resource.
+ * If the resource does not exist, an empty set of permissions is returned
+ * (We don't return a `NOT_FOUND` error).
+ *
+ * Supported resources are:
+ *   - Tag templates.
+ *   - Entries.
+ *   - Entry groups.
+ * Note, this method cannot be used to manage policies for BigQuery, Cloud
+ * Pub/Sub and any external Google Cloud Platform resources synced to Cloud
+ * Data Catalog.
+ *
+ * A caller is not required to have Google IAM permission to make this
+ * request.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {} request.
+ * @param {} request.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [TestIamPermissionsResponse]{@link google.iam.v1.TestIamPermissionsResponse}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  testIamPermissions(
+      request: protos.google.iam.v1.ITestIamPermissionsRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.google.iam.v1.ITestIamPermissionsResponse,
+          protos.google.iam.v1.ITestIamPermissionsRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.iam.v1.ITestIamPermissionsResponse,
+          protos.google.iam.v1.ITestIamPermissionsRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.iam.v1.ITestIamPermissionsResponse,
+        protos.google.iam.v1.ITestIamPermissionsRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2705,145 +2102,126 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      resource: request.resource || '',
+      'resource': request.resource || '',
     });
     this.initialize();
     return this.innerApiCalls.testIamPermissions(request, options, callback);
   }
 
   searchCatalog(
-    request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[],
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[],
+        protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
+      ]>;
   searchCatalog(
-    request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-      | protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-    >
-  ): void;
-  searchCatalog(
-    request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-      | protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-    >
-  ): void;
-  /**
-   * Searches Data Catalog for multiple resources like entries, tags that
-   * match a query.
-   *
-   * This is a custom method
-   * (https://cloud.google.com/apis/design/custom_methods) and does not return
-   * the complete resource, only the resource identifier and high level
-   * fields. Clients can subsequentally call `Get` methods.
-   *
-   * Note that Data Catalog search queries do not guarantee full recall. Query
-   * results that match your query may not be returned, even in subsequent
-   * result pages. Also note that results returned (and not returned) can vary
-   * across repeated search queries.
-   *
-   * See [Data Catalog Search
-   * Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.SearchCatalogRequest.Scope} request.scope
-   *   Required. The scope of this search request.
-   * @param {string} request.query
-   *   Required. The query string in search query syntax. The query must be
-   *   non-empty.
-   *
-   *   Query strings can be simple as "x" or more qualified as:
-   *
-   *   * name:x
-   *   * column:x
-   *   * description:y
-   *
-   *   Note: Query tokens need to have a minimum of 3 characters for substring
-   *   matching to work correctly. See [Data Catalog Search
-   *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
-   * @param {number} request.pageSize
-   *   Number of results in the search page. If <=0 then defaults to 10. Max limit
-   *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
-   * @param {string} [request.pageToken]
-   *   Optional. Pagination token returned in an earlier
-   *   {@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token|SearchCatalogResponse.next_page_token},
-   *   which indicates that this is a continuation of a prior
-   *   {@link google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog|SearchCatalogRequest}
-   *   call, and that the system should return the next page of data. If empty,
-   *   the first page is returned.
-   * @param {string} request.orderBy
-   *   Specifies the ordering of results, currently supported case-sensitive
-   *   choices are:
-   *
-   *     * `relevance`, only supports descending
-   *     * `last_modified_timestamp [asc|desc]`, defaults to descending if not
-   *       specified
-   *
-   *   If not specified, defaults to `relevance` descending.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [SearchCatalogResult]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResult}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [SearchCatalogResult]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResult} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [SearchCatalogRequest]{@link google.cloud.datacatalog.v1beta1.SearchCatalogRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [SearchCatalogResponse]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse}.
-   *
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  searchCatalog(
-    request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | PaginationCallback<
+      request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+      options: gax.CallOptions,
+      callback: PaginationCallback<
           protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-          | protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
-          | null
-          | undefined,
-          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-        >,
-    callback?: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-      | protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[],
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>): void;
+  searchCatalog(
+      request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+      callback: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>): void;
+/**
+ * Searches Data Catalog for multiple resources like entries, tags that
+ * match a query.
+ *
+ * This is a custom method
+ * (https://cloud.google.com/apis/design/custom_methods) and does not return
+ * the complete resource, only the resource identifier and high level
+ * fields. Clients can subsequentally call `Get` methods.
+ *
+ * Note that Data Catalog search queries do not guarantee full recall. Query
+ * results that match your query may not be returned, even in subsequent
+ * result pages. Also note that results returned (and not returned) can vary
+ * across repeated search queries.
+ *
+ * See [Data Catalog Search
+ * Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.SearchCatalogRequest.Scope} request.scope
+ *   Required. The scope of this search request.
+ * @param {string} request.query
+ *   Required. The query string in search query syntax. The query must be
+ *   non-empty.
+ *
+ *   Query strings can be simple as "x" or more qualified as:
+ *
+ *   * name:x
+ *   * column:x
+ *   * description:y
+ *
+ *   Note: Query tokens need to have a minimum of 3 characters for substring
+ *   matching to work correctly. See [Data Catalog Search
+ *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
+ * @param {number} request.pageSize
+ *   Number of results in the search page. If <=0 then defaults to 10. Max limit
+ *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
+ * @param {string} [request.pageToken]
+ *   Optional. Pagination token returned in an earlier
+ *   {@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token|SearchCatalogResponse.next_page_token},
+ *   which indicates that this is a continuation of a prior
+ *   {@link google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog|SearchCatalogRequest}
+ *   call, and that the system should return the next page of data. If empty,
+ *   the first page is returned.
+ * @param {string} request.orderBy
+ *   Specifies the ordering of results, currently supported case-sensitive
+ *   choices are:
+ *
+ *     * `relevance`, only supports descending
+ *     * `last_modified_timestamp [asc|desc]`, defaults to descending if not
+ *       specified
+ *
+ *   If not specified, defaults to `relevance` descending.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is Array of [SearchCatalogResult]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResult}.
+ *   The client library support auto-pagination by default: it will call the API as many
+ *   times as needed and will merge results from all the pages into this array.
+ *
+ *   When autoPaginate: false is specified through options, the array has three elements.
+ *   The first element is Array of [SearchCatalogResult]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResult} that corresponds to
+ *   the one page received from the API server.
+ *   If the second element is not null it contains the request object of type [SearchCatalogRequest]{@link google.cloud.datacatalog.v1beta1.SearchCatalogRequest}
+ *   that can be used to obtain the next page of the results.
+ *   If it is null, the next page does not exist.
+ *   The third element contains the raw response received from the API server. Its type is
+ *   [SearchCatalogResponse]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse}.
+ *
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  searchCatalog(
+      request: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+      optionsOrCallback?: gax.CallOptions|PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>,
+      callback?: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[],
+        protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResponse
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -2851,64 +2229,64 @@ export class DataCatalogClient {
     return this.innerApiCalls.searchCatalog(request, options, callback);
   }
 
-  /**
-   * Equivalent to {@link searchCatalog}, but returns a NodeJS Stream object.
-   *
-   * This fetches the paged responses for {@link searchCatalog} continuously
-   * and invokes the callback registered for 'data' event for each element in the
-   * responses.
-   *
-   * The returned object has 'end' method when no more elements are required.
-   *
-   * autoPaginate option will be ignored.
-   *
-   * @see {@link https://nodejs.org/api/stream.html}
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.SearchCatalogRequest.Scope} request.scope
-   *   Required. The scope of this search request.
-   * @param {string} request.query
-   *   Required. The query string in search query syntax. The query must be
-   *   non-empty.
-   *
-   *   Query strings can be simple as "x" or more qualified as:
-   *
-   *   * name:x
-   *   * column:x
-   *   * description:y
-   *
-   *   Note: Query tokens need to have a minimum of 3 characters for substring
-   *   matching to work correctly. See [Data Catalog Search
-   *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
-   * @param {number} request.pageSize
-   *   Number of results in the search page. If <=0 then defaults to 10. Max limit
-   *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
-   * @param {string} [request.pageToken]
-   *   Optional. Pagination token returned in an earlier
-   *   {@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token|SearchCatalogResponse.next_page_token},
-   *   which indicates that this is a continuation of a prior
-   *   {@link google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog|SearchCatalogRequest}
-   *   call, and that the system should return the next page of data. If empty,
-   *   the first page is returned.
-   * @param {string} request.orderBy
-   *   Specifies the ordering of results, currently supported case-sensitive
-   *   choices are:
-   *
-   *     * `relevance`, only supports descending
-   *     * `last_modified_timestamp [asc|desc]`, defaults to descending if not
-   *       specified
-   *
-   *   If not specified, defaults to `relevance` descending.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Stream}
-   *   An object stream which emits an object representing [SearchCatalogResult]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResult} on 'data' event.
-   */
+/**
+ * Equivalent to {@link searchCatalog}, but returns a NodeJS Stream object.
+ *
+ * This fetches the paged responses for {@link searchCatalog} continuously
+ * and invokes the callback registered for 'data' event for each element in the
+ * responses.
+ *
+ * The returned object has 'end' method when no more elements are required.
+ *
+ * autoPaginate option will be ignored.
+ *
+ * @see {@link https://nodejs.org/api/stream.html}
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.SearchCatalogRequest.Scope} request.scope
+ *   Required. The scope of this search request.
+ * @param {string} request.query
+ *   Required. The query string in search query syntax. The query must be
+ *   non-empty.
+ *
+ *   Query strings can be simple as "x" or more qualified as:
+ *
+ *   * name:x
+ *   * column:x
+ *   * description:y
+ *
+ *   Note: Query tokens need to have a minimum of 3 characters for substring
+ *   matching to work correctly. See [Data Catalog Search
+ *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
+ * @param {number} request.pageSize
+ *   Number of results in the search page. If <=0 then defaults to 10. Max limit
+ *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
+ * @param {string} [request.pageToken]
+ *   Optional. Pagination token returned in an earlier
+ *   {@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token|SearchCatalogResponse.next_page_token},
+ *   which indicates that this is a continuation of a prior
+ *   {@link google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog|SearchCatalogRequest}
+ *   call, and that the system should return the next page of data. If empty,
+ *   the first page is returned.
+ * @param {string} request.orderBy
+ *   Specifies the ordering of results, currently supported case-sensitive
+ *   choices are:
+ *
+ *     * `relevance`, only supports descending
+ *     * `last_modified_timestamp [asc|desc]`, defaults to descending if not
+ *       specified
+ *
+ *   If not specified, defaults to `relevance` descending.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Stream}
+ *   An object stream which emits an object representing [SearchCatalogResult]{@link google.cloud.datacatalog.v1beta1.SearchCatalogResult} on 'data' event.
+ */
   searchCatalogStream(
-    request?: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-    options?: gax.CallOptions
-  ): Transform {
+      request?: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+      options?: gax.CallOptions):
+    Transform{
     request = request || {};
     options = options || {};
     const callSettings = new gax.CallSettings(options);
@@ -2920,58 +2298,56 @@ export class DataCatalogClient {
     );
   }
 
-  /**
-   * Equivalent to {@link searchCatalog}, but returns an iterable object.
-   *
-   * for-await-of syntax is used with the iterable to recursively get response element on-demand.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.datacatalog.v1beta1.SearchCatalogRequest.Scope} request.scope
-   *   Required. The scope of this search request.
-   * @param {string} request.query
-   *   Required. The query string in search query syntax. The query must be
-   *   non-empty.
-   *
-   *   Query strings can be simple as "x" or more qualified as:
-   *
-   *   * name:x
-   *   * column:x
-   *   * description:y
-   *
-   *   Note: Query tokens need to have a minimum of 3 characters for substring
-   *   matching to work correctly. See [Data Catalog Search
-   *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
-   * @param {number} request.pageSize
-   *   Number of results in the search page. If <=0 then defaults to 10. Max limit
-   *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
-   * @param {string} [request.pageToken]
-   *   Optional. Pagination token returned in an earlier
-   *   {@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token|SearchCatalogResponse.next_page_token},
-   *   which indicates that this is a continuation of a prior
-   *   {@link google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog|SearchCatalogRequest}
-   *   call, and that the system should return the next page of data. If empty,
-   *   the first page is returned.
-   * @param {string} request.orderBy
-   *   Specifies the ordering of results, currently supported case-sensitive
-   *   choices are:
-   *
-   *     * `relevance`, only supports descending
-   *     * `last_modified_timestamp [asc|desc]`, defaults to descending if not
-   *       specified
-   *
-   *   If not specified, defaults to `relevance` descending.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Object}
-   *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
-   */
+/**
+ * Equivalent to {@link searchCatalog}, but returns an iterable object.
+ *
+ * for-await-of syntax is used with the iterable to recursively get response element on-demand.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.datacatalog.v1beta1.SearchCatalogRequest.Scope} request.scope
+ *   Required. The scope of this search request.
+ * @param {string} request.query
+ *   Required. The query string in search query syntax. The query must be
+ *   non-empty.
+ *
+ *   Query strings can be simple as "x" or more qualified as:
+ *
+ *   * name:x
+ *   * column:x
+ *   * description:y
+ *
+ *   Note: Query tokens need to have a minimum of 3 characters for substring
+ *   matching to work correctly. See [Data Catalog Search
+ *   Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.
+ * @param {number} request.pageSize
+ *   Number of results in the search page. If <=0 then defaults to 10. Max limit
+ *   for page_size is 1000. Throws an invalid argument for page_size > 1000.
+ * @param {string} [request.pageToken]
+ *   Optional. Pagination token returned in an earlier
+ *   {@link google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token|SearchCatalogResponse.next_page_token},
+ *   which indicates that this is a continuation of a prior
+ *   {@link google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog|SearchCatalogRequest}
+ *   call, and that the system should return the next page of data. If empty,
+ *   the first page is returned.
+ * @param {string} request.orderBy
+ *   Specifies the ordering of results, currently supported case-sensitive
+ *   choices are:
+ *
+ *     * `relevance`, only supports descending
+ *     * `last_modified_timestamp [asc|desc]`, defaults to descending if not
+ *       specified
+ *
+ *   If not specified, defaults to `relevance` descending.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Object}
+ *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
+ */
   searchCatalogAsync(
-    request?: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
-    options?: gax.CallOptions
-  ): AsyncIterable<
-    protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-  > {
+      request?: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
+      options?: gax.CallOptions):
+    AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>{
     request = request || {};
     options = options || {};
     options = options || {};
@@ -2979,108 +2355,87 @@ export class DataCatalogClient {
     this.initialize();
     return this.descriptors.page.searchCatalog.asyncIterate(
       this.innerApiCalls['searchCatalog'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
-    ) as AsyncIterable<
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-    >;
+    ) as AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>;
   }
   listEntryGroups(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup[],
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup[],
+        protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
+      ]>;
   listEntryGroups(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup
-    >
-  ): void;
-  listEntryGroups(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup
-    >
-  ): void;
-  /**
-   * Lists entry groups.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the location that contains the entry groups, which
-   *   can be provided in URL format. Example:
-   *
-   *   * projects/{project_id}/locations/{location}
-   * @param {number} [request.pageSize]
-   *   Optional. The maximum number of items to return. Default is 10. Max limit
-   *   is 1000. Throws an invalid argument for `page_size > 1000`.
-   * @param {string} [request.pageToken]
-   *   Optional. Token that specifies which page is requested. If empty, the first
-   *   page is returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListEntryGroupsRequest]{@link google.cloud.datacatalog.v1beta1.ListEntryGroupsRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [ListEntryGroupsResponse]{@link google.cloud.datacatalog.v1beta1.ListEntryGroupsResponse}.
-   *
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  listEntryGroups(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | PaginationCallback<
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+      options: gax.CallOptions,
+      callback: PaginationCallback<
           protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-          | protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
-          | null
-          | undefined,
-          protos.google.cloud.datacatalog.v1beta1.IEntryGroup
-        >,
-    callback?: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntryGroup[],
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup>): void;
+  listEntryGroups(
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+      callback: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup>): void;
+/**
+ * Lists entry groups.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the location that contains the entry groups, which
+ *   can be provided in URL format. Example:
+ *
+ *   * projects/{project_id}/locations/{location}
+ * @param {number} [request.pageSize]
+ *   Optional. The maximum number of items to return. Default is 10. Max limit
+ *   is 1000. Throws an invalid argument for `page_size > 1000`.
+ * @param {string} [request.pageToken]
+ *   Optional. Token that specifies which page is requested. If empty, the first
+ *   page is returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is Array of [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup}.
+ *   The client library support auto-pagination by default: it will call the API as many
+ *   times as needed and will merge results from all the pages into this array.
+ *
+ *   When autoPaginate: false is specified through options, the array has three elements.
+ *   The first element is Array of [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup} that corresponds to
+ *   the one page received from the API server.
+ *   If the second element is not null it contains the request object of type [ListEntryGroupsRequest]{@link google.cloud.datacatalog.v1beta1.ListEntryGroupsRequest}
+ *   that can be used to obtain the next page of the results.
+ *   If it is null, the next page does not exist.
+ *   The third element contains the raw response received from the API server. Its type is
+ *   [ListEntryGroupsResponse]{@link google.cloud.datacatalog.v1beta1.ListEntryGroupsResponse}.
+ *
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  listEntryGroups(
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+      optionsOrCallback?: gax.CallOptions|PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup>,
+      callback?: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntryGroup>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntryGroup[],
+        protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsResponse
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -3089,47 +2444,47 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.listEntryGroups(request, options, callback);
   }
 
-  /**
-   * Equivalent to {@link listEntryGroups}, but returns a NodeJS Stream object.
-   *
-   * This fetches the paged responses for {@link listEntryGroups} continuously
-   * and invokes the callback registered for 'data' event for each element in the
-   * responses.
-   *
-   * The returned object has 'end' method when no more elements are required.
-   *
-   * autoPaginate option will be ignored.
-   *
-   * @see {@link https://nodejs.org/api/stream.html}
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the location that contains the entry groups, which
-   *   can be provided in URL format. Example:
-   *
-   *   * projects/{project_id}/locations/{location}
-   * @param {number} [request.pageSize]
-   *   Optional. The maximum number of items to return. Default is 10. Max limit
-   *   is 1000. Throws an invalid argument for `page_size > 1000`.
-   * @param {string} [request.pageToken]
-   *   Optional. Token that specifies which page is requested. If empty, the first
-   *   page is returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Stream}
-   *   An object stream which emits an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup} on 'data' event.
-   */
+/**
+ * Equivalent to {@link listEntryGroups}, but returns a NodeJS Stream object.
+ *
+ * This fetches the paged responses for {@link listEntryGroups} continuously
+ * and invokes the callback registered for 'data' event for each element in the
+ * responses.
+ *
+ * The returned object has 'end' method when no more elements are required.
+ *
+ * autoPaginate option will be ignored.
+ *
+ * @see {@link https://nodejs.org/api/stream.html}
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the location that contains the entry groups, which
+ *   can be provided in URL format. Example:
+ *
+ *   * projects/{project_id}/locations/{location}
+ * @param {number} [request.pageSize]
+ *   Optional. The maximum number of items to return. Default is 10. Max limit
+ *   is 1000. Throws an invalid argument for `page_size > 1000`.
+ * @param {string} [request.pageToken]
+ *   Optional. Token that specifies which page is requested. If empty, the first
+ *   page is returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Stream}
+ *   An object stream which emits an object representing [EntryGroup]{@link google.cloud.datacatalog.v1beta1.EntryGroup} on 'data' event.
+ */
   listEntryGroupsStream(
-    request?: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-    options?: gax.CallOptions
-  ): Transform {
+      request?: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+      options?: gax.CallOptions):
+    Transform{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -3137,7 +2492,7 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
@@ -3148,33 +2503,33 @@ export class DataCatalogClient {
     );
   }
 
-  /**
-   * Equivalent to {@link listEntryGroups}, but returns an iterable object.
-   *
-   * for-await-of syntax is used with the iterable to recursively get response element on-demand.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the location that contains the entry groups, which
-   *   can be provided in URL format. Example:
-   *
-   *   * projects/{project_id}/locations/{location}
-   * @param {number} [request.pageSize]
-   *   Optional. The maximum number of items to return. Default is 10. Max limit
-   *   is 1000. Throws an invalid argument for `page_size > 1000`.
-   * @param {string} [request.pageToken]
-   *   Optional. Token that specifies which page is requested. If empty, the first
-   *   page is returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Object}
-   *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
-   */
+/**
+ * Equivalent to {@link listEntryGroups}, but returns an iterable object.
+ *
+ * for-await-of syntax is used with the iterable to recursively get response element on-demand.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the location that contains the entry groups, which
+ *   can be provided in URL format. Example:
+ *
+ *   * projects/{project_id}/locations/{location}
+ * @param {number} [request.pageSize]
+ *   Optional. The maximum number of items to return. Default is 10. Max limit
+ *   is 1000. Throws an invalid argument for `page_size > 1000`.
+ * @param {string} [request.pageToken]
+ *   Optional. Token that specifies which page is requested. If empty, the first
+ *   page is returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Object}
+ *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
+ */
   listEntryGroupsAsync(
-    request?: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
-    options?: gax.CallOptions
-  ): AsyncIterable<protos.google.cloud.datacatalog.v1beta1.IEntryGroup> {
+      request?: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
+      options?: gax.CallOptions):
+    AsyncIterable<protos.google.cloud.datacatalog.v1beta1.IEntryGroup>{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -3182,118 +2537,99 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
     return this.descriptors.page.listEntryGroups.asyncIterate(
       this.innerApiCalls['listEntryGroups'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
     ) as AsyncIterable<protos.google.cloud.datacatalog.v1beta1.IEntryGroup>;
   }
   listEntries(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry[],
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry[],
+        protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
+      ]>;
   listEntries(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.IEntry
-    >
-  ): void;
-  listEntries(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.IEntry
-    >
-  ): void;
-  /**
-   * Lists entries.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the entry group that contains the entries, which can
-   *   be provided in URL format. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   * @param {number} request.pageSize
-   *   The maximum number of items to return. Default is 10. Max limit is 1000.
-   *   Throws an invalid argument for `page_size > 1000`.
-   * @param {string} request.pageToken
-   *   Token that specifies which page is requested. If empty, the first page is
-   *   returned.
-   * @param {google.protobuf.FieldMask} request.readMask
-   *   The fields to return for each Entry. If not set or empty, all
-   *   fields are returned.
-   *   For example, setting read_mask to contain only one path "name" will cause
-   *   ListEntries to return a list of Entries with only "name" field.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [Entry]{@link google.cloud.datacatalog.v1beta1.Entry} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListEntriesRequest]{@link google.cloud.datacatalog.v1beta1.ListEntriesRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [ListEntriesResponse]{@link google.cloud.datacatalog.v1beta1.ListEntriesResponse}.
-   *
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  listEntries(
-    request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | PaginationCallback<
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+      options: gax.CallOptions,
+      callback: PaginationCallback<
           protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-          | protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
-          | null
-          | undefined,
-          protos.google.cloud.datacatalog.v1beta1.IEntry
-        >,
-    callback?: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.IEntry
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.IEntry[],
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntry>): void;
+  listEntries(
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+      callback: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntry>): void;
+/**
+ * Lists entries.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the entry group that contains the entries, which can
+ *   be provided in URL format. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ * @param {number} request.pageSize
+ *   The maximum number of items to return. Default is 10. Max limit is 1000.
+ *   Throws an invalid argument for `page_size > 1000`.
+ * @param {string} request.pageToken
+ *   Token that specifies which page is requested. If empty, the first page is
+ *   returned.
+ * @param {google.protobuf.FieldMask} request.readMask
+ *   The fields to return for each Entry. If not set or empty, all
+ *   fields are returned.
+ *   For example, setting read_mask to contain only one path "name" will cause
+ *   ListEntries to return a list of Entries with only "name" field.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is Array of [Entry]{@link google.cloud.datacatalog.v1beta1.Entry}.
+ *   The client library support auto-pagination by default: it will call the API as many
+ *   times as needed and will merge results from all the pages into this array.
+ *
+ *   When autoPaginate: false is specified through options, the array has three elements.
+ *   The first element is Array of [Entry]{@link google.cloud.datacatalog.v1beta1.Entry} that corresponds to
+ *   the one page received from the API server.
+ *   If the second element is not null it contains the request object of type [ListEntriesRequest]{@link google.cloud.datacatalog.v1beta1.ListEntriesRequest}
+ *   that can be used to obtain the next page of the results.
+ *   If it is null, the next page does not exist.
+ *   The third element contains the raw response received from the API server. Its type is
+ *   [ListEntriesResponse]{@link google.cloud.datacatalog.v1beta1.ListEntriesResponse}.
+ *
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  listEntries(
+      request: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+      optionsOrCallback?: gax.CallOptions|PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntry>,
+      callback?: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.IEntry>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.IEntry[],
+        protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.IListEntriesResponse
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -3302,52 +2638,52 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.listEntries(request, options, callback);
   }
 
-  /**
-   * Equivalent to {@link listEntries}, but returns a NodeJS Stream object.
-   *
-   * This fetches the paged responses for {@link listEntries} continuously
-   * and invokes the callback registered for 'data' event for each element in the
-   * responses.
-   *
-   * The returned object has 'end' method when no more elements are required.
-   *
-   * autoPaginate option will be ignored.
-   *
-   * @see {@link https://nodejs.org/api/stream.html}
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the entry group that contains the entries, which can
-   *   be provided in URL format. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   * @param {number} request.pageSize
-   *   The maximum number of items to return. Default is 10. Max limit is 1000.
-   *   Throws an invalid argument for `page_size > 1000`.
-   * @param {string} request.pageToken
-   *   Token that specifies which page is requested. If empty, the first page is
-   *   returned.
-   * @param {google.protobuf.FieldMask} request.readMask
-   *   The fields to return for each Entry. If not set or empty, all
-   *   fields are returned.
-   *   For example, setting read_mask to contain only one path "name" will cause
-   *   ListEntries to return a list of Entries with only "name" field.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Stream}
-   *   An object stream which emits an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry} on 'data' event.
-   */
+/**
+ * Equivalent to {@link listEntries}, but returns a NodeJS Stream object.
+ *
+ * This fetches the paged responses for {@link listEntries} continuously
+ * and invokes the callback registered for 'data' event for each element in the
+ * responses.
+ *
+ * The returned object has 'end' method when no more elements are required.
+ *
+ * autoPaginate option will be ignored.
+ *
+ * @see {@link https://nodejs.org/api/stream.html}
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the entry group that contains the entries, which can
+ *   be provided in URL format. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ * @param {number} request.pageSize
+ *   The maximum number of items to return. Default is 10. Max limit is 1000.
+ *   Throws an invalid argument for `page_size > 1000`.
+ * @param {string} request.pageToken
+ *   Token that specifies which page is requested. If empty, the first page is
+ *   returned.
+ * @param {google.protobuf.FieldMask} request.readMask
+ *   The fields to return for each Entry. If not set or empty, all
+ *   fields are returned.
+ *   For example, setting read_mask to contain only one path "name" will cause
+ *   ListEntries to return a list of Entries with only "name" field.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Stream}
+ *   An object stream which emits an object representing [Entry]{@link google.cloud.datacatalog.v1beta1.Entry} on 'data' event.
+ */
   listEntriesStream(
-    request?: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-    options?: gax.CallOptions
-  ): Transform {
+      request?: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+      options?: gax.CallOptions):
+    Transform{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -3355,7 +2691,7 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
@@ -3366,38 +2702,38 @@ export class DataCatalogClient {
     );
   }
 
-  /**
-   * Equivalent to {@link listEntries}, but returns an iterable object.
-   *
-   * for-await-of syntax is used with the iterable to recursively get response element on-demand.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the entry group that contains the entries, which can
-   *   be provided in URL format. Example:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   * @param {number} request.pageSize
-   *   The maximum number of items to return. Default is 10. Max limit is 1000.
-   *   Throws an invalid argument for `page_size > 1000`.
-   * @param {string} request.pageToken
-   *   Token that specifies which page is requested. If empty, the first page is
-   *   returned.
-   * @param {google.protobuf.FieldMask} request.readMask
-   *   The fields to return for each Entry. If not set or empty, all
-   *   fields are returned.
-   *   For example, setting read_mask to contain only one path "name" will cause
-   *   ListEntries to return a list of Entries with only "name" field.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Object}
-   *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
-   */
+/**
+ * Equivalent to {@link listEntries}, but returns an iterable object.
+ *
+ * for-await-of syntax is used with the iterable to recursively get response element on-demand.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the entry group that contains the entries, which can
+ *   be provided in URL format. Example:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ * @param {number} request.pageSize
+ *   The maximum number of items to return. Default is 10. Max limit is 1000.
+ *   Throws an invalid argument for `page_size > 1000`.
+ * @param {string} request.pageToken
+ *   Token that specifies which page is requested. If empty, the first page is
+ *   returned.
+ * @param {google.protobuf.FieldMask} request.readMask
+ *   The fields to return for each Entry. If not set or empty, all
+ *   fields are returned.
+ *   For example, setting read_mask to contain only one path "name" will cause
+ *   ListEntries to return a list of Entries with only "name" field.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Object}
+ *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
+ */
   listEntriesAsync(
-    request?: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
-    options?: gax.CallOptions
-  ): AsyncIterable<protos.google.cloud.datacatalog.v1beta1.IEntry> {
+      request?: protos.google.cloud.datacatalog.v1beta1.IListEntriesRequest,
+      options?: gax.CallOptions):
+    AsyncIterable<protos.google.cloud.datacatalog.v1beta1.IEntry>{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -3405,116 +2741,97 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
     return this.descriptors.page.listEntries.asyncIterate(
       this.innerApiCalls['listEntries'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
     ) as AsyncIterable<protos.google.cloud.datacatalog.v1beta1.IEntry>;
   }
   listTags(
-    request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITag[],
-      protos.google.cloud.datacatalog.v1beta1.IListTagsRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
-    ]
-  >;
+      request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITag[],
+        protos.google.cloud.datacatalog.v1beta1.IListTagsRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
+      ]>;
   listTags(
-    request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.ITag
-    >
-  ): void;
-  listTags(
-    request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-    callback: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.ITag
-    >
-  ): void;
-  /**
-   * Lists the tags on an {@link google.cloud.datacatalog.v1beta1.Entry|Entry}.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the Data Catalog resource to list the tags of. The
-   *   resource could be an {@link google.cloud.datacatalog.v1beta1.Entry|Entry} or an
-   *   {@link google.cloud.datacatalog.v1beta1.EntryGroup|EntryGroup}.
-   *
-   *   Examples:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
-   * @param {number} request.pageSize
-   *   The maximum number of tags to return. Default is 10. Max limit is 1000.
-   * @param {string} request.pageToken
-   *   Token that specifies which page is requested. If empty, the first page is
-   *   returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [Tag]{@link google.cloud.datacatalog.v1beta1.Tag}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [Tag]{@link google.cloud.datacatalog.v1beta1.Tag} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListTagsRequest]{@link google.cloud.datacatalog.v1beta1.ListTagsRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [ListTagsResponse]{@link google.cloud.datacatalog.v1beta1.ListTagsResponse}.
-   *
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  listTags(
-    request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | PaginationCallback<
+      request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+      options: gax.CallOptions,
+      callback: PaginationCallback<
           protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-          | protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
-          | null
-          | undefined,
-          protos.google.cloud.datacatalog.v1beta1.ITag
-        >,
-    callback?: PaginationCallback<
-      protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-      | protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
-      | null
-      | undefined,
-      protos.google.cloud.datacatalog.v1beta1.ITag
-    >
-  ): Promise<
-    [
-      protos.google.cloud.datacatalog.v1beta1.ITag[],
-      protos.google.cloud.datacatalog.v1beta1.IListTagsRequest | null,
-      protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
-    ]
-  > | void {
+          protos.google.cloud.datacatalog.v1beta1.IListTagsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ITag>): void;
+  listTags(
+      request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+      callback: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListTagsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ITag>): void;
+/**
+ * Lists the tags on an {@link google.cloud.datacatalog.v1beta1.Entry|Entry}.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the Data Catalog resource to list the tags of. The
+ *   resource could be an {@link google.cloud.datacatalog.v1beta1.Entry|Entry} or an
+ *   {@link google.cloud.datacatalog.v1beta1.EntryGroup|EntryGroup}.
+ *
+ *   Examples:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+ * @param {number} request.pageSize
+ *   The maximum number of tags to return. Default is 10. Max limit is 1000.
+ * @param {string} request.pageToken
+ *   Token that specifies which page is requested. If empty, the first page is
+ *   returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is Array of [Tag]{@link google.cloud.datacatalog.v1beta1.Tag}.
+ *   The client library support auto-pagination by default: it will call the API as many
+ *   times as needed and will merge results from all the pages into this array.
+ *
+ *   When autoPaginate: false is specified through options, the array has three elements.
+ *   The first element is Array of [Tag]{@link google.cloud.datacatalog.v1beta1.Tag} that corresponds to
+ *   the one page received from the API server.
+ *   If the second element is not null it contains the request object of type [ListTagsRequest]{@link google.cloud.datacatalog.v1beta1.ListTagsRequest}
+ *   that can be used to obtain the next page of the results.
+ *   If it is null, the next page does not exist.
+ *   The third element contains the raw response received from the API server. Its type is
+ *   [ListTagsResponse]{@link google.cloud.datacatalog.v1beta1.ListTagsResponse}.
+ *
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  listTags(
+      request: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+      optionsOrCallback?: gax.CallOptions|PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListTagsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ITag>,
+      callback?: PaginationCallback<
+          protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+          protos.google.cloud.datacatalog.v1beta1.IListTagsResponse|null|undefined,
+          protos.google.cloud.datacatalog.v1beta1.ITag>):
+      Promise<[
+        protos.google.cloud.datacatalog.v1beta1.ITag[],
+        protos.google.cloud.datacatalog.v1beta1.IListTagsRequest|null,
+        protos.google.cloud.datacatalog.v1beta1.IListTagsResponse
+      ]>|void {
     request = request || {};
     let options: gax.CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as gax.CallOptions;
     }
     options = options || {};
@@ -3523,50 +2840,50 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.listTags(request, options, callback);
   }
 
-  /**
-   * Equivalent to {@link listTags}, but returns a NodeJS Stream object.
-   *
-   * This fetches the paged responses for {@link listTags} continuously
-   * and invokes the callback registered for 'data' event for each element in the
-   * responses.
-   *
-   * The returned object has 'end' method when no more elements are required.
-   *
-   * autoPaginate option will be ignored.
-   *
-   * @see {@link https://nodejs.org/api/stream.html}
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the Data Catalog resource to list the tags of. The
-   *   resource could be an {@link google.cloud.datacatalog.v1beta1.Entry|Entry} or an
-   *   {@link google.cloud.datacatalog.v1beta1.EntryGroup|EntryGroup}.
-   *
-   *   Examples:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
-   * @param {number} request.pageSize
-   *   The maximum number of tags to return. Default is 10. Max limit is 1000.
-   * @param {string} request.pageToken
-   *   Token that specifies which page is requested. If empty, the first page is
-   *   returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Stream}
-   *   An object stream which emits an object representing [Tag]{@link google.cloud.datacatalog.v1beta1.Tag} on 'data' event.
-   */
+/**
+ * Equivalent to {@link listTags}, but returns a NodeJS Stream object.
+ *
+ * This fetches the paged responses for {@link listTags} continuously
+ * and invokes the callback registered for 'data' event for each element in the
+ * responses.
+ *
+ * The returned object has 'end' method when no more elements are required.
+ *
+ * autoPaginate option will be ignored.
+ *
+ * @see {@link https://nodejs.org/api/stream.html}
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the Data Catalog resource to list the tags of. The
+ *   resource could be an {@link google.cloud.datacatalog.v1beta1.Entry|Entry} or an
+ *   {@link google.cloud.datacatalog.v1beta1.EntryGroup|EntryGroup}.
+ *
+ *   Examples:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+ * @param {number} request.pageSize
+ *   The maximum number of tags to return. Default is 10. Max limit is 1000.
+ * @param {string} request.pageToken
+ *   Token that specifies which page is requested. If empty, the first page is
+ *   returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Stream}
+ *   An object stream which emits an object representing [Tag]{@link google.cloud.datacatalog.v1beta1.Tag} on 'data' event.
+ */
   listTagsStream(
-    request?: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-    options?: gax.CallOptions
-  ): Transform {
+      request?: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+      options?: gax.CallOptions):
+    Transform{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -3574,7 +2891,7 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
@@ -3585,36 +2902,36 @@ export class DataCatalogClient {
     );
   }
 
-  /**
-   * Equivalent to {@link listTags}, but returns an iterable object.
-   *
-   * for-await-of syntax is used with the iterable to recursively get response element on-demand.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The name of the Data Catalog resource to list the tags of. The
-   *   resource could be an {@link google.cloud.datacatalog.v1beta1.Entry|Entry} or an
-   *   {@link google.cloud.datacatalog.v1beta1.EntryGroup|EntryGroup}.
-   *
-   *   Examples:
-   *
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
-   *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
-   * @param {number} request.pageSize
-   *   The maximum number of tags to return. Default is 10. Max limit is 1000.
-   * @param {string} request.pageToken
-   *   Token that specifies which page is requested. If empty, the first page is
-   *   returned.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Object}
-   *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
-   */
+/**
+ * Equivalent to {@link listTags}, but returns an iterable object.
+ *
+ * for-await-of syntax is used with the iterable to recursively get response element on-demand.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The name of the Data Catalog resource to list the tags of. The
+ *   resource could be an {@link google.cloud.datacatalog.v1beta1.Entry|Entry} or an
+ *   {@link google.cloud.datacatalog.v1beta1.EntryGroup|EntryGroup}.
+ *
+ *   Examples:
+ *
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
+ *   * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+ * @param {number} request.pageSize
+ *   The maximum number of tags to return. Default is 10. Max limit is 1000.
+ * @param {string} request.pageToken
+ *   Token that specifies which page is requested. If empty, the first page is
+ *   returned.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Object}
+ *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
+ */
   listTagsAsync(
-    request?: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
-    options?: gax.CallOptions
-  ): AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ITag> {
+      request?: protos.google.cloud.datacatalog.v1beta1.IListTagsRequest,
+      options?: gax.CallOptions):
+    AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ITag>{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -3622,14 +2939,14 @@ export class DataCatalogClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
     return this.descriptors.page.listTags.asyncIterate(
       this.innerApiCalls['listTags'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
     ) as AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ITag>;
   }
@@ -3646,12 +2963,7 @@ export class DataCatalogClient {
    * @param {string} entry
    * @returns {string} Resource name string.
    */
-  entryPath(
-    project: string,
-    location: string,
-    entryGroup: string,
-    entry: string
-  ) {
+  entryPath(project:string,location:string,entryGroup:string,entry:string) {
     return this.pathTemplates.entryPathTemplate.render({
       project: project,
       location: location,
@@ -3712,7 +3024,7 @@ export class DataCatalogClient {
    * @param {string} entry_group
    * @returns {string} Resource name string.
    */
-  entryGroupPath(project: string, location: string, entryGroup: string) {
+  entryGroupPath(project:string,location:string,entryGroup:string) {
     return this.pathTemplates.entryGroupPathTemplate.render({
       project: project,
       location: location,
@@ -3728,8 +3040,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromEntryGroupName(entryGroupName: string) {
-    return this.pathTemplates.entryGroupPathTemplate.match(entryGroupName)
-      .project;
+    return this.pathTemplates.entryGroupPathTemplate.match(entryGroupName).project;
   }
 
   /**
@@ -3740,8 +3051,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromEntryGroupName(entryGroupName: string) {
-    return this.pathTemplates.entryGroupPathTemplate.match(entryGroupName)
-      .location;
+    return this.pathTemplates.entryGroupPathTemplate.match(entryGroupName).location;
   }
 
   /**
@@ -3752,8 +3062,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the entry_group.
    */
   matchEntryGroupFromEntryGroupName(entryGroupName: string) {
-    return this.pathTemplates.entryGroupPathTemplate.match(entryGroupName)
-      .entry_group;
+    return this.pathTemplates.entryGroupPathTemplate.match(entryGroupName).entry_group;
   }
 
   /**
@@ -3763,7 +3072,7 @@ export class DataCatalogClient {
    * @param {string} location
    * @returns {string} Resource name string.
    */
-  locationPath(project: string, location: string) {
+  locationPath(project:string,location:string) {
     return this.pathTemplates.locationPathTemplate.render({
       project: project,
       location: location,
@@ -3801,12 +3110,7 @@ export class DataCatalogClient {
    * @param {string} policy_tag
    * @returns {string} Resource name string.
    */
-  policyTagPath(
-    project: string,
-    location: string,
-    taxonomy: string,
-    policyTag: string
-  ) {
+  policyTagPath(project:string,location:string,taxonomy:string,policyTag:string) {
     return this.pathTemplates.policyTagPathTemplate.render({
       project: project,
       location: location,
@@ -3823,8 +3127,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromPolicyTagName(policyTagName: string) {
-    return this.pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .project;
+    return this.pathTemplates.policyTagPathTemplate.match(policyTagName).project;
   }
 
   /**
@@ -3835,8 +3138,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromPolicyTagName(policyTagName: string) {
-    return this.pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .location;
+    return this.pathTemplates.policyTagPathTemplate.match(policyTagName).location;
   }
 
   /**
@@ -3847,8 +3149,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the taxonomy.
    */
   matchTaxonomyFromPolicyTagName(policyTagName: string) {
-    return this.pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .taxonomy;
+    return this.pathTemplates.policyTagPathTemplate.match(policyTagName).taxonomy;
   }
 
   /**
@@ -3859,8 +3160,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the policy_tag.
    */
   matchPolicyTagFromPolicyTagName(policyTagName: string) {
-    return this.pathTemplates.policyTagPathTemplate.match(policyTagName)
-      .policy_tag;
+    return this.pathTemplates.policyTagPathTemplate.match(policyTagName).policy_tag;
   }
 
   /**
@@ -3869,7 +3169,7 @@ export class DataCatalogClient {
    * @param {string} project
    * @returns {string} Resource name string.
    */
-  projectPath(project: string) {
+  projectPath(project:string) {
     return this.pathTemplates.projectPathTemplate.render({
       project: project,
     });
@@ -3896,13 +3196,7 @@ export class DataCatalogClient {
    * @param {string} tag
    * @returns {string} Resource name string.
    */
-  tagPath(
-    project: string,
-    location: string,
-    entryGroup: string,
-    entry: string,
-    tag: string
-  ) {
+  tagPath(project:string,location:string,entryGroup:string,entry:string,tag:string) {
     return this.pathTemplates.tagPathTemplate.render({
       project: project,
       location: location,
@@ -3975,7 +3269,7 @@ export class DataCatalogClient {
    * @param {string} tag_template
    * @returns {string} Resource name string.
    */
-  tagTemplatePath(project: string, location: string, tagTemplate: string) {
+  tagTemplatePath(project:string,location:string,tagTemplate:string) {
     return this.pathTemplates.tagTemplatePathTemplate.render({
       project: project,
       location: location,
@@ -3991,8 +3285,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromTagTemplateName(tagTemplateName: string) {
-    return this.pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
-      .project;
+    return this.pathTemplates.tagTemplatePathTemplate.match(tagTemplateName).project;
   }
 
   /**
@@ -4003,8 +3296,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromTagTemplateName(tagTemplateName: string) {
-    return this.pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
-      .location;
+    return this.pathTemplates.tagTemplatePathTemplate.match(tagTemplateName).location;
   }
 
   /**
@@ -4015,8 +3307,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the tag_template.
    */
   matchTagTemplateFromTagTemplateName(tagTemplateName: string) {
-    return this.pathTemplates.tagTemplatePathTemplate.match(tagTemplateName)
-      .tag_template;
+    return this.pathTemplates.tagTemplatePathTemplate.match(tagTemplateName).tag_template;
   }
 
   /**
@@ -4028,12 +3319,7 @@ export class DataCatalogClient {
    * @param {string} field
    * @returns {string} Resource name string.
    */
-  tagTemplateFieldPath(
-    project: string,
-    location: string,
-    tagTemplate: string,
-    field: string
-  ) {
+  tagTemplateFieldPath(project:string,location:string,tagTemplate:string,field:string) {
     return this.pathTemplates.tagTemplateFieldPathTemplate.render({
       project: project,
       location: location,
@@ -4050,9 +3336,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this.pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).project;
+    return this.pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).project;
   }
 
   /**
@@ -4063,9 +3347,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this.pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).location;
+    return this.pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).location;
   }
 
   /**
@@ -4076,9 +3358,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the tag_template.
    */
   matchTagTemplateFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this.pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).tag_template;
+    return this.pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).tag_template;
   }
 
   /**
@@ -4089,9 +3369,7 @@ export class DataCatalogClient {
    * @returns {string} A string representing the field.
    */
   matchFieldFromTagTemplateFieldName(tagTemplateFieldName: string) {
-    return this.pathTemplates.tagTemplateFieldPathTemplate.match(
-      tagTemplateFieldName
-    ).field;
+    return this.pathTemplates.tagTemplateFieldPathTemplate.match(tagTemplateFieldName).field;
   }
 
   /**
@@ -4102,7 +3380,7 @@ export class DataCatalogClient {
    * @param {string} taxonomy
    * @returns {string} Resource name string.
    */
-  taxonomyPath(project: string, location: string, taxonomy: string) {
+  taxonomyPath(project:string,location:string,taxonomy:string) {
     return this.pathTemplates.taxonomyPathTemplate.render({
       project: project,
       location: location,
