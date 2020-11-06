@@ -20,6 +20,7 @@ import * as v1 from './v1';
 import * as v1beta1 from './v1beta1';
 
 const DataCatalogClient = v1.DataCatalogClient;
+type DataCatalogClient = v1.DataCatalogClient;
 const PolicyTagManagerClient = v1beta1.PolicyTagManagerClient;
 const PolicyTagManagerSerializationClient =
   v1beta1.PolicyTagManagerSerializationClient;
