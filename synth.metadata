@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/nodejs-datacatalog.git",
-        "sha": "afeda4fc20a5ec2b4229e96fd3f026addb49b55d"
+        "sha": "b44fdb110b252944b9e3037fded40c2f44a55d74"
       }
     },
     {
