@@ -3,8 +3,16 @@
     {
       "git": {
         "name": ".",
-        "remote": "git@github.com:googleapis/nodejs-datacatalog.git",
-        "sha": "b44fdb110b252944b9e3037fded40c2f44a55d74"
+        "remote": "https://github.com/googleapis/nodejs-datacatalog.git",
+        "sha": "4dad92a4781e0bf3b6bd799ca0aefe94b10e6254"
+      }
+    },
+    {
+      "git": {
+        "name": "googleapis",
+        "remote": "https://github.com/googleapis/googleapis.git",
+        "sha": "836f0eaf5f21f300f63ac635e5ef263d183e0cdd",
+        "internalRef": "342188199"
       }
     },
     {
@@ -87,7 +95,6 @@
     "LICENSE",
     "README.md",
     "api-extractor.json",
-    "package-lock.json.2401090590",
     "protos/google/cloud/datacatalog/v1/common.proto",
     "protos/google/cloud/datacatalog/v1/datacatalog.proto",
     "protos/google/cloud/datacatalog/v1/gcs_fileset_spec.proto",
@@ -110,7 +117,6 @@
     "protos/protos.js",
     "protos/protos.json",
     "renovate.json",
-    "samples/package-lock.json.292908405",
     "src/index.ts",
     "src/v1/data_catalog_client.ts",
     "src/v1/data_catalog_client_config.json",
