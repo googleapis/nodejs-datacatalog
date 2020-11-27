@@ -3086,9 +3086,8 @@ export class DataCatalogClient {
   searchCatalogAsync(
     request?: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
     options?: gax.CallOptions
-  ): AsyncIterable<
-    protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-  > {
+  ): AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult> 
+  {
     request = request || {};
     options = options || {};
     options = options || {};
@@ -3099,8 +3098,7 @@ export class DataCatalogClient {
       (request as unknown) as RequestType,
       callSettings
     ) as AsyncIterable<
-      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult
-    >;
+      protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>;
   }
   listEntryGroups(
     request: protos.google.cloud.datacatalog.v1beta1.IListEntryGroupsRequest,
