@@ -3086,8 +3086,7 @@ export class DataCatalogClient {
   searchCatalogAsync(
     request?: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogRequest,
     options?: gax.CallOptions
-  ): AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult>
-  {
+  ): AsyncIterable<protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult> {
     request = request || {};
     options = options || {};
     options = options || {};
