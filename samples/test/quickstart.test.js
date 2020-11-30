@@ -32,22 +32,18 @@ const generateUuid = () =>
 
 describe('Quickstart', async () => {
   const projectId = await datacatalog.getProjectId();
-  console.log('PROJECT: ', projectId);
   let datasetId;
   let tableId;
 
   before(async () => {
     // Delete any stale datasets from samples tests
     await deleteDatasets();
-    console.log('datasets deleted');
 
     // Create BigQuery dataset & table.
     datasetId = generateUuid();
     tableId = generateUuid();
     await bigquery.createDataset(datasetId);
-    console.log('dataset created');
     await bigquery.dataset(datasetId).createTable(tableId);
-    console.log('table created');
   });
 
   it('quickstart should attach tag to BigQuery table', async () => {

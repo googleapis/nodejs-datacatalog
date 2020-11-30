@@ -100,7 +100,6 @@ async function main(projectId, entryGroupId, entryId, tagTemplateId) {
     const [createdEntryGroup] = await datacatalog.createEntryGroup(
       entryGroupRequest
     );
-    // console.log(createdEntryGroup)
     console.log(`Created entry group: ${createdEntryGroup.name}`);
 
     // Construct the Entry for the Entry request.
