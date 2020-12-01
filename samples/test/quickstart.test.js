@@ -18,10 +18,8 @@ const {assert} = require('chai');
 const {describe, it, before} = require('mocha');
 const uuid = require('uuid');
 const cp = require('child_process');
-const {DataCatalogClient} = require('@google-cloud/datacatalog').v1;
 const {BigQuery} = require('@google-cloud/bigquery');
 
-const datacatalog = new DataCatalogClient();
 const bigquery = new BigQuery();
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
