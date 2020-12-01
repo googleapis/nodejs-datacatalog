@@ -29,7 +29,7 @@ const generateUuid = () =>
 
 describe('Samples', async () => {
   const TAG_TEMPLATE_ID = `${GCLOUD_TESTS_PREFIX}_test_tag_template`;
-  const projectId = await datacatalog.getProjectId();
+  const projectId = process.env.GCLOUD_PROJECT;
   const location = 'us-central1';
 
   before(async () => {

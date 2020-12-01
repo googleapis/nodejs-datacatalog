@@ -31,7 +31,7 @@ const generateUuid = () =>
   `${GCLOUD_TESTS_PREFIX}_${uuid.v4()}`.replace(/-/gi, '_');
 
 describe('Quickstart', async () => {
-  const projectId = await datacatalog.getProjectId();
+  const projectId = process.env.GCLOUD_PROJECT;
   let datasetId;
   let tableId;
 
