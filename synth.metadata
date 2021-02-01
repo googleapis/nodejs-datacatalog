@@ -3,23 +3,16 @@
     {
       "git": {
         "name": ".",
-        "remote": "https://github.com/googleapis/nodejs-datacatalog.git",
-        "sha": "8a0d86820d2b98d1d9e0104c779067063d0def78"
+        "remote": "git@github.com:googleapis/nodejs-datacatalog.git",
+        "sha": "babd810649f87c21bbe07c1cc9d26024ee4e6f48"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "30eb779ddcc4f389df34d0802d081ef6c4559d6d",
-        "internalRef": "354462069"
-      }
-    },
-    {
-      "git": {
-        "name": "synthtool",
-        "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "1f1148d3c7a7a52f0c98077f976bd9b3c948ee2b"
+        "sha": "20712b8fe95001b312f62c6c5f33e3e3ec92cfaf",
+        "internalRef": "354996675"
       }
     }
   ],
