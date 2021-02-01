@@ -22,9 +22,10 @@ import * as v1beta1 from './v1beta1';
 const DataCatalogClient = v1.DataCatalogClient;
 type DataCatalogClient = v1.DataCatalogClient;
 const PolicyTagManagerClient = v1beta1.PolicyTagManagerClient;
+type PolicyTagManagerClient = v1beta1.PolicyTagManagerClient;
 const PolicyTagManagerSerializationClient =
   v1beta1.PolicyTagManagerSerializationClient;
-
+type PolicyTagManagerSerializationClient = v1beta1.PolicyTagManagerSerializationClient;
 export {
   v1,
   v1beta1,
@@ -39,5 +40,3 @@ export default {
   PolicyTagManagerClient,
   PolicyTagManagerSerializationClient,
 };
-import * as protos from '../protos/protos';
-export {protos};
