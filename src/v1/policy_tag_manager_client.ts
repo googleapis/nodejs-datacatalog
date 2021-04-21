@@ -857,11 +857,12 @@ export class PolicyTagManagerClient {
     >
   ): void;
   /**
-   * Deletes a policy tag. This method also deletes
-   *   - all of its descendant policy tags, if any,
-   *   - the policies associated with the policy tag and its descendants, and
-   *   - references from BigQuery table schema of the policy tag and its
-   *     descendants.
+   * Deletes a policy tag. This method also deletes:
+   *
+   * * all of its descendant policy tags, if any
+   * * the policies associated with the policy tag and its descendants
+   * * references from BigQuery table schema of the policy tag and its
+   *   descendants.
    *
    * @param {Object} request
    *   The request object that will be sent.
