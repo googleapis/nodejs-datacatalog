@@ -28,9 +28,10 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (
-    instance.constructor as typeof protobuf.Message
-  ).toObject(instance as protobuf.Message<T>, {defaults: true});
+  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
+    instance as protobuf.Message<T>,
+    {defaults: true}
+  );
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -246,8 +247,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.EntryGroup()
       );
-      client.innerApiCalls.createEntryGroup =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createEntryGroup = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createEntryGroup(
           request,
@@ -359,8 +361,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.EntryGroup()
       );
-      client.innerApiCalls.updateEntryGroup =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updateEntryGroup = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updateEntryGroup(
           request,
@@ -471,8 +474,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.EntryGroup()
       );
-      client.innerApiCalls.getEntryGroup =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getEntryGroup = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getEntryGroup(
           request,
@@ -582,8 +586,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteEntryGroup =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteEntryGroup = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteEntryGroup(
           request,
@@ -693,8 +698,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Entry()
       );
-      client.innerApiCalls.createEntry =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createEntry = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createEntry(
           request,
@@ -806,8 +812,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Entry()
       );
-      client.innerApiCalls.updateEntry =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updateEntry = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updateEntry(
           request,
@@ -918,8 +925,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteEntry =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteEntry = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteEntry(
           request,
@@ -1029,8 +1037,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Entry()
       );
-      client.innerApiCalls.getEntry =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getEntry = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getEntry(
           request,
@@ -1121,8 +1130,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Entry()
       );
-      client.innerApiCalls.lookupEntry =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.lookupEntry = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.lookupEntry(
           request,
@@ -1224,8 +1234,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplate()
       );
-      client.innerApiCalls.createTagTemplate =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createTagTemplate = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createTagTemplate(
           request,
@@ -1335,8 +1346,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplate()
       );
-      client.innerApiCalls.getTagTemplate =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getTagTemplate = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getTagTemplate(
           request,
@@ -1448,8 +1460,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplate()
       );
-      client.innerApiCalls.updateTagTemplate =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updateTagTemplate = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updateTagTemplate(
           request,
@@ -1560,8 +1573,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteTagTemplate =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteTagTemplate = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteTagTemplate(
           request,
@@ -1640,8 +1654,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplateField()
       );
-      client.innerApiCalls.createTagTemplateField =
-        stubSimpleCall(expectedResponse);
+      client.innerApiCalls.createTagTemplateField = stubSimpleCall(
+        expectedResponse
+      );
       const [response] = await client.createTagTemplateField(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -1672,8 +1687,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplateField()
       );
-      client.innerApiCalls.createTagTemplateField =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createTagTemplateField = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createTagTemplateField(
           request,
@@ -1755,8 +1771,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplateField()
       );
-      client.innerApiCalls.updateTagTemplateField =
-        stubSimpleCall(expectedResponse);
+      client.innerApiCalls.updateTagTemplateField = stubSimpleCall(
+        expectedResponse
+      );
       const [response] = await client.updateTagTemplateField(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -1787,8 +1804,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplateField()
       );
-      client.innerApiCalls.updateTagTemplateField =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updateTagTemplateField = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updateTagTemplateField(
           request,
@@ -1870,8 +1888,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplateField()
       );
-      client.innerApiCalls.renameTagTemplateField =
-        stubSimpleCall(expectedResponse);
+      client.innerApiCalls.renameTagTemplateField = stubSimpleCall(
+        expectedResponse
+      );
       const [response] = await client.renameTagTemplateField(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -1902,8 +1921,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.TagTemplateField()
       );
-      client.innerApiCalls.renameTagTemplateField =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.renameTagTemplateField = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.renameTagTemplateField(
           request,
@@ -1985,8 +2005,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteTagTemplateField =
-        stubSimpleCall(expectedResponse);
+      client.innerApiCalls.deleteTagTemplateField = stubSimpleCall(
+        expectedResponse
+      );
       const [response] = await client.deleteTagTemplateField(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -2017,8 +2038,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteTagTemplateField =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteTagTemplateField = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteTagTemplateField(
           request,
@@ -2131,8 +2153,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Tag()
       );
-      client.innerApiCalls.createTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createTag(
           request,
@@ -2241,8 +2264,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Tag()
       );
-      client.innerApiCalls.updateTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updateTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updateTag(
           request,
@@ -2350,8 +2374,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteTag(
           request,
@@ -2458,8 +2483,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.Policy()
       );
-      client.innerApiCalls.setIamPolicy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.setIamPolicy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.setIamPolicy(
           request,
@@ -2569,8 +2595,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.Policy()
       );
-      client.innerApiCalls.getIamPolicy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getIamPolicy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getIamPolicy(
           request,
@@ -2649,8 +2676,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.TestIamPermissionsResponse()
       );
-      client.innerApiCalls.testIamPermissions =
-        stubSimpleCall(expectedResponse);
+      client.innerApiCalls.testIamPermissions = stubSimpleCall(
+        expectedResponse
+      );
       const [response] = await client.testIamPermissions(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -2681,8 +2709,9 @@ describe('v1beta1.DataCatalogClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.TestIamPermissionsResponse()
       );
-      client.innerApiCalls.testIamPermissions =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.testIamPermissions = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.testIamPermissions(
           request,
@@ -2792,8 +2821,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult()
         ),
       ];
-      client.innerApiCalls.searchCatalog =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.searchCatalog = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.searchCatalog(
           request,
@@ -2863,12 +2893,12 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult()
         ),
       ];
-      client.descriptors.page.searchCatalog.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.searchCatalog.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.searchCatalogStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult[] = [];
         stream.on(
           'data',
           (
@@ -2903,12 +2933,13 @@ describe('v1beta1.DataCatalogClient', () => {
         new protos.google.cloud.datacatalog.v1beta1.SearchCatalogRequest()
       );
       const expectedError = new Error('expected');
-      client.descriptors.page.searchCatalog.createStream =
-        stubPageStreamingCall(undefined, expectedError);
+      client.descriptors.page.searchCatalog.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
       const stream = client.searchCatalogStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult[] = [];
         stream.on(
           'data',
           (
@@ -2952,19 +2983,18 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.SearchCatalogResult()
         ),
       ];
-      client.descriptors.page.searchCatalog.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
-      const responses: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[] =
-        [];
+      client.descriptors.page.searchCatalog.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
+      const responses: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[] = [];
       const iterable = client.searchCatalogAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.searchCatalog.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.searchCatalog
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
     });
@@ -2979,20 +3009,20 @@ describe('v1beta1.DataCatalogClient', () => {
         new protos.google.cloud.datacatalog.v1beta1.SearchCatalogRequest()
       );
       const expectedError = new Error('expected');
-      client.descriptors.page.searchCatalog.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
+      client.descriptors.page.searchCatalog.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
       const iterable = client.searchCatalogAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.ISearchCatalogResult[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.searchCatalog.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.searchCatalog
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
     });
@@ -3067,8 +3097,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.EntryGroup()
         ),
       ];
-      client.innerApiCalls.listEntryGroups =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.listEntryGroups = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.listEntryGroups(
           request,
@@ -3148,12 +3179,12 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.EntryGroup()
         ),
       ];
-      client.descriptors.page.listEntryGroups.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.listEntryGroups.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.listEntryGroupsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.EntryGroup[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.EntryGroup[] = [];
         stream.on(
           'data',
           (response: protos.google.cloud.datacatalog.v1beta1.EntryGroup) => {
@@ -3175,9 +3206,10 @@ describe('v1beta1.DataCatalogClient', () => {
           .calledWith(client.innerApiCalls.listEntryGroups, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listEntryGroups.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listEntryGroups
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -3194,12 +3226,13 @@ describe('v1beta1.DataCatalogClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listEntryGroups.createStream =
-        stubPageStreamingCall(undefined, expectedError);
+      client.descriptors.page.listEntryGroups.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
       const stream = client.listEntryGroupsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.EntryGroup[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.EntryGroup[] = [];
         stream.on(
           'data',
           (response: protos.google.cloud.datacatalog.v1beta1.EntryGroup) => {
@@ -3220,9 +3253,10 @@ describe('v1beta1.DataCatalogClient', () => {
           .calledWith(client.innerApiCalls.listEntryGroups, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listEntryGroups.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listEntryGroups
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -3249,25 +3283,25 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.EntryGroup()
         ),
       ];
-      client.descriptors.page.listEntryGroups.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
-      const responses: protos.google.cloud.datacatalog.v1beta1.IEntryGroup[] =
-        [];
+      client.descriptors.page.listEntryGroups.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
+      const responses: protos.google.cloud.datacatalog.v1beta1.IEntryGroup[] = [];
       const iterable = client.listEntryGroupsAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listEntryGroups.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listEntryGroups
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listEntryGroups.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listEntryGroups
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -3284,26 +3318,27 @@ describe('v1beta1.DataCatalogClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listEntryGroups.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
+      client.descriptors.page.listEntryGroups.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
       const iterable = client.listEntryGroupsAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.IEntryGroup[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.IEntryGroup[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listEntryGroups.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listEntryGroups
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listEntryGroups.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listEntryGroups
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -3378,8 +3413,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Entry()
         ),
       ];
-      client.innerApiCalls.listEntries =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.listEntries = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.listEntries(
           request,
@@ -3457,8 +3493,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Entry()
         ),
       ];
-      client.descriptors.page.listEntries.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.listEntries.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.listEntriesStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.google.cloud.datacatalog.v1beta1.Entry[] = [];
@@ -3558,8 +3595,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Entry()
         ),
       ];
-      client.descriptors.page.listEntries.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
+      client.descriptors.page.listEntries.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
       const responses: protos.google.cloud.datacatalog.v1beta1.IEntry[] = [];
       const iterable = client.listEntriesAsync(request);
       for await (const resource of iterable) {
@@ -3687,8 +3725,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Tag()
         ),
       ];
-      client.innerApiCalls.listTags =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.listTags = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.listTags(
           request,
@@ -3763,8 +3802,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Tag()
         ),
       ];
-      client.descriptors.page.listTags.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.listTags.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.listTagsStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.google.cloud.datacatalog.v1beta1.Tag[] = [];
@@ -3862,8 +3902,9 @@ describe('v1beta1.DataCatalogClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Tag()
         ),
       ];
-      client.descriptors.page.listTags.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
+      client.descriptors.page.listTags.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
       const responses: protos.google.cloud.datacatalog.v1beta1.ITag[] = [];
       const iterable = client.listTagsAsync(request);
       for await (const resource of iterable) {
@@ -4403,10 +4444,8 @@ describe('v1beta1.DataCatalogClient', () => {
         );
         assert.strictEqual(result, fakePath);
         assert(
-          (
-            client.pathTemplates.tagTemplateFieldPathTemplate
-              .render as SinonStub
-          )
+          (client.pathTemplates.tagTemplateFieldPathTemplate
+            .render as SinonStub)
             .getCall(-1)
             .calledWith(expectedParameters)
         );
@@ -4433,8 +4472,9 @@ describe('v1beta1.DataCatalogClient', () => {
       });
 
       it('matchTagTemplateFromTagTemplateFieldName', () => {
-        const result =
-          client.matchTagTemplateFromTagTemplateFieldName(fakePath);
+        const result = client.matchTagTemplateFromTagTemplateFieldName(
+          fakePath
+        );
         assert.strictEqual(result, 'tagTemplateValue');
         assert(
           (client.pathTemplates.tagTemplateFieldPathTemplate.match as SinonStub)

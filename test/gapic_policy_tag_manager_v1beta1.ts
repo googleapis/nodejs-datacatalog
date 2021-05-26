@@ -28,9 +28,10 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (
-    instance.constructor as typeof protobuf.Message
-  ).toObject(instance as protobuf.Message<T>, {defaults: true});
+  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
+    instance as protobuf.Message<T>,
+    {defaults: true}
+  );
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -248,8 +249,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Taxonomy()
       );
-      client.innerApiCalls.createTaxonomy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createTaxonomy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createTaxonomy(
           request,
@@ -359,8 +361,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deleteTaxonomy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteTaxonomy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteTaxonomy(
           request,
@@ -472,8 +475,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Taxonomy()
       );
-      client.innerApiCalls.updateTaxonomy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updateTaxonomy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updateTaxonomy(
           request,
@@ -584,8 +588,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.Taxonomy()
       );
-      client.innerApiCalls.getTaxonomy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getTaxonomy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getTaxonomy(
           request,
@@ -695,8 +700,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.PolicyTag()
       );
-      client.innerApiCalls.createPolicyTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.createPolicyTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createPolicyTag(
           request,
@@ -806,8 +812,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.deletePolicyTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.deletePolicyTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deletePolicyTag(
           request,
@@ -919,8 +926,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.PolicyTag()
       );
-      client.innerApiCalls.updatePolicyTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.updatePolicyTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.updatePolicyTag(
           request,
@@ -1031,8 +1039,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1beta1.PolicyTag()
       );
-      client.innerApiCalls.getPolicyTag =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getPolicyTag = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getPolicyTag(
           request,
@@ -1142,8 +1151,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.Policy()
       );
-      client.innerApiCalls.getIamPolicy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getIamPolicy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getIamPolicy(
           request,
@@ -1253,8 +1263,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.Policy()
       );
-      client.innerApiCalls.setIamPolicy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.setIamPolicy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.setIamPolicy(
           request,
@@ -1333,8 +1344,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.TestIamPermissionsResponse()
       );
-      client.innerApiCalls.testIamPermissions =
-        stubSimpleCall(expectedResponse);
+      client.innerApiCalls.testIamPermissions = stubSimpleCall(
+        expectedResponse
+      );
       const [response] = await client.testIamPermissions(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -1365,8 +1377,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.iam.v1.TestIamPermissionsResponse()
       );
-      client.innerApiCalls.testIamPermissions =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.testIamPermissions = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.testIamPermissions(
           request,
@@ -1492,8 +1505,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Taxonomy()
         ),
       ];
-      client.innerApiCalls.listTaxonomies =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.listTaxonomies = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.listTaxonomies(
           request,
@@ -1571,12 +1585,12 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Taxonomy()
         ),
       ];
-      client.descriptors.page.listTaxonomies.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.listTaxonomies.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.listTaxonomiesStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.Taxonomy[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.Taxonomy[] = [];
         stream.on(
           'data',
           (response: protos.google.cloud.datacatalog.v1beta1.Taxonomy) => {
@@ -1598,9 +1612,10 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           .calledWith(client.innerApiCalls.listTaxonomies, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listTaxonomies.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listTaxonomies
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -1617,12 +1632,13 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listTaxonomies.createStream =
-        stubPageStreamingCall(undefined, expectedError);
+      client.descriptors.page.listTaxonomies.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
       const stream = client.listTaxonomiesStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.Taxonomy[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.Taxonomy[] = [];
         stream.on(
           'data',
           (response: protos.google.cloud.datacatalog.v1beta1.Taxonomy) => {
@@ -1643,9 +1659,10 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           .calledWith(client.innerApiCalls.listTaxonomies, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listTaxonomies.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listTaxonomies
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -1672,8 +1689,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.Taxonomy()
         ),
       ];
-      client.descriptors.page.listTaxonomies.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
+      client.descriptors.page.listTaxonomies.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
       const responses: protos.google.cloud.datacatalog.v1beta1.ITaxonomy[] = [];
       const iterable = client.listTaxonomiesAsync(request);
       for await (const resource of iterable) {
@@ -1681,15 +1699,15 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listTaxonomies.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listTaxonomies
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listTaxonomies.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listTaxonomies
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -1706,26 +1724,27 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listTaxonomies.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
+      client.descriptors.page.listTaxonomies.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
       const iterable = client.listTaxonomiesAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.ITaxonomy[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.ITaxonomy[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listTaxonomies.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listTaxonomies
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listTaxonomies.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listTaxonomies
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -1800,8 +1819,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.PolicyTag()
         ),
       ];
-      client.innerApiCalls.listPolicyTags =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.listPolicyTags = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.listPolicyTags(
           request,
@@ -1879,12 +1899,12 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.PolicyTag()
         ),
       ];
-      client.descriptors.page.listPolicyTags.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.listPolicyTags.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.listPolicyTagsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.PolicyTag[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.PolicyTag[] = [];
         stream.on(
           'data',
           (response: protos.google.cloud.datacatalog.v1beta1.PolicyTag) => {
@@ -1906,9 +1926,10 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           .calledWith(client.innerApiCalls.listPolicyTags, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listPolicyTags.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listPolicyTags
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -1925,12 +1946,13 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listPolicyTags.createStream =
-        stubPageStreamingCall(undefined, expectedError);
+      client.descriptors.page.listPolicyTags.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
       const stream = client.listPolicyTagsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.PolicyTag[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.PolicyTag[] = [];
         stream.on(
           'data',
           (response: protos.google.cloud.datacatalog.v1beta1.PolicyTag) => {
@@ -1951,9 +1973,10 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           .calledWith(client.innerApiCalls.listPolicyTags, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listPolicyTags.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listPolicyTags
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -1980,25 +2003,25 @@ describe('v1beta1.PolicyTagManagerClient', () => {
           new protos.google.cloud.datacatalog.v1beta1.PolicyTag()
         ),
       ];
-      client.descriptors.page.listPolicyTags.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
-      const responses: protos.google.cloud.datacatalog.v1beta1.IPolicyTag[] =
-        [];
+      client.descriptors.page.listPolicyTags.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
+      const responses: protos.google.cloud.datacatalog.v1beta1.IPolicyTag[] = [];
       const iterable = client.listPolicyTagsAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listPolicyTags.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listPolicyTags
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listPolicyTags.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listPolicyTags
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -2015,26 +2038,27 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listPolicyTags.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
+      client.descriptors.page.listPolicyTags.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
       const iterable = client.listPolicyTagsAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.google.cloud.datacatalog.v1beta1.IPolicyTag[] =
-          [];
+        const responses: protos.google.cloud.datacatalog.v1beta1.IPolicyTag[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listPolicyTags.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listPolicyTags
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listPolicyTags.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listPolicyTags
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -2525,10 +2549,8 @@ describe('v1beta1.PolicyTagManagerClient', () => {
         );
         assert.strictEqual(result, fakePath);
         assert(
-          (
-            client.pathTemplates.tagTemplateFieldPathTemplate
-              .render as SinonStub
-          )
+          (client.pathTemplates.tagTemplateFieldPathTemplate
+            .render as SinonStub)
             .getCall(-1)
             .calledWith(expectedParameters)
         );
@@ -2555,8 +2577,9 @@ describe('v1beta1.PolicyTagManagerClient', () => {
       });
 
       it('matchTagTemplateFromTagTemplateFieldName', () => {
-        const result =
-          client.matchTagTemplateFromTagTemplateFieldName(fakePath);
+        const result = client.matchTagTemplateFromTagTemplateFieldName(
+          fakePath
+        );
         assert.strictEqual(result, 'tagTemplateValue');
         assert(
           (client.pathTemplates.tagTemplateFieldPathTemplate.match as SinonStub)

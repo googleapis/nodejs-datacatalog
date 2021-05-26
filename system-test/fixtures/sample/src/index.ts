@@ -43,8 +43,7 @@ function main() {
   const policyTagManagerClient = new PolicyTagManagerClient();
   doStuffWithPolicyTagManagerClient(policyTagManagerClient);
   // check that the client instance can be created
-  const policyTagManagerSerializationClient =
-    new PolicyTagManagerSerializationClient();
+  const policyTagManagerSerializationClient = new PolicyTagManagerSerializationClient();
   doStuffWithPolicyTagManagerSerializationClient(
     policyTagManagerSerializationClient
   );

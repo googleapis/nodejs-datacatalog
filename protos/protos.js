@@ -4345,27 +4345,27 @@
     
                         /**
                          * LookupEntryRequest linkedResource.
-                         * @member {string|null|undefined} linkedResource
+                         * @member {string} linkedResource
                          * @memberof google.cloud.datacatalog.v1.LookupEntryRequest
                          * @instance
                          */
-                        LookupEntryRequest.prototype.linkedResource = null;
+                        LookupEntryRequest.prototype.linkedResource = "";
     
                         /**
                          * LookupEntryRequest sqlResource.
-                         * @member {string|null|undefined} sqlResource
+                         * @member {string} sqlResource
                          * @memberof google.cloud.datacatalog.v1.LookupEntryRequest
                          * @instance
                          */
-                        LookupEntryRequest.prototype.sqlResource = null;
+                        LookupEntryRequest.prototype.sqlResource = "";
     
                         /**
                          * LookupEntryRequest fullyQualifiedName.
-                         * @member {string|null|undefined} fullyQualifiedName
+                         * @member {string} fullyQualifiedName
                          * @memberof google.cloud.datacatalog.v1.LookupEntryRequest
                          * @instance
                          */
-                        LookupEntryRequest.prototype.fullyQualifiedName = null;
+                        LookupEntryRequest.prototype.fullyQualifiedName = "";
     
                         // OneOf field names bound to virtual getters and setters
                         var $oneOfFields;
@@ -4643,35 +4643,35 @@
     
                         /**
                          * Entry type.
-                         * @member {google.cloud.datacatalog.v1.EntryType|null|undefined} type
+                         * @member {google.cloud.datacatalog.v1.EntryType} type
                          * @memberof google.cloud.datacatalog.v1.Entry
                          * @instance
                          */
-                        Entry.prototype.type = null;
+                        Entry.prototype.type = 0;
     
                         /**
                          * Entry userSpecifiedType.
-                         * @member {string|null|undefined} userSpecifiedType
+                         * @member {string} userSpecifiedType
                          * @memberof google.cloud.datacatalog.v1.Entry
                          * @instance
                          */
-                        Entry.prototype.userSpecifiedType = null;
+                        Entry.prototype.userSpecifiedType = "";
     
                         /**
                          * Entry integratedSystem.
-                         * @member {google.cloud.datacatalog.v1.IntegratedSystem|null|undefined} integratedSystem
+                         * @member {google.cloud.datacatalog.v1.IntegratedSystem} integratedSystem
                          * @memberof google.cloud.datacatalog.v1.Entry
                          * @instance
                          */
-                        Entry.prototype.integratedSystem = null;
+                        Entry.prototype.integratedSystem = 0;
     
                         /**
                          * Entry userSpecifiedSystem.
-                         * @member {string|null|undefined} userSpecifiedSystem
+                         * @member {string} userSpecifiedSystem
                          * @memberof google.cloud.datacatalog.v1.Entry
                          * @instance
                          */
-                        Entry.prototype.userSpecifiedSystem = null;
+                        Entry.prototype.userSpecifiedSystem = "";
     
                         /**
                          * Entry gcsFilesetSpec.
@@ -10650,19 +10650,19 @@
     
                         /**
                          * SearchCatalogResult integratedSystem.
-                         * @member {google.cloud.datacatalog.v1.IntegratedSystem|null|undefined} integratedSystem
+                         * @member {google.cloud.datacatalog.v1.IntegratedSystem} integratedSystem
                          * @memberof google.cloud.datacatalog.v1.SearchCatalogResult
                          * @instance
                          */
-                        SearchCatalogResult.prototype.integratedSystem = null;
+                        SearchCatalogResult.prototype.integratedSystem = 0;
     
                         /**
                          * SearchCatalogResult userSpecifiedSystem.
-                         * @member {string|null|undefined} userSpecifiedSystem
+                         * @member {string} userSpecifiedSystem
                          * @memberof google.cloud.datacatalog.v1.SearchCatalogResult
                          * @instance
                          */
-                        SearchCatalogResult.prototype.userSpecifiedSystem = null;
+                        SearchCatalogResult.prototype.userSpecifiedSystem = "";
     
                         /**
                          * SearchCatalogResult fullyQualifiedName.
@@ -11997,11 +11997,11 @@
     
                         /**
                          * Tag column.
-                         * @member {string|null|undefined} column
+                         * @member {string} column
                          * @memberof google.cloud.datacatalog.v1.Tag
                          * @instance
                          */
-                        Tag.prototype.column = null;
+                        Tag.prototype.column = "";
     
                         /**
                          * Tag fields.
@@ -12320,27 +12320,27 @@
     
                         /**
                          * TagField doubleValue.
-                         * @member {number|null|undefined} doubleValue
+                         * @member {number} doubleValue
                          * @memberof google.cloud.datacatalog.v1.TagField
                          * @instance
                          */
-                        TagField.prototype.doubleValue = null;
+                        TagField.prototype.doubleValue = 0;
     
                         /**
                          * TagField stringValue.
-                         * @member {string|null|undefined} stringValue
+                         * @member {string} stringValue
                          * @memberof google.cloud.datacatalog.v1.TagField
                          * @instance
                          */
-                        TagField.prototype.stringValue = null;
+                        TagField.prototype.stringValue = "";
     
                         /**
                          * TagField boolValue.
-                         * @member {boolean|null|undefined} boolValue
+                         * @member {boolean} boolValue
                          * @memberof google.cloud.datacatalog.v1.TagField
                          * @instance
                          */
-                        TagField.prototype.boolValue = null;
+                        TagField.prototype.boolValue = false;
     
                         /**
                          * TagField timestampValue.
@@ -13447,11 +13447,11 @@
     
                         /**
                          * FieldType primitiveType.
-                         * @member {google.cloud.datacatalog.v1.FieldType.PrimitiveType|null|undefined} primitiveType
+                         * @member {google.cloud.datacatalog.v1.FieldType.PrimitiveType} primitiveType
                          * @memberof google.cloud.datacatalog.v1.FieldType
                          * @instance
                          */
-                        FieldType.prototype.primitiveType = null;
+                        FieldType.prototype.primitiveType = 0;
     
                         /**
                          * FieldType enumType.
@@ -19369,11 +19369,11 @@
     
                         /**
                          * ExportTaxonomiesRequest serializedTaxonomies.
-                         * @member {boolean|null|undefined} serializedTaxonomies
+                         * @member {boolean} serializedTaxonomies
                          * @memberof google.cloud.datacatalog.v1.ExportTaxonomiesRequest
                          * @instance
                          */
-                        ExportTaxonomiesRequest.prototype.serializedTaxonomies = null;
+                        ExportTaxonomiesRequest.prototype.serializedTaxonomies = false;
     
                         // OneOf field names bound to virtual getters and setters
                         var $oneOfFields;
@@ -23733,19 +23733,19 @@
     
                         /**
                          * LookupEntryRequest linkedResource.
-                         * @member {string|null|undefined} linkedResource
+                         * @member {string} linkedResource
                          * @memberof google.cloud.datacatalog.v1beta1.LookupEntryRequest
                          * @instance
                          */
-                        LookupEntryRequest.prototype.linkedResource = null;
+                        LookupEntryRequest.prototype.linkedResource = "";
     
                         /**
                          * LookupEntryRequest sqlResource.
-                         * @member {string|null|undefined} sqlResource
+                         * @member {string} sqlResource
                          * @memberof google.cloud.datacatalog.v1beta1.LookupEntryRequest
                          * @instance
                          */
-                        LookupEntryRequest.prototype.sqlResource = null;
+                        LookupEntryRequest.prototype.sqlResource = "";
     
                         // OneOf field names bound to virtual getters and setters
                         var $oneOfFields;
@@ -23993,35 +23993,35 @@
     
                         /**
                          * Entry type.
-                         * @member {google.cloud.datacatalog.v1beta1.EntryType|null|undefined} type
+                         * @member {google.cloud.datacatalog.v1beta1.EntryType} type
                          * @memberof google.cloud.datacatalog.v1beta1.Entry
                          * @instance
                          */
-                        Entry.prototype.type = null;
+                        Entry.prototype.type = 0;
     
                         /**
                          * Entry userSpecifiedType.
-                         * @member {string|null|undefined} userSpecifiedType
+                         * @member {string} userSpecifiedType
                          * @memberof google.cloud.datacatalog.v1beta1.Entry
                          * @instance
                          */
-                        Entry.prototype.userSpecifiedType = null;
+                        Entry.prototype.userSpecifiedType = "";
     
                         /**
                          * Entry integratedSystem.
-                         * @member {google.cloud.datacatalog.v1beta1.IntegratedSystem|null|undefined} integratedSystem
+                         * @member {google.cloud.datacatalog.v1beta1.IntegratedSystem} integratedSystem
                          * @memberof google.cloud.datacatalog.v1beta1.Entry
                          * @instance
                          */
-                        Entry.prototype.integratedSystem = null;
+                        Entry.prototype.integratedSystem = 0;
     
                         /**
                          * Entry userSpecifiedSystem.
-                         * @member {string|null|undefined} userSpecifiedSystem
+                         * @member {string} userSpecifiedSystem
                          * @memberof google.cloud.datacatalog.v1beta1.Entry
                          * @instance
                          */
-                        Entry.prototype.userSpecifiedSystem = null;
+                        Entry.prototype.userSpecifiedSystem = "";
     
                         /**
                          * Entry gcsFilesetSpec.
@@ -30668,11 +30668,11 @@
     
                         /**
                          * Tag column.
-                         * @member {string|null|undefined} column
+                         * @member {string} column
                          * @memberof google.cloud.datacatalog.v1beta1.Tag
                          * @instance
                          */
-                        Tag.prototype.column = null;
+                        Tag.prototype.column = "";
     
                         /**
                          * Tag fields.
@@ -30991,27 +30991,27 @@
     
                         /**
                          * TagField doubleValue.
-                         * @member {number|null|undefined} doubleValue
+                         * @member {number} doubleValue
                          * @memberof google.cloud.datacatalog.v1beta1.TagField
                          * @instance
                          */
-                        TagField.prototype.doubleValue = null;
+                        TagField.prototype.doubleValue = 0;
     
                         /**
                          * TagField stringValue.
-                         * @member {string|null|undefined} stringValue
+                         * @member {string} stringValue
                          * @memberof google.cloud.datacatalog.v1beta1.TagField
                          * @instance
                          */
-                        TagField.prototype.stringValue = null;
+                        TagField.prototype.stringValue = "";
     
                         /**
                          * TagField boolValue.
-                         * @member {boolean|null|undefined} boolValue
+                         * @member {boolean} boolValue
                          * @memberof google.cloud.datacatalog.v1beta1.TagField
                          * @instance
                          */
-                        TagField.prototype.boolValue = null;
+                        TagField.prototype.boolValue = false;
     
                         /**
                          * TagField timestampValue.
@@ -32096,11 +32096,11 @@
     
                         /**
                          * FieldType primitiveType.
-                         * @member {google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|null|undefined} primitiveType
+                         * @member {google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType} primitiveType
                          * @memberof google.cloud.datacatalog.v1beta1.FieldType
                          * @instance
                          */
-                        FieldType.prototype.primitiveType = null;
+                        FieldType.prototype.primitiveType = 0;
     
                         /**
                          * FieldType enumType.
@@ -37664,11 +37664,11 @@
     
                         /**
                          * ExportTaxonomiesRequest serializedTaxonomies.
-                         * @member {boolean|null|undefined} serializedTaxonomies
+                         * @member {boolean} serializedTaxonomies
                          * @memberof google.cloud.datacatalog.v1beta1.ExportTaxonomiesRequest
                          * @instance
                          */
-                        ExportTaxonomiesRequest.prototype.serializedTaxonomies = null;
+                        ExportTaxonomiesRequest.prototype.serializedTaxonomies = false;
     
                         // OneOf field names bound to virtual getters and setters
                         var $oneOfFields;
@@ -38411,43 +38411,43 @@
     
                 /**
                  * HttpRule get.
-                 * @member {string|null|undefined} get
+                 * @member {string} get
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.get = null;
+                HttpRule.prototype.get = "";
     
                 /**
                  * HttpRule put.
-                 * @member {string|null|undefined} put
+                 * @member {string} put
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.put = null;
+                HttpRule.prototype.put = "";
     
                 /**
                  * HttpRule post.
-                 * @member {string|null|undefined} post
+                 * @member {string} post
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.post = null;
+                HttpRule.prototype.post = "";
     
                 /**
                  * HttpRule delete.
-                 * @member {string|null|undefined} delete
+                 * @member {string} delete
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype["delete"] = null;
+                HttpRule.prototype["delete"] = "";
     
                 /**
                  * HttpRule patch.
-                 * @member {string|null|undefined} patch
+                 * @member {string} patch
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.patch = null;
+                HttpRule.prototype.patch = "";
     
                 /**
                  * HttpRule custom.

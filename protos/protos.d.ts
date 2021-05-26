@@ -2068,13 +2068,13 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1.ILookupEntryRequest);
 
                     /** LookupEntryRequest linkedResource. */
-                    public linkedResource?: (string|null);
+                    public linkedResource: string;
 
                     /** LookupEntryRequest sqlResource. */
-                    public sqlResource?: (string|null);
+                    public sqlResource: string;
 
                     /** LookupEntryRequest fullyQualifiedName. */
-                    public fullyQualifiedName?: (string|null);
+                    public fullyQualifiedName: string;
 
                     /** LookupEntryRequest targetName. */
                     public targetName?: ("linkedResource"|"sqlResource"|"fullyQualifiedName");
@@ -2221,16 +2221,16 @@ export namespace google {
                     public fullyQualifiedName: string;
 
                     /** Entry type. */
-                    public type?: (google.cloud.datacatalog.v1.EntryType|keyof typeof google.cloud.datacatalog.v1.EntryType|null);
+                    public type: (google.cloud.datacatalog.v1.EntryType|keyof typeof google.cloud.datacatalog.v1.EntryType);
 
                     /** Entry userSpecifiedType. */
-                    public userSpecifiedType?: (string|null);
+                    public userSpecifiedType: string;
 
                     /** Entry integratedSystem. */
-                    public integratedSystem?: (google.cloud.datacatalog.v1.IntegratedSystem|keyof typeof google.cloud.datacatalog.v1.IntegratedSystem|null);
+                    public integratedSystem: (google.cloud.datacatalog.v1.IntegratedSystem|keyof typeof google.cloud.datacatalog.v1.IntegratedSystem);
 
                     /** Entry userSpecifiedSystem. */
-                    public userSpecifiedSystem?: (string|null);
+                    public userSpecifiedSystem: string;
 
                     /** Entry gcsFilesetSpec. */
                     public gcsFilesetSpec?: (google.cloud.datacatalog.v1.IGcsFilesetSpec|null);
@@ -4678,10 +4678,10 @@ export namespace google {
                     public modifyTime?: (google.protobuf.ITimestamp|null);
 
                     /** SearchCatalogResult integratedSystem. */
-                    public integratedSystem?: (google.cloud.datacatalog.v1.IntegratedSystem|keyof typeof google.cloud.datacatalog.v1.IntegratedSystem|null);
+                    public integratedSystem: (google.cloud.datacatalog.v1.IntegratedSystem|keyof typeof google.cloud.datacatalog.v1.IntegratedSystem);
 
                     /** SearchCatalogResult userSpecifiedSystem. */
-                    public userSpecifiedSystem?: (string|null);
+                    public userSpecifiedSystem: string;
 
                     /** SearchCatalogResult fullyQualifiedName. */
                     public fullyQualifiedName: string;
@@ -5201,7 +5201,7 @@ export namespace google {
                     public templateDisplayName: string;
 
                     /** Tag column. */
-                    public column?: (string|null);
+                    public column: string;
 
                     /** Tag fields. */
                     public fields: { [k: string]: google.cloud.datacatalog.v1.ITagField };
@@ -5318,13 +5318,13 @@ export namespace google {
                     public displayName: string;
 
                     /** TagField doubleValue. */
-                    public doubleValue?: (number|null);
+                    public doubleValue: number;
 
                     /** TagField stringValue. */
-                    public stringValue?: (string|null);
+                    public stringValue: string;
 
                     /** TagField boolValue. */
-                    public boolValue?: (boolean|null);
+                    public boolValue: boolean;
 
                     /** TagField timestampValue. */
                     public timestampValue?: (google.protobuf.ITimestamp|null);
@@ -5744,7 +5744,7 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1.IFieldType);
 
                     /** FieldType primitiveType. */
-                    public primitiveType?: (google.cloud.datacatalog.v1.FieldType.PrimitiveType|keyof typeof google.cloud.datacatalog.v1.FieldType.PrimitiveType|null);
+                    public primitiveType: (google.cloud.datacatalog.v1.FieldType.PrimitiveType|keyof typeof google.cloud.datacatalog.v1.FieldType.PrimitiveType);
 
                     /** FieldType enumType. */
                     public enumType?: (google.cloud.datacatalog.v1.FieldType.IEnumType|null);
@@ -8384,7 +8384,7 @@ export namespace google {
                     public taxonomies: string[];
 
                     /** ExportTaxonomiesRequest serializedTaxonomies. */
-                    public serializedTaxonomies?: (boolean|null);
+                    public serializedTaxonomies: boolean;
 
                     /** ExportTaxonomiesRequest destination. */
                     public destination?: "serializedTaxonomies";
@@ -10453,10 +10453,10 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1beta1.ILookupEntryRequest);
 
                     /** LookupEntryRequest linkedResource. */
-                    public linkedResource?: (string|null);
+                    public linkedResource: string;
 
                     /** LookupEntryRequest sqlResource. */
-                    public sqlResource?: (string|null);
+                    public sqlResource: string;
 
                     /** LookupEntryRequest targetName. */
                     public targetName?: ("linkedResource"|"sqlResource");
@@ -10591,16 +10591,16 @@ export namespace google {
                     public linkedResource: string;
 
                     /** Entry type. */
-                    public type?: (google.cloud.datacatalog.v1beta1.EntryType|keyof typeof google.cloud.datacatalog.v1beta1.EntryType|null);
+                    public type: (google.cloud.datacatalog.v1beta1.EntryType|keyof typeof google.cloud.datacatalog.v1beta1.EntryType);
 
                     /** Entry userSpecifiedType. */
-                    public userSpecifiedType?: (string|null);
+                    public userSpecifiedType: string;
 
                     /** Entry integratedSystem. */
-                    public integratedSystem?: (google.cloud.datacatalog.v1beta1.IntegratedSystem|keyof typeof google.cloud.datacatalog.v1beta1.IntegratedSystem|null);
+                    public integratedSystem: (google.cloud.datacatalog.v1beta1.IntegratedSystem|keyof typeof google.cloud.datacatalog.v1beta1.IntegratedSystem);
 
                     /** Entry userSpecifiedSystem. */
-                    public userSpecifiedSystem?: (string|null);
+                    public userSpecifiedSystem: string;
 
                     /** Entry gcsFilesetSpec. */
                     public gcsFilesetSpec?: (google.cloud.datacatalog.v1beta1.IGcsFilesetSpec|null);
@@ -13336,7 +13336,7 @@ export namespace google {
                     public templateDisplayName: string;
 
                     /** Tag column. */
-                    public column?: (string|null);
+                    public column: string;
 
                     /** Tag fields. */
                     public fields: { [k: string]: google.cloud.datacatalog.v1beta1.ITagField };
@@ -13453,13 +13453,13 @@ export namespace google {
                     public displayName: string;
 
                     /** TagField doubleValue. */
-                    public doubleValue?: (number|null);
+                    public doubleValue: number;
 
                     /** TagField stringValue. */
-                    public stringValue?: (string|null);
+                    public stringValue: string;
 
                     /** TagField boolValue. */
-                    public boolValue?: (boolean|null);
+                    public boolValue: boolean;
 
                     /** TagField timestampValue. */
                     public timestampValue?: (google.protobuf.ITimestamp|null);
@@ -13873,7 +13873,7 @@ export namespace google {
                     constructor(properties?: google.cloud.datacatalog.v1beta1.IFieldType);
 
                     /** FieldType primitiveType. */
-                    public primitiveType?: (google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|keyof typeof google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|null);
+                    public primitiveType: (google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType|keyof typeof google.cloud.datacatalog.v1beta1.FieldType.PrimitiveType);
 
                     /** FieldType enumType. */
                     public enumType?: (google.cloud.datacatalog.v1beta1.FieldType.IEnumType|null);
@@ -16393,7 +16393,7 @@ export namespace google {
                     public taxonomies: string[];
 
                     /** ExportTaxonomiesRequest serializedTaxonomies. */
-                    public serializedTaxonomies?: (boolean|null);
+                    public serializedTaxonomies: boolean;
 
                     /** ExportTaxonomiesRequest destination. */
                     public destination?: "serializedTaxonomies";
@@ -16719,19 +16719,19 @@ export namespace google {
             public selector: string;
 
             /** HttpRule get. */
-            public get?: (string|null);
+            public get: string;
 
             /** HttpRule put. */
-            public put?: (string|null);
+            public put: string;
 
             /** HttpRule post. */
-            public post?: (string|null);
+            public post: string;
 
             /** HttpRule delete. */
-            public delete?: (string|null);
+            public delete: string;
 
             /** HttpRule patch. */
-            public patch?: (string|null);
+            public patch: string;
 
             /** HttpRule custom. */
             public custom?: (google.api.ICustomHttpPattern|null);
