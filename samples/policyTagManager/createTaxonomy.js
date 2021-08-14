@@ -17,10 +17,8 @@
 function main(projectId, displayName) {
   // [START data_catalog_ptm_create_taxonomy]
   // Import the Google Cloud client library.
-  const {
-    DataCatalogClient,
-    PolicyTagManagerClient,
-  } = require('@google-cloud/datacatalog').v1;
+  const {DataCatalogClient, PolicyTagManagerClient} =
+    require('@google-cloud/datacatalog').v1;
   const dataCatalog = new DataCatalogClient();
   const policyTagManager = new PolicyTagManagerClient();
 
