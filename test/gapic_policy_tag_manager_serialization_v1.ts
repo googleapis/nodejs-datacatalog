@@ -26,9 +26,10 @@ import * as policytagmanagerserializationModule from '../src';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (
-    instance.constructor as typeof protobuf.Message
-  ).toObject(instance as protobuf.Message<T>, {defaults: true});
+  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
+    instance as protobuf.Message<T>,
+    {defaults: true}
+  );
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -73,54 +74,49 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
   });
 
   it('should create a client with no option', () => {
-    const client =
-      new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient();
+    const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient();
     assert(client);
   });
 
   it('should create a client with gRPC fallback', () => {
-    const client =
-      new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-        {
-          fallback: true,
-        }
-      );
+    const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+      {
+        fallback: true,
+      }
+    );
     assert(client);
   });
 
   it('has initialize method and supports deferred initialization', async () => {
-    const client =
-      new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-        {
-          credentials: {client_email: 'bogus', private_key: 'bogus'},
-          projectId: 'bogus',
-        }
-      );
+    const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
     assert.strictEqual(client.policyTagManagerSerializationStub, undefined);
     await client.initialize();
     assert(client.policyTagManagerSerializationStub);
   });
 
   it('has close method', () => {
-    const client =
-      new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-        {
-          credentials: {client_email: 'bogus', private_key: 'bogus'},
-          projectId: 'bogus',
-        }
-      );
+    const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
     client.close();
   });
 
   it('has getProjectId method', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client =
-      new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-        {
-          credentials: {client_email: 'bogus', private_key: 'bogus'},
-          projectId: 'bogus',
-        }
-      );
+    const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
     client.auth.getProjectId = sinon.stub().resolves(fakeProjectId);
     const result = await client.getProjectId();
     assert.strictEqual(result, fakeProjectId);
@@ -129,13 +125,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
 
   it('has getProjectId method with callback', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client =
-      new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-        {
-          credentials: {client_email: 'bogus', private_key: 'bogus'},
-          projectId: 'bogus',
-        }
-      );
+    const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
     client.auth.getProjectId = sinon
       .stub()
       .callsArgWith(0, null, fakeProjectId);
@@ -154,13 +149,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
 
   describe('replaceTaxonomy', () => {
     it('invokes replaceTaxonomy without error', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ReplaceTaxonomyRequest()
@@ -188,13 +182,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
     });
 
     it('invokes replaceTaxonomy without error using callback', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ReplaceTaxonomyRequest()
@@ -211,8 +204,9 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.Taxonomy()
       );
-      client.innerApiCalls.replaceTaxonomy =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.replaceTaxonomy = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.replaceTaxonomy(
           request,
@@ -238,13 +232,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
     });
 
     it('invokes replaceTaxonomy with error', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ReplaceTaxonomyRequest()
@@ -274,13 +267,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
 
   describe('importTaxonomies', () => {
     it('invokes importTaxonomies without error', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ImportTaxonomiesRequest()
@@ -308,13 +300,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
     });
 
     it('invokes importTaxonomies without error using callback', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ImportTaxonomiesRequest()
@@ -331,8 +322,9 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ImportTaxonomiesResponse()
       );
-      client.innerApiCalls.importTaxonomies =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.importTaxonomies = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.importTaxonomies(
           request,
@@ -358,13 +350,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
     });
 
     it('invokes importTaxonomies with error', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ImportTaxonomiesRequest()
@@ -394,13 +385,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
 
   describe('exportTaxonomies', () => {
     it('invokes exportTaxonomies without error', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ExportTaxonomiesRequest()
@@ -428,13 +418,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
     });
 
     it('invokes exportTaxonomies without error using callback', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ExportTaxonomiesRequest()
@@ -451,8 +440,9 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ExportTaxonomiesResponse()
       );
-      client.innerApiCalls.exportTaxonomies =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.exportTaxonomies = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.exportTaxonomies(
           request,
@@ -478,13 +468,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
     });
 
     it('invokes exportTaxonomies with error', async () => {
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       const request = generateSampleMessage(
         new protos.google.cloud.datacatalog.v1.ExportTaxonomiesRequest()
@@ -521,13 +510,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         entry_group: 'entryGroupValue',
         entry: 'entryValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.entryPathTemplate.render = sinon
         .stub()
@@ -599,13 +587,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         location: 'locationValue',
         entry_group: 'entryGroupValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.entryGroupPathTemplate.render = sinon
         .stub()
@@ -665,13 +652,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         project: 'projectValue',
         location: 'locationValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.locationPathTemplate.render = sinon
         .stub()
@@ -719,13 +705,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         taxonomy: 'taxonomyValue',
         policy_tag: 'policyTagValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.policyTagPathTemplate.render = sinon
         .stub()
@@ -795,13 +780,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
       const expectedParameters = {
         project: 'projectValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.projectPathTemplate.render = sinon
         .stub()
@@ -840,13 +824,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         entry: 'entryValue',
         tag: 'tagValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.tagPathTemplate.render = sinon
         .stub()
@@ -929,13 +912,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         location: 'locationValue',
         tag_template: 'tagTemplateValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.tagTemplatePathTemplate.render = sinon
         .stub()
@@ -997,13 +979,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         tag_template: 'tagTemplateValue',
         field: 'fieldValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.tagTemplateFieldPathTemplate.render = sinon
         .stub()
@@ -1021,10 +1002,8 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         );
         assert.strictEqual(result, fakePath);
         assert(
-          (
-            client.pathTemplates.tagTemplateFieldPathTemplate
-              .render as SinonStub
-          )
+          (client.pathTemplates.tagTemplateFieldPathTemplate
+            .render as SinonStub)
             .getCall(-1)
             .calledWith(expectedParameters)
         );
@@ -1051,8 +1030,9 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
       });
 
       it('matchTagTemplateFromTagTemplateFieldName', () => {
-        const result =
-          client.matchTagTemplateFromTagTemplateFieldName(fakePath);
+        const result = client.matchTagTemplateFromTagTemplateFieldName(
+          fakePath
+        );
         assert.strictEqual(result, 'tagTemplateValue');
         assert(
           (client.pathTemplates.tagTemplateFieldPathTemplate.match as SinonStub)
@@ -1079,13 +1059,12 @@ describe('v1.PolicyTagManagerSerializationClient', () => {
         location: 'locationValue',
         taxonomy: 'taxonomyValue',
       };
-      const client =
-        new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
-          {
-            credentials: {client_email: 'bogus', private_key: 'bogus'},
-            projectId: 'bogus',
-          }
-        );
+      const client = new policytagmanagerserializationModule.v1.PolicyTagManagerSerializationClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
       client.initialize();
       client.pathTemplates.taxonomyPathTemplate.render = sinon
         .stub()
