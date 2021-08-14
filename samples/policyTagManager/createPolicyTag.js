@@ -26,21 +26,21 @@ function main(parent) {
     /**
      * TODO(developer): Uncomment the following lines before running the sample.
      */
-    // const projectId = 'my_project';
+    // const projectId = 'my_project'; // Google Cloud Platform project
     // const location = 'us'
     // const parent = `projects/${projectId}/locations/${location}`; // Parent project location format
 
-    try {
-      const request = {
-        parent: parent,
-        policyTag: {
-          displayName: 'nodejs_samples_my new policy tag',
-          // It optionally accepts a parent ID, which can be used to create a hierarchical
-          // relationship between tags.
-          // parentPolicyTag: 'my parent policy tag'
-        },
-      };
+    const request = {
+      parent: parent,
+      policyTag: {
+        displayName: 'nodejs_samples_my new policy tag',
+        // It optionally accepts a parent ID, which can be used to create a hierarchical
+        // relationship between tags.
+        // parentPolicyTag: 'my parent policy tag'
+      },
+    };
 
+    try {
       const [metadata] = await policyClient.createPolicyTag(request);
       console.log(`Created policy tag: ${metadata.name}`);
     } catch (e) {

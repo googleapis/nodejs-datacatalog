@@ -14,7 +14,7 @@
 
 'use strict';
 
-function main(projectId, displayName) {
+function main(projectId, location, displayName) {
   // [START data_catalog_ptm_create_taxonomy]
   // Import the Google Cloud client library.
   const {DataCatalogClient, PolicyTagManagerClient} =
@@ -23,11 +23,12 @@ function main(projectId, displayName) {
   const policyTagManager = new PolicyTagManagerClient();
 
   async function createTaxonomy() {
-    const location = 'us';
+    // const location = 'us';
     /**
      * TODO(developer): Uncomment the following lines before running the sample.
      */
     // const projectId = 'my_project'; // Google Cloud Platform project
+    // const location = 'us'
     // const displayName = 'my display name'; // Display name for new taxonomy.
 
     // Parent project location format is `projects/${projectId}/locations/${location}`

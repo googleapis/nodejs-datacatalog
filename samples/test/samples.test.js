@@ -54,10 +54,11 @@ describe('Samples', async () => {
   });
 
   describe('policyTagManager', async () => {
-    it('should create a taxonomy', async () => {
+    it.only('should create a taxonomy', async () => {
+      const taxLocation = 'us';
       const displayName = generateUuid();
       const output = execSync(
-        `node policyTagManager/createTaxonomy ${projectId} ${displayName}`
+        `node policyTagManager/createTaxonomy ${projectId} ${taxLocation} ${displayName}`
       );
       assert.include(output, 'Created taxonomy:');
     });
@@ -69,9 +70,10 @@ describe('Samples', async () => {
       assert.include(output, `Retrieved taxonomy: ${taxonomyName}`);
     });
 
-    it('should list taxonomies', async () => {
+    it.only('should list taxonomies', async () => {
+      const taxLocation = 'us';
       const output = execSync(
-        `node policyTagManager/listTaxonomies ${projectId}`
+        `node policyTagManager/listTaxonomies ${projectId} ${taxLocation}`
       );
       assert.include(output, 'Taxonomies:');
     });
