@@ -467,6 +467,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createEntryGroup(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.create_entry_group.js</caption>
+   * region_tag:datacatalog_create_entry_group_sample
+   *
    */
   createEntryGroup(
     request?: protos.google.cloud.datacatalog.v1.ICreateEntryGroupRequest,
@@ -560,6 +564,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getEntryGroup(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.get_entry_group.js</caption>
+   * region_tag:datacatalog_get_entry_group_sample
+   *
    */
   getEntryGroup(
     request?: protos.google.cloud.datacatalog.v1.IGetEntryGroupRequest,
@@ -662,6 +670,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateEntryGroup(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.update_entry_group.js</caption>
+   * region_tag:datacatalog_update_entry_group_sample
+   *
    */
   updateEntryGroup(
     request?: protos.google.cloud.datacatalog.v1.IUpdateEntryGroupRequest,
@@ -760,6 +772,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteEntryGroup(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.delete_entry_group.js</caption>
+   * region_tag:datacatalog_delete_entry_group_sample
+   *
    */
   deleteEntryGroup(
     request?: protos.google.cloud.datacatalog.v1.IDeleteEntryGroupRequest,
@@ -868,6 +884,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createEntry(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.create_entry.js</caption>
+   * region_tag:datacatalog_create_entry_sample
+   *
    */
   createEntry(
     request?: protos.google.cloud.datacatalog.v1.ICreateEntryRequest,
@@ -988,6 +1008,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateEntry(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.update_entry.js</caption>
+   * region_tag:datacatalog_update_entry_sample
+   *
    */
   updateEntry(
     request?: protos.google.cloud.datacatalog.v1.IUpdateEntryRequest,
@@ -1082,6 +1106,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteEntry(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.delete_entry.js</caption>
+   * region_tag:datacatalog_delete_entry_sample
+   *
    */
   deleteEntry(
     request?: protos.google.cloud.datacatalog.v1.IDeleteEntryRequest,
@@ -1167,6 +1195,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getEntry(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.get_entry.js</caption>
+   * region_tag:datacatalog_get_entry_sample
+   *
    */
   getEntry(
     request?: protos.google.cloud.datacatalog.v1.IGetEntryRequest,
@@ -1291,6 +1323,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.lookupEntry(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.lookup_entry.js</caption>
+   * region_tag:datacatalog_lookup_entry_sample
+   *
    */
   lookupEntry(
     request?: protos.google.cloud.datacatalog.v1.ILookupEntryRequest,
@@ -1388,6 +1424,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createTagTemplate(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.create_tag_template.js</caption>
+   * region_tag:datacatalog_create_tag_template_sample
+   *
    */
   createTagTemplate(
     request?: protos.google.cloud.datacatalog.v1.ICreateTagTemplateRequest,
@@ -1479,6 +1519,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getTagTemplate(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.get_tag_template.js</caption>
+   * region_tag:datacatalog_get_tag_template_sample
+   *
    */
   getTagTemplate(
     request?: protos.google.cloud.datacatalog.v1.IGetTagTemplateRequest,
@@ -1585,6 +1629,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateTagTemplate(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.update_tag_template.js</caption>
+   * region_tag:datacatalog_update_tag_template_sample
+   *
    */
   updateTagTemplate(
     request?: protos.google.cloud.datacatalog.v1.IUpdateTagTemplateRequest,
@@ -1684,6 +1732,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteTagTemplate(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.delete_tag_template.js</caption>
+   * region_tag:datacatalog_delete_tag_template_sample
+   *
    */
   deleteTagTemplate(
     request?: protos.google.cloud.datacatalog.v1.IDeleteTagTemplateRequest,
@@ -1794,6 +1846,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createTagTemplateField(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.create_tag_template_field.js</caption>
+   * region_tag:datacatalog_create_tag_template_field_sample
+   *
    */
   createTagTemplateField(
     request?: protos.google.cloud.datacatalog.v1.ICreateTagTemplateFieldRequest,
@@ -1921,6 +1977,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateTagTemplateField(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.update_tag_template_field.js</caption>
+   * region_tag:datacatalog_update_tag_template_field_sample
+   *
    */
   updateTagTemplateField(
     request?: protos.google.cloud.datacatalog.v1.IUpdateTagTemplateFieldRequest,
@@ -2028,6 +2088,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.renameTagTemplateField(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.rename_tag_template_field.js</caption>
+   * region_tag:datacatalog_rename_tag_template_field_sample
+   *
    */
   renameTagTemplateField(
     request?: protos.google.cloud.datacatalog.v1.IRenameTagTemplateFieldRequest,
@@ -2133,6 +2197,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.renameTagTemplateFieldEnumValue(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.rename_tag_template_field_enum_value.js</caption>
+   * region_tag:datacatalog_rename_tag_template_field_enum_value_sample
+   *
    */
   renameTagTemplateFieldEnumValue(
     request?: protos.google.cloud.datacatalog.v1.IRenameTagTemplateFieldEnumValueRequest,
@@ -2243,6 +2311,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteTagTemplateField(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.delete_tag_template_field.js</caption>
+   * region_tag:datacatalog_delete_tag_template_field_sample
+   *
    */
   deleteTagTemplateField(
     request?: protos.google.cloud.datacatalog.v1.IDeleteTagTemplateFieldRequest,
@@ -2356,6 +2428,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createTag(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.create_tag.js</caption>
+   * region_tag:datacatalog_create_tag_sample
+   *
    */
   createTag(
     request?: protos.google.cloud.datacatalog.v1.ICreateTagRequest,
@@ -2448,6 +2524,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateTag(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.update_tag.js</caption>
+   * region_tag:datacatalog_update_tag_sample
+   *
    */
   updateTag(
     request?: protos.google.cloud.datacatalog.v1.IUpdateTagRequest,
@@ -2533,6 +2613,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteTag(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.delete_tag.js</caption>
+   * region_tag:datacatalog_delete_tag_sample
+   *
    */
   deleteTag(
     request?: protos.google.cloud.datacatalog.v1.IDeleteTagRequest,
@@ -2640,6 +2724,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.setIamPolicy(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.set_iam_policy.js</caption>
+   * region_tag:datacatalog_set_iam_policy_sample
+   *
    */
   setIamPolicy(
     request?: protos.google.iam.v1.ISetIamPolicyRequest,
@@ -2747,6 +2835,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getIamPolicy(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.get_iam_policy.js</caption>
+   * region_tag:datacatalog_get_iam_policy_sample
+   *
    */
   getIamPolicy(
     request?: protos.google.iam.v1.IGetIamPolicyRequest,
@@ -2849,6 +2941,10 @@ export class DataCatalogClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.testIamPermissions(request);
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.test_iam_permissions.js</caption>
+   * region_tag:datacatalog_test_iam_permissions_sample
+   *
    */
   testIamPermissions(
     request?: protos.google.iam.v1.ITestIamPermissionsRequest,
@@ -2994,6 +3090,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.search_catalog.js</caption>
+   * region_tag:datacatalog_search_catalog_sample
+   *
    */
   searchCatalog(
     request?: protos.google.cloud.datacatalog.v1.ISearchCatalogRequest,
@@ -3090,6 +3190,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.search_catalog.js</caption>
+   * region_tag:datacatalog_search_catalog_sample
+   *
    */
   searchCatalogStream(
     request?: protos.google.cloud.datacatalog.v1.ISearchCatalogRequest,
@@ -3097,7 +3201,8 @@ export class DataCatalogClient {
   ): Transform {
     request = request || {};
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['searchCatalog'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.searchCatalog.createStream(
       this.innerApiCalls.searchCatalog as gax.GaxCall,
@@ -3169,6 +3274,10 @@ export class DataCatalogClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.search_catalog.js</caption>
+   * region_tag:datacatalog_search_catalog_sample
+   *
    */
   searchCatalogAsync(
     request?: protos.google.cloud.datacatalog.v1.ISearchCatalogRequest,
@@ -3177,7 +3286,8 @@ export class DataCatalogClient {
     request = request || {};
     options = options || {};
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['searchCatalog'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.searchCatalog.asyncIterate(
       this.innerApiCalls['searchCatalog'] as GaxCall,
@@ -3245,6 +3355,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_entry_groups.js</caption>
+   * region_tag:datacatalog_list_entry_groups_sample
+   *
    */
   listEntryGroups(
     request?: protos.google.cloud.datacatalog.v1.IListEntryGroupsRequest,
@@ -3317,6 +3431,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_entry_groups.js</caption>
+   * region_tag:datacatalog_list_entry_groups_sample
+   *
    */
   listEntryGroupsStream(
     request?: protos.google.cloud.datacatalog.v1.IListEntryGroupsRequest,
@@ -3330,7 +3448,8 @@ export class DataCatalogClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listEntryGroups'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listEntryGroups.createStream(
       this.innerApiCalls.listEntryGroups as gax.GaxCall,
@@ -3372,6 +3491,10 @@ export class DataCatalogClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_entry_groups.js</caption>
+   * region_tag:datacatalog_list_entry_groups_sample
+   *
    */
   listEntryGroupsAsync(
     request?: protos.google.cloud.datacatalog.v1.IListEntryGroupsRequest,
@@ -3386,7 +3509,8 @@ export class DataCatalogClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listEntryGroups'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listEntryGroups.asyncIterate(
       this.innerApiCalls['listEntryGroups'] as GaxCall,
@@ -3458,6 +3582,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_entries.js</caption>
+   * region_tag:datacatalog_list_entries_sample
+   *
    */
   listEntries(
     request?: protos.google.cloud.datacatalog.v1.IListEntriesRequest,
@@ -3534,6 +3662,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_entries.js</caption>
+   * region_tag:datacatalog_list_entries_sample
+   *
    */
   listEntriesStream(
     request?: protos.google.cloud.datacatalog.v1.IListEntriesRequest,
@@ -3547,7 +3679,8 @@ export class DataCatalogClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listEntries'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listEntries.createStream(
       this.innerApiCalls.listEntries as gax.GaxCall,
@@ -3593,6 +3726,10 @@ export class DataCatalogClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_entries.js</caption>
+   * region_tag:datacatalog_list_entries_sample
+   *
    */
   listEntriesAsync(
     request?: protos.google.cloud.datacatalog.v1.IListEntriesRequest,
@@ -3607,7 +3744,8 @@ export class DataCatalogClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listEntries'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listEntries.asyncIterate(
       this.innerApiCalls['listEntries'] as GaxCall,
@@ -3670,6 +3808,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_tags.js</caption>
+   * region_tag:datacatalog_list_tags_sample
+   *
    */
   listTags(
     request?: protos.google.cloud.datacatalog.v1.IListTagsRequest,
@@ -3739,6 +3881,10 @@ export class DataCatalogClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_tags.js</caption>
+   * region_tag:datacatalog_list_tags_sample
+   *
    */
   listTagsStream(
     request?: protos.google.cloud.datacatalog.v1.IListTagsRequest,
@@ -3752,7 +3898,8 @@ export class DataCatalogClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTags'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTags.createStream(
       this.innerApiCalls.listTags as gax.GaxCall,
@@ -3793,6 +3940,10 @@ export class DataCatalogClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v1/data_catalog.list_tags.js</caption>
+   * region_tag:datacatalog_list_tags_sample
+   *
    */
   listTagsAsync(
     request?: protos.google.cloud.datacatalog.v1.IListTagsRequest,
@@ -3807,7 +3958,8 @@ export class DataCatalogClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTags'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTags.asyncIterate(
       this.innerApiCalls['listTags'] as GaxCall,
