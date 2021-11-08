@@ -770,8 +770,7 @@ export class PolicyTagManagerClient {
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   Required. Resource name of the taxonomy that the policy tag will belong to.<br /><br
-   *   />
+   *   Required. Resource name of the taxonomy that the policy tag will belong to.
    * @param {google.cloud.datacatalog.v1.PolicyTag} request.policyTag
    *   The policy tag to create.
    * @param {object} [options]
@@ -1525,7 +1524,8 @@ export class PolicyTagManagerClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTaxonomies'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTaxonomies.createStream(
       this.innerApiCalls.listTaxonomies as gax.GaxCall,
@@ -1579,7 +1579,8 @@ export class PolicyTagManagerClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTaxonomies'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTaxonomies.asyncIterate(
       this.innerApiCalls['listTaxonomies'] as GaxCall,
@@ -1730,7 +1731,8 @@ export class PolicyTagManagerClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listPolicyTags'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listPolicyTags.createStream(
       this.innerApiCalls.listPolicyTags as gax.GaxCall,
@@ -1785,7 +1787,8 @@ export class PolicyTagManagerClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listPolicyTags'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listPolicyTags.asyncIterate(
       this.innerApiCalls['listPolicyTags'] as GaxCall,
