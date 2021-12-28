@@ -12,5 +12,5 @@
   "issue_tracker": "",
   "requires_billing": true,
   "api_shortname": "datacatalog",
-  "library_type": ""
+  "library_type": "GAPIC_AUTO"
 }
