@@ -17,10 +17,8 @@
 function main(projectId, location, displayName) {
   // [START data_catalog_ptm_create_taxonomy]
   // Import the Google Cloud client library.
-  const {
-    DataCatalogClient,
-    PolicyTagManagerClient,
-  } = require('@google-cloud/datacatalog').v1;
+  const {DataCatalogClient, PolicyTagManagerClient} =
+   require('@google-cloud/datacatalog').v1;
   const dataCatalog = new DataCatalogClient();
   const policyTagManager = new PolicyTagManagerClient();
 
@@ -33,7 +31,7 @@ function main(projectId, location, displayName) {
     // const location = 'us'
     // const displayName = 'my_display_name'; // Display name for new taxonomy.
 
-    // Parent project location format is `projects/${projectId}/locations/${location}`
+    // Parent project location format is `projects/${projectId}/locatxsions/${location}`
     const parent = dataCatalog.locationPath(projectId, location);
 
     const request = {
