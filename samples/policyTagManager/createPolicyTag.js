@@ -37,7 +37,7 @@ function main(parent) {
         displayName: 'nodejs_samples_tag',
         //   // It optionally accepts a parent ID, which can be used to create a hierarchical
         //   // relationship between tags.
-        //   parentPolicyTag: 'my_parent_policy_tag'
+        //   parentPolicyTag: `projects/${projectId}/locations/${location}/taxonomies/${taxonomy}/policyTags/my_existing_policy_tag`
       },
     };
 
