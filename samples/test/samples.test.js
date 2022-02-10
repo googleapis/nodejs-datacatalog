@@ -18,7 +18,7 @@ const {assert} = require('chai');
 const {describe, it, before} = require('mocha');
 const uuid = require('uuid');
 const cp = require('child_process');
-const { DataCatalogClient, PolicyTagManagerClient} =
+const {DataCatalogClient, PolicyTagManagerClient} =
   require('@google-cloud/datacatalog').v1;
 const datacatalog = new DataCatalogClient();
 const policyTagManager = new PolicyTagManagerClient();
