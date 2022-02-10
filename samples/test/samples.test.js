@@ -18,8 +18,10 @@ const {assert} = require('chai');
 const {describe, it, before} = require('mocha');
 const uuid = require('uuid');
 const cp = require('child_process');
-const {DataCatalogClient, PolicyTagManagerClient} =
-  require('@google-cloud/datacatalog').v1;
+const {
+  DataCatalogClient,
+  PolicyTagManagerClient,
+} = require('@google-cloud/datacatalog').v1;
 const datacatalog = new DataCatalogClient();
 const policyTagManager = new PolicyTagManagerClient();
 
@@ -54,7 +56,7 @@ describe('Samples', async () => {
   });
 
   describe('policyTagManager', async () => {
-    it.only('should create a taxonomy', async () => {
+    it('should create a taxonomy', async () => {
       const taxLocation = 'us';
       const displayName = generateUuid();
       const output = execSync(
@@ -70,7 +72,7 @@ describe('Samples', async () => {
       assert.include(output, `Retrieved taxonomy: ${taxonomyName}`);
     });
 
-    it.only('should list taxonomies', async () => {
+    it('should list taxonomies', async () => {
       const taxLocation = 'us';
       const output = execSync(
         `node policyTagManager/listTaxonomies ${projectId} ${taxLocation}`
@@ -87,16 +89,18 @@ describe('Samples', async () => {
 
     it('should create a policy tag', async () => {
       const tagLocation = 'us';
-      const parent = `projects/${projectId}/locations/${tagLocation}`;
       const displayName = generateUuid();
-      execSync(
-        `node policyTagManager/createTaxonomy ${projectId} ${displayName}`
-      );
-      const [taxonomies] = await policyTagManager.listTaxonomies({parent});
+      const parent = datacatalog.locationPath(projectId, tagLocation);
 
-      const taxonomy = taxonomies.filter(taxonomy => {
-        return taxonomy.displayName.includes(displayName);
-      })[0];
+      const request = {
+        parent: parent,
+        taxonomy: {
+          displayName: displayName,
+          activatedPolicyTypes: ['FINE_GRAINED_ACCESS_CONTROL'],
+        },
+      };
+
+      const [taxonomy] = await policyTagManager.createTaxonomy(request);
 
       const output = execSync(
         `node policyTagManager/createPolicyTag ${taxonomy.name}`

@@ -24,7 +24,10 @@ function main(taxonomyName) {
     /**
      * TODO(developer): Uncomment the following line before running the sample.
      */
-    // const taxonomyName = 'my display name'; // Existing taxonomy.
+    // const projectId = 'my_project'; // Google Cloud Platform project
+    // const location = 'us';
+    // const taxonomy = 'my_existing_taxonomy';
+    // const taxonomyName = `projects/${projectId}/locations/${location}/taxonomies/${taxonomy}`;
 
     const request = {
       name: taxonomyName,

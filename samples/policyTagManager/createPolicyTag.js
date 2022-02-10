@@ -27,16 +27,17 @@ function main(parent) {
      * TODO(developer): Uncomment the following lines before running the sample.
      */
     // const projectId = 'my_project'; // Google Cloud Platform project
-    // const location = 'us'
-    // const parent = `projects/${projectId}/locations/${location}`; // Parent project location format
+    // const location = 'us';
+    // const taxonomy = 'my_existing_taxonomy';
+    // const parent = `projects/${projectId}/locations/${location}/taxonomies/${taxonomy}`;
 
     const request = {
-      parent: parent,
+      parent,
       policyTag: {
-        displayName: 'nodejs_samples_my new policy tag',
-        // It optionally accepts a parent ID, which can be used to create a hierarchical
-        // relationship between tags.
-        // parentPolicyTag: 'my parent policy tag'
+        displayName: 'nodejs_samples_tag',
+        //   // It optionally accepts a parent ID, which can be used to create a hierarchical
+        //   // relationship between tags.
+        //   parentPolicyTag: 'my_parent_policy_tag'
       },
     };
 
