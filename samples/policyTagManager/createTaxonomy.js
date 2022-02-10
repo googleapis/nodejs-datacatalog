@@ -31,7 +31,7 @@ function main(projectId, location, displayName) {
     // const location = 'us'
     // const displayName = 'my_display_name'; // Display name for new taxonomy.
 
-    // Parent project location format is `projects/${projectId}/locatxsions/${location}`
+    // Parent project location format is `projects/${projectId}/locations/${location}`
     const parent = dataCatalog.locationPath(projectId, location);
 
     const request = {
