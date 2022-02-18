@@ -46,6 +46,7 @@ function main(parent) {
       console.log(`Created policy tag: ${metadata.name}`);
     } catch (e) {
       console.error(e);
+      process.exitCode = 1;
     }
   }
   // [END data_catalog_ptm_create_policytag]

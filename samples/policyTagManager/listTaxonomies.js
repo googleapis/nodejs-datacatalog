@@ -44,6 +44,7 @@ function main(projectId, location) {
       });
     } catch (e) {
       console.error(e);
+      process.exitCode = 1;
     }
   }
   // [END data_catalog_ptm_list_taxonomies]

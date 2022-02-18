@@ -38,6 +38,7 @@ function main(taxonomyName) {
       console.log(`Retrieved taxonomy: ${taxonomy.name}`);
     } catch (e) {
       console.error(e);
+      process.exitCode = 1;
     }
   }
   // [END data_catalog_ptm_get_taxonomy]

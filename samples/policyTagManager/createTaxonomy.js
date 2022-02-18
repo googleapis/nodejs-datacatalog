@@ -47,6 +47,7 @@ function main(projectId, location, displayName) {
       console.log(`Created taxonomy: ${metadata.name}`);
     } catch (e) {
       console.error(e);
+      process.exitCode = 1;
     }
   }
   // [END data_catalog_ptm_create_taxonomy]
