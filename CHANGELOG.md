@@ -4,6 +4,18 @@
 
 [1]: https://www.npmjs.com/package/@google-cloud/datacatalog?activeTab=versions
 
+## [2.7.0](https://github.com/googleapis/nodejs-datacatalog/compare/v2.6.0...v2.7.0) (2022-05-09)
+
+
+### Features
+
+* AuditConfig for IAM v1 ([#349](https://github.com/googleapis/nodejs-datacatalog/issues/349)) ([39a829e](https://github.com/googleapis/nodejs-datacatalog/commit/39a829e7da308c9b1c91e347c8729bfbc5ba39c8))
+
+
+### Bug Fixes
+
+* **deps:** roll back dependency @google-cloud/datacatalog to ^2.5.0 ([#345](https://github.com/googleapis/nodejs-datacatalog/issues/345)) ([5fc48ab](https://github.com/googleapis/nodejs-datacatalog/commit/5fc48ab5bae55c0bc1f62a1418eaa74a8fae1034))
+
 ## [2.6.0](https://github.com/googleapis/nodejs-datacatalog/compare/v2.5.0...v2.6.0) (2022-02-08)
 
 
