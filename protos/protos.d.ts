@@ -1136,224 +1136,224 @@ export namespace google {
                 namespace DataCatalog {
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#searchCatalog}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|searchCatalog}.
                      * @param error Error, if any
                      * @param [response] SearchCatalogResponse
                      */
                     type SearchCatalogCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.SearchCatalogResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#createEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|createEntryGroup}.
                      * @param error Error, if any
                      * @param [response] EntryGroup
                      */
                     type CreateEntryGroupCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.EntryGroup) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#getEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|getEntryGroup}.
                      * @param error Error, if any
                      * @param [response] EntryGroup
                      */
                     type GetEntryGroupCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.EntryGroup) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#updateEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|updateEntryGroup}.
                      * @param error Error, if any
                      * @param [response] EntryGroup
                      */
                     type UpdateEntryGroupCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.EntryGroup) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#deleteEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|deleteEntryGroup}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteEntryGroupCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#listEntryGroups}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|listEntryGroups}.
                      * @param error Error, if any
                      * @param [response] ListEntryGroupsResponse
                      */
                     type ListEntryGroupsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.ListEntryGroupsResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#createEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|createEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type CreateEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#updateEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|updateEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type UpdateEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#deleteEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|deleteEntry}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteEntryCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#getEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|getEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type GetEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#lookupEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|lookupEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type LookupEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#listEntries}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|listEntries}.
                      * @param error Error, if any
                      * @param [response] ListEntriesResponse
                      */
                     type ListEntriesCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.ListEntriesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#modifyEntryOverview}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|modifyEntryOverview}.
                      * @param error Error, if any
                      * @param [response] EntryOverview
                      */
                     type ModifyEntryOverviewCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.EntryOverview) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#modifyEntryContacts}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|modifyEntryContacts}.
                      * @param error Error, if any
                      * @param [response] Contacts
                      */
                     type ModifyEntryContactsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Contacts) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#createTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|createTagTemplate}.
                      * @param error Error, if any
                      * @param [response] TagTemplate
                      */
                     type CreateTagTemplateCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplate) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#getTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|getTagTemplate}.
                      * @param error Error, if any
                      * @param [response] TagTemplate
                      */
                     type GetTagTemplateCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplate) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#updateTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|updateTagTemplate}.
                      * @param error Error, if any
                      * @param [response] TagTemplate
                      */
                     type UpdateTagTemplateCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplate) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#deleteTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|deleteTagTemplate}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTagTemplateCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#createTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|createTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type CreateTagTemplateFieldCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#updateTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|updateTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type UpdateTagTemplateFieldCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#renameTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|renameTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type RenameTagTemplateFieldCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#renameTagTemplateFieldEnumValue}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|renameTagTemplateFieldEnumValue}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type RenameTagTemplateFieldEnumValueCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#deleteTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|deleteTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTagTemplateFieldCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#createTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|createTag}.
                      * @param error Error, if any
                      * @param [response] Tag
                      */
                     type CreateTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Tag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#updateTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|updateTag}.
                      * @param error Error, if any
                      * @param [response] Tag
                      */
                     type UpdateTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Tag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#deleteTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|deleteTag}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTagCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#listTags}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|listTags}.
                      * @param error Error, if any
                      * @param [response] ListTagsResponse
                      */
                     type ListTagsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.ListTagsResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#starEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|starEntry}.
                      * @param error Error, if any
                      * @param [response] StarEntryResponse
                      */
                     type StarEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.StarEntryResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#unstarEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|unstarEntry}.
                      * @param error Error, if any
                      * @param [response] UnstarEntryResponse
                      */
                     type UnstarEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.UnstarEntryResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#setIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|setIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type SetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#getIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|getIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type GetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog#testIamPermissions}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.DataCatalog|testIamPermissions}.
                      * @param error Error, if any
                      * @param [response] TestIamPermissionsResponse
                      */
@@ -9529,91 +9529,91 @@ export namespace google {
                 namespace PolicyTagManager {
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#createTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|createTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type CreateTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#deleteTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|deleteTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTaxonomyCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#updateTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|updateTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type UpdateTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#listTaxonomies}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|listTaxonomies}.
                      * @param error Error, if any
                      * @param [response] ListTaxonomiesResponse
                      */
                     type ListTaxonomiesCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.ListTaxonomiesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#getTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|getTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type GetTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#createPolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|createPolicyTag}.
                      * @param error Error, if any
                      * @param [response] PolicyTag
                      */
                     type CreatePolicyTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.PolicyTag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#deletePolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|deletePolicyTag}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeletePolicyTagCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#updatePolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|updatePolicyTag}.
                      * @param error Error, if any
                      * @param [response] PolicyTag
                      */
                     type UpdatePolicyTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.PolicyTag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#listPolicyTags}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|listPolicyTags}.
                      * @param error Error, if any
                      * @param [response] ListPolicyTagsResponse
                      */
                     type ListPolicyTagsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.ListPolicyTagsResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#getPolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|getPolicyTag}.
                      * @param error Error, if any
                      * @param [response] PolicyTag
                      */
                     type GetPolicyTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.PolicyTag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#getIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|getIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type GetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#setIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|setIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type SetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager#testIamPermissions}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManager|testIamPermissions}.
                      * @param error Error, if any
                      * @param [response] TestIamPermissionsResponse
                      */
@@ -11069,21 +11069,21 @@ export namespace google {
                 namespace PolicyTagManagerSerialization {
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManagerSerialization#replaceTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManagerSerialization|replaceTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type ReplaceTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManagerSerialization#importTaxonomies}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManagerSerialization|importTaxonomies}.
                      * @param error Error, if any
                      * @param [response] ImportTaxonomiesResponse
                      */
                     type ImportTaxonomiesCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1.ImportTaxonomiesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManagerSerialization#exportTaxonomies}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1.PolicyTagManagerSerialization|exportTaxonomies}.
                      * @param error Error, if any
                      * @param [response] ExportTaxonomiesResponse
                      */
@@ -12385,189 +12385,189 @@ export namespace google {
                 namespace DataCatalog {
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#searchCatalog}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|searchCatalog}.
                      * @param error Error, if any
                      * @param [response] SearchCatalogResponse
                      */
                     type SearchCatalogCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.SearchCatalogResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#createEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|createEntryGroup}.
                      * @param error Error, if any
                      * @param [response] EntryGroup
                      */
                     type CreateEntryGroupCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.EntryGroup) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#updateEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|updateEntryGroup}.
                      * @param error Error, if any
                      * @param [response] EntryGroup
                      */
                     type UpdateEntryGroupCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.EntryGroup) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#getEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|getEntryGroup}.
                      * @param error Error, if any
                      * @param [response] EntryGroup
                      */
                     type GetEntryGroupCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.EntryGroup) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#deleteEntryGroup}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|deleteEntryGroup}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteEntryGroupCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#listEntryGroups}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|listEntryGroups}.
                      * @param error Error, if any
                      * @param [response] ListEntryGroupsResponse
                      */
                     type ListEntryGroupsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.ListEntryGroupsResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#createEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|createEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type CreateEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#updateEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|updateEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type UpdateEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#deleteEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|deleteEntry}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteEntryCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#getEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|getEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type GetEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#lookupEntry}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|lookupEntry}.
                      * @param error Error, if any
                      * @param [response] Entry
                      */
                     type LookupEntryCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Entry) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#listEntries}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|listEntries}.
                      * @param error Error, if any
                      * @param [response] ListEntriesResponse
                      */
                     type ListEntriesCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.ListEntriesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#createTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|createTagTemplate}.
                      * @param error Error, if any
                      * @param [response] TagTemplate
                      */
                     type CreateTagTemplateCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.TagTemplate) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#getTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|getTagTemplate}.
                      * @param error Error, if any
                      * @param [response] TagTemplate
                      */
                     type GetTagTemplateCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.TagTemplate) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#updateTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|updateTagTemplate}.
                      * @param error Error, if any
                      * @param [response] TagTemplate
                      */
                     type UpdateTagTemplateCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.TagTemplate) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#deleteTagTemplate}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|deleteTagTemplate}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTagTemplateCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#createTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|createTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type CreateTagTemplateFieldCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#updateTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|updateTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type UpdateTagTemplateFieldCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#renameTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|renameTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] TagTemplateField
                      */
                     type RenameTagTemplateFieldCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.TagTemplateField) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#deleteTagTemplateField}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|deleteTagTemplateField}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTagTemplateFieldCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#createTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|createTag}.
                      * @param error Error, if any
                      * @param [response] Tag
                      */
                     type CreateTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Tag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#updateTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|updateTag}.
                      * @param error Error, if any
                      * @param [response] Tag
                      */
                     type UpdateTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Tag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#deleteTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|deleteTag}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTagCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#listTags}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|listTags}.
                      * @param error Error, if any
                      * @param [response] ListTagsResponse
                      */
                     type ListTagsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.ListTagsResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#setIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|setIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type SetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#getIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|getIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type GetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog#testIamPermissions}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.DataCatalog|testIamPermissions}.
                      * @param error Error, if any
                      * @param [response] TestIamPermissionsResponse
                      */
@@ -17775,91 +17775,91 @@ export namespace google {
                 namespace PolicyTagManager {
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#createTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|createTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type CreateTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#deleteTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|deleteTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeleteTaxonomyCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#updateTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|updateTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type UpdateTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#listTaxonomies}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|listTaxonomies}.
                      * @param error Error, if any
                      * @param [response] ListTaxonomiesResponse
                      */
                     type ListTaxonomiesCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.ListTaxonomiesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#getTaxonomy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|getTaxonomy}.
                      * @param error Error, if any
                      * @param [response] Taxonomy
                      */
                     type GetTaxonomyCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.Taxonomy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#createPolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|createPolicyTag}.
                      * @param error Error, if any
                      * @param [response] PolicyTag
                      */
                     type CreatePolicyTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.PolicyTag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#deletePolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|deletePolicyTag}.
                      * @param error Error, if any
                      * @param [response] Empty
                      */
                     type DeletePolicyTagCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#updatePolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|updatePolicyTag}.
                      * @param error Error, if any
                      * @param [response] PolicyTag
                      */
                     type UpdatePolicyTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.PolicyTag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#listPolicyTags}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|listPolicyTags}.
                      * @param error Error, if any
                      * @param [response] ListPolicyTagsResponse
                      */
                     type ListPolicyTagsCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.ListPolicyTagsResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#getPolicyTag}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|getPolicyTag}.
                      * @param error Error, if any
                      * @param [response] PolicyTag
                      */
                     type GetPolicyTagCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.PolicyTag) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#getIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|getIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type GetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#setIamPolicy}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|setIamPolicy}.
                      * @param error Error, if any
                      * @param [response] Policy
                      */
                     type SetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager#testIamPermissions}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManager|testIamPermissions}.
                      * @param error Error, if any
                      * @param [response] TestIamPermissionsResponse
                      */
@@ -19289,14 +19289,14 @@ export namespace google {
                 namespace PolicyTagManagerSerialization {
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization#importTaxonomies}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization|importTaxonomies}.
                      * @param error Error, if any
                      * @param [response] ImportTaxonomiesResponse
                      */
                     type ImportTaxonomiesCallback = (error: (Error|null), response?: google.cloud.datacatalog.v1beta1.ImportTaxonomiesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization#exportTaxonomies}.
+                     * Callback as used by {@link google.cloud.datacatalog.v1beta1.PolicyTagManagerSerialization|exportTaxonomies}.
                      * @param error Error, if any
                      * @param [response] ExportTaxonomiesResponse
                      */
@@ -22431,6 +22431,9 @@ export namespace google {
             /** FieldOptions lazy */
             lazy?: (boolean|null);
 
+            /** FieldOptions unverifiedLazy */
+            unverifiedLazy?: (boolean|null);
+
             /** FieldOptions deprecated */
             deprecated?: (boolean|null);
 
@@ -22467,6 +22470,9 @@ export namespace google {
 
             /** FieldOptions lazy. */
             public lazy: boolean;
+
+            /** FieldOptions unverifiedLazy. */
+            public unverifiedLazy: boolean;
 
             /** FieldOptions deprecated. */
             public deprecated: boolean;
@@ -23802,90 +23808,6 @@ export namespace google {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of an Empty. */
-        interface IEmpty {
-        }
-
-        /** Represents an Empty. */
-        class Empty implements IEmpty {
-
-            /**
-             * Constructs a new Empty.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.protobuf.IEmpty);
-
-            /**
-             * Creates a new Empty instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns Empty instance
-             */
-            public static create(properties?: google.protobuf.IEmpty): google.protobuf.Empty;
-
-            /**
-             * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
-             * @param message Empty message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
-             * @param message Empty message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes an Empty message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Empty
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Empty;
-
-            /**
-             * Decodes an Empty message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Empty
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Empty;
-
-            /**
-             * Verifies an Empty message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates an Empty message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Empty
-             */
-            public static fromObject(object: { [k: string]: any }): google.protobuf.Empty;
-
-            /**
-             * Creates a plain object from an Empty message. Also converts values to other types if specified.
-             * @param message Empty
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.protobuf.Empty, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Empty to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
         /** Properties of a FieldMask. */
         interface IFieldMask {
 
@@ -23975,6 +23897,90 @@ export namespace google {
              */
             public toJSON(): { [k: string]: any };
         }
+
+        /** Properties of an Empty. */
+        interface IEmpty {
+        }
+
+        /** Represents an Empty. */
+        class Empty implements IEmpty {
+
+            /**
+             * Constructs a new Empty.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IEmpty);
+
+            /**
+             * Creates a new Empty instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Empty instance
+             */
+            public static create(properties?: google.protobuf.IEmpty): google.protobuf.Empty;
+
+            /**
+             * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Empty;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Empty;
+
+            /**
+             * Verifies an Empty message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Empty
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Empty;
+
+            /**
+             * Creates a plain object from an Empty message. Also converts values to other types if specified.
+             * @param message Empty
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Empty, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Empty to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
     }
 
     /** Namespace iam. */
@@ -24049,21 +24055,21 @@ export namespace google {
             namespace IAMPolicy {
 
                 /**
-                 * Callback as used by {@link google.iam.v1.IAMPolicy#setIamPolicy}.
+                 * Callback as used by {@link google.iam.v1.IAMPolicy|setIamPolicy}.
                  * @param error Error, if any
                  * @param [response] Policy
                  */
                 type SetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                 /**
-                 * Callback as used by {@link google.iam.v1.IAMPolicy#getIamPolicy}.
+                 * Callback as used by {@link google.iam.v1.IAMPolicy|getIamPolicy}.
                  * @param error Error, if any
                  * @param [response] Policy
                  */
                 type GetIamPolicyCallback = (error: (Error|null), response?: google.iam.v1.Policy) => void;
 
                 /**
-                 * Callback as used by {@link google.iam.v1.IAMPolicy#testIamPermissions}.
+                 * Callback as used by {@link google.iam.v1.IAMPolicy|testIamPermissions}.
                  * @param error Error, if any
                  * @param [response] TestIamPermissionsResponse
                  */
@@ -24078,6 +24084,9 @@ export namespace google {
 
                 /** SetIamPolicyRequest policy */
                 policy?: (google.iam.v1.IPolicy|null);
+
+                /** SetIamPolicyRequest updateMask */
+                updateMask?: (google.protobuf.IFieldMask|null);
             }
 
             /** Represents a SetIamPolicyRequest. */
@@ -24094,6 +24103,9 @@ export namespace google {
 
                 /** SetIamPolicyRequest policy. */
                 public policy?: (google.iam.v1.IPolicy|null);
+
+                /** SetIamPolicyRequest updateMask. */
+                public updateMask?: (google.protobuf.IFieldMask|null);
 
                 /**
                  * Creates a new SetIamPolicyRequest instance using the specified properties.
@@ -24547,6 +24559,9 @@ export namespace google {
                 /** Policy bindings */
                 bindings?: (google.iam.v1.IBinding[]|null);
 
+                /** Policy auditConfigs */
+                auditConfigs?: (google.iam.v1.IAuditConfig[]|null);
+
                 /** Policy etag */
                 etag?: (Uint8Array|string|null);
             }
@@ -24565,6 +24580,9 @@ export namespace google {
 
                 /** Policy bindings. */
                 public bindings: google.iam.v1.IBinding[];
+
+                /** Policy auditConfigs. */
+                public auditConfigs: google.iam.v1.IAuditConfig[];
 
                 /** Policy etag. */
                 public etag: (Uint8Array|string);
@@ -24740,6 +24758,209 @@ export namespace google {
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an AuditConfig. */
+            interface IAuditConfig {
+
+                /** AuditConfig service */
+                service?: (string|null);
+
+                /** AuditConfig auditLogConfigs */
+                auditLogConfigs?: (google.iam.v1.IAuditLogConfig[]|null);
+            }
+
+            /** Represents an AuditConfig. */
+            class AuditConfig implements IAuditConfig {
+
+                /**
+                 * Constructs a new AuditConfig.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: google.iam.v1.IAuditConfig);
+
+                /** AuditConfig service. */
+                public service: string;
+
+                /** AuditConfig auditLogConfigs. */
+                public auditLogConfigs: google.iam.v1.IAuditLogConfig[];
+
+                /**
+                 * Creates a new AuditConfig instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AuditConfig instance
+                 */
+                public static create(properties?: google.iam.v1.IAuditConfig): google.iam.v1.AuditConfig;
+
+                /**
+                 * Encodes the specified AuditConfig message. Does not implicitly {@link google.iam.v1.AuditConfig.verify|verify} messages.
+                 * @param message AuditConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: google.iam.v1.IAuditConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AuditConfig message, length delimited. Does not implicitly {@link google.iam.v1.AuditConfig.verify|verify} messages.
+                 * @param message AuditConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: google.iam.v1.IAuditConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an AuditConfig message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AuditConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.iam.v1.AuditConfig;
+
+                /**
+                 * Decodes an AuditConfig message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AuditConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.iam.v1.AuditConfig;
+
+                /**
+                 * Verifies an AuditConfig message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an AuditConfig message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AuditConfig
+                 */
+                public static fromObject(object: { [k: string]: any }): google.iam.v1.AuditConfig;
+
+                /**
+                 * Creates a plain object from an AuditConfig message. Also converts values to other types if specified.
+                 * @param message AuditConfig
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: google.iam.v1.AuditConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AuditConfig to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an AuditLogConfig. */
+            interface IAuditLogConfig {
+
+                /** AuditLogConfig logType */
+                logType?: (google.iam.v1.AuditLogConfig.LogType|keyof typeof google.iam.v1.AuditLogConfig.LogType|null);
+
+                /** AuditLogConfig exemptedMembers */
+                exemptedMembers?: (string[]|null);
+            }
+
+            /** Represents an AuditLogConfig. */
+            class AuditLogConfig implements IAuditLogConfig {
+
+                /**
+                 * Constructs a new AuditLogConfig.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: google.iam.v1.IAuditLogConfig);
+
+                /** AuditLogConfig logType. */
+                public logType: (google.iam.v1.AuditLogConfig.LogType|keyof typeof google.iam.v1.AuditLogConfig.LogType);
+
+                /** AuditLogConfig exemptedMembers. */
+                public exemptedMembers: string[];
+
+                /**
+                 * Creates a new AuditLogConfig instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AuditLogConfig instance
+                 */
+                public static create(properties?: google.iam.v1.IAuditLogConfig): google.iam.v1.AuditLogConfig;
+
+                /**
+                 * Encodes the specified AuditLogConfig message. Does not implicitly {@link google.iam.v1.AuditLogConfig.verify|verify} messages.
+                 * @param message AuditLogConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: google.iam.v1.IAuditLogConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AuditLogConfig message, length delimited. Does not implicitly {@link google.iam.v1.AuditLogConfig.verify|verify} messages.
+                 * @param message AuditLogConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: google.iam.v1.IAuditLogConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an AuditLogConfig message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AuditLogConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.iam.v1.AuditLogConfig;
+
+                /**
+                 * Decodes an AuditLogConfig message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AuditLogConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.iam.v1.AuditLogConfig;
+
+                /**
+                 * Verifies an AuditLogConfig message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an AuditLogConfig message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AuditLogConfig
+                 */
+                public static fromObject(object: { [k: string]: any }): google.iam.v1.AuditLogConfig;
+
+                /**
+                 * Creates a plain object from an AuditLogConfig message. Also converts values to other types if specified.
+                 * @param message AuditLogConfig
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: google.iam.v1.AuditLogConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AuditLogConfig to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            namespace AuditLogConfig {
+
+                /** LogType enum. */
+                enum LogType {
+                    LOG_TYPE_UNSPECIFIED = 0,
+                    ADMIN_READ = 1,
+                    DATA_WRITE = 2,
+                    DATA_READ = 3
+                }
             }
 
             /** Properties of a PolicyDelta. */
